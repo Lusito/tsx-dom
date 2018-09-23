@@ -1,0 +1,31 @@
+{
+  "name": "tsx-dom",
+  "version": "0.8",
+  "description": "A simple way to use tsx syntax to create native dom elements using document.createElement.",
+  "keywords": [
+    "TypeScript",
+    "tsx",
+    "jsx",
+    "create-element"
+  ],
+  "author": "Santo Pfingsten",
+  "license": "MIT",
+  "homepage": "https://github.com/Lusito/tsx-dom",
+  "bugs": {
+    "url": "https://github.com/Lusito/tsx-dom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lusito/tsx-dom.git"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "tsconfig.json"
+  ],
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "devDependencies": {
+    "typescript": "^3.0.3"
+  }
+}
