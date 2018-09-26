@@ -53,9 +53,8 @@ export function h(tag: string | ComponentFactory, attrs: { [s: string]: string |
     return element;
 }
 
-export type ComponentChildType = JSX.Element | string | number | boolean | undefined | null;
-export type ComponentChild = ComponentChildType | ComponentChildType[];
-export type ComponentChildren = ComponentChild[] | ComponentChild;
+export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChildren = ComponentChild | ComponentChild[];
 
 declare global {
     namespace JSX {
@@ -66,7 +65,7 @@ declare global {
         }
 
         interface ElementChildrenAttribute {
-            children: ComponentChildren;
+            children: ComponentChildren[] | ComponentChildren;
         }
 
         interface SVGAttributes extends HTMLAttributes {
@@ -332,7 +331,7 @@ declare global {
         type PointerEventHandler = EventHandler<PointerEvent>;
 
         interface DOMAttributes {
-            children?: ComponentChildren;
+            children?: ComponentChildren[] | ComponentChildren;
 
             // Image Events
             onLoad?: GenericEventHandler;

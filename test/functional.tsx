@@ -4,7 +4,7 @@
  * @see https://github.com/Lusito/tsx-dom
  */
 
-import { fakeDoc } from "./fakeDocument";
+import { fakeDoc, FakeNode } from "./fakeDocument";
 import { assert } from "chai";
 import { h, BaseProps } from "../src";
 
@@ -25,6 +25,15 @@ function Bar(props: BaseProps) {
     // @ts-ignore
     return props as JSX.Element;
 }
+
+function FooBar(props: BaseProps) {
+    // Merely to make sure that the type checker works correctly when including both an element and props.children.
+    return <div>
+        <div></div>
+        { props.children }
+    </div>;
+}
+
 
 describe("Functional component tests", () => {
     before(() => fakeDoc.reset());
@@ -50,5 +59,13 @@ describe("Functional component tests", () => {
                 value
             ]
         });
+    });
+
+    it("should allow appending multiple divs and props.children", () => {
+        const t = <FooBar>
+            <div></div>
+            <b></b>
+        </FooBar> as any as FakeNode;
+        assert.isTrue(t.element);
     });
 });
