@@ -2,6 +2,9 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
+|Master|[![Build Status](https://travis-ci.org/Lusito/tsx-dom.svg?branch=master)](https://travis-ci.org/Lusito/tsx-dom)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/tsx-dom/badge.svg?branch=master)](https://coveralls.io/github/Lusito/tsx-dom)|
+|---|---|---|
+
 A simple way to use tsx syntax to create native dom elements using document.createElement.
 This project has taken definitions from [preact](https://github.com/developit/preact) from Jason Miller as a starting point.
 
