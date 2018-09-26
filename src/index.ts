@@ -10,17 +10,23 @@ export interface BaseProps {
 
 export type ComponentFactory = (props: BaseProps) => JSX.Element;
 
-function applyChildren(element: HTMLElement, children: ComponentChild[]) {
-    for (const child of children) {
-        if (!child) continue;
+function applyChild(element: HTMLElement, child: ComponentChild) {
+    if (child || child === 0) {
         if (child instanceof HTMLElement)
             element.appendChild(child);
-        else if (typeof child === "string")
+        else if (typeof child === "string" || typeof child === "number")
             element.appendChild(document.createTextNode(child.toString()));
-        else if (Array.isArray(child))
-            applyChildren(element, child);
         else
             console.warn("Unknown type to append: ", child);
+    }
+}
+
+function applyChildren(element: HTMLElement, children: ComponentChild[]) {
+    for (const child of children) {
+        if (Array.isArray(child))
+            child.forEach((grandChild) => applyChild(element, grandChild));
+        else
+            applyChild(element, child);
     }
 }
 
@@ -47,8 +53,8 @@ export function h(tag: string | ComponentFactory, attrs: { [s: string]: string |
     return element;
 }
 
-export type ComponentChild = JSX.Element | string | number | null;
-export type ComponentChildren = ComponentChild[] | ComponentChild | object | string | number | null;
+export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChildren = ComponentChild[] | ComponentChild;
 
 declare global {
     namespace JSX {
