@@ -23,9 +23,42 @@
     "src/",
     "tsconfig.json"
   ],
+  "scripts": {
+    "test": "nyc mocha --require source-map-support/register --require ts-node/register test/**/*.tsx",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "coverage/**/*",
+      "test/**/*",
+      "dist/**/*",
+      "**/*.d.ts",
+      "./*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "all": true,
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ]
+  },
   "main": "dist/index.js",
   "types": "src/index.ts",
   "devDependencies": {
+    "@types/chai": "^4.1.5",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   }
 }

@@ -5,7 +5,7 @@
  */
 
 export interface BaseProps {
-    children: ComponentChildren;
+    children?: ComponentChildren;
 }
 
 export type ComponentFactory = (props: BaseProps) => JSX.Element;
@@ -45,7 +45,7 @@ export function h(tag: string | ComponentFactory, attrs: { [s: string]: string |
         }
         else if (value === true)
             element.setAttribute(name, name);
-        else if (value)
+        else if (value || value === 0)
             element.setAttribute(name, value.toString());
     }
 
@@ -53,7 +53,8 @@ export function h(tag: string | ComponentFactory, attrs: { [s: string]: string |
     return element;
 }
 
-export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChildType = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChild = ComponentChildType | ComponentChildType[];
 export type ComponentChildren = ComponentChild[] | ComponentChild;
 
 declare global {
