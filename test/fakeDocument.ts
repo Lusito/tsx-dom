@@ -22,6 +22,12 @@ export class FakeElementNode {
     public readonly attributes: { [s: string]: string } = {};
     public readonly eventListeners: FakeEventListener[] = [];
     public readonly children: FakeNode[] = [];
+    public readonly style = {
+        border: "",
+        height: "",
+        background: ""
+    };
+
     constructor(public readonly tag: string) {
     }
 

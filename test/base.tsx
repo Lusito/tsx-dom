@@ -102,4 +102,26 @@ describe("Basic tests", () => {
             console.warn = warn;
         }
     });
+
+    context("with style passed as object", () => {
+        it("should set only the styles which are already on the style object", () => {
+            const style = {
+                border: "1",
+                height: "2",
+                background: "3",
+                color: "4"
+            };
+            const t = <div style={style}></div> as any as FakeNode;
+            assert.isTrue(t.element);
+            t.element && assert.deepEqual(t.style, { border: "1", height: "2", background: "3" });
+        });
+    });
+
+    context("with style passed as string", () => {
+        it("should leave the style attribute untouched", () => {
+            const t = <div style="border: 1px solid black;"></div> as any as FakeNode;
+            assert.isTrue(t.element);
+            t.element && assert.deepEqual(t.style, { border: "", height: "", background: "" });
+        });
+    });
 });
