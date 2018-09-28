@@ -4,12 +4,6 @@
  * @see https://github.com/Lusito/tsx-dom
  */
 
-export interface BaseProps {
-    children?: ComponentChildren;
-}
-
-export type ComponentFactory = (props: BaseProps) => JSX.Element;
-
 function applyChild(element: HTMLElement, child: ComponentChild) {
     if (child || child === 0) {
         if (child instanceof HTMLElement)
@@ -30,20 +24,29 @@ function applyChildren(element: HTMLElement, children: ComponentChild[]) {
     }
 }
 
-export function h(tag: string | ComponentFactory, attrs: null | { [s: string]: string | number | boolean | JSX.StyleAttributes | EventListenerOrEventListenerObject }, ...children: ComponentChild[]): JSX.Element {
-    if (typeof tag === "function") return tag({ ...attrs, children });
+function transferKnownProperties(source: any, target: any) {
+    for (const key in source) {
+        if (target.hasOwnProperty(key))
+            target[key] = source[key];
+    }
+}
+
+export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChildren = ComponentChild | ComponentChild[];
+export interface BaseProps { children?: ComponentChildren; }
+export type ComponentFactory = (props: BaseProps) => JSX.Element;
+export type ComponentAttributes = { [s: string]: string | number | boolean | undefined | null | Partial<CSSStyleDeclaration> | EventListenerOrEventListenerObject };
+
+export function h(tag: string | ComponentFactory, attrs: null | ComponentAttributes, ...children: ComponentChild[]): JSX.Element {
+    if (typeof tag === "function")
+        return tag({ ...attrs, children });
 
     const element = document.createElement(tag);
 
     if (attrs) {
         // Special handler for style with a value of type JSX.StyleAttributes
         if (attrs.style && typeof (attrs.style) !== "string") {
-            const style = attrs.style as any;
-            const target = element.style as any;
-            for (const key in style) {
-                if (target.hasOwnProperty(key))
-                    target[key] = style[key];
-            }
+            transferKnownProperties(attrs.style, element.style);
             delete attrs.style;
         }
 
@@ -66,24 +69,16 @@ export function h(tag: string | ComponentFactory, attrs: null | { [s: string]: s
     return element;
 }
 
-export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
-export type ComponentChildren = ComponentChild | ComponentChild[];
-
 declare global {
     namespace JSX {
+        // Return type of jsx syntax
         type Element = HTMLElement;
 
-        interface ElementAttributesProperty {
-            props: any; // specify the property name to use
-        }
+        // specify the property/children name to use
+        interface ElementAttributesProperty { props: any; }
+        interface ElementChildrenAttribute { children: any; }
 
-        interface ElementChildrenAttribute {
-            children: ComponentChildren[] | ComponentChildren;
-        }
-
-        type StyleAttributes = { [K in keyof CSSStyleDeclaration]?: CSSStyleDeclaration[K] };
-
-        type EventHandler<E extends Event> = (event: E) => void;
+        type EventHandler<E extends Event> = (this: HTMLElement, ev: MouseEvent) => void;
 
         type ClipboardEventHandler = EventHandler<ClipboardEvent>;
         type CompositionEventHandler = EventHandler<CompositionEvent>;
@@ -401,7 +396,7 @@ declare global {
             srcSet?: string;
             start?: number;
             step?: number | string;
-            style?: string | StyleAttributes;
+            style?: string | Partial<CSSStyleDeclaration>;
             summary?: string;
             tabIndex?: number;
             target?: string;
