@@ -21,7 +21,9 @@ function applyChildren(element: HTMLElement, children: ComponentChild[]) {
 }
 
 function transferKnownProperties(source: any, target: any) {
-    for (const key of Object.keys(source)) target[key] = source[key];
+    for (const key of Object.keys(source)) {
+        if (Object.prototype.hasOwnProperty.call(target, key)) target[key] = source[key];
+    }
 }
 
 export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;

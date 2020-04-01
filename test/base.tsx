@@ -90,7 +90,7 @@ describe("Basic tests", () => {
         const warn = console.warn;
         try {
             const warns: any[] = [];
-            console.warn = (...args) => { warns.push(args); };
+            console.warn = (...args: any[]) => { warns.push(args); };
             const type = {} as any;
             const t = <div>{type}</div> as any as FakeNode;
             assert.isTrue(t.element);
