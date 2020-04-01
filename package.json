@@ -8,8 +8,6 @@
     "jsx",
     "create-element"
   ],
-  "author": "Santo Pfingsten",
-  "license": "MIT",
   "homepage": "https://github.com/Lusito/tsx-dom",
   "bugs": {
     "url": "https://github.com/Lusito/tsx-dom/issues"
@@ -18,20 +16,31 @@
     "type": "git",
     "url": "https://github.com/Lusito/tsx-dom.git"
   },
+  "license": "MIT",
+  "author": "Santo Pfingsten",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
   "files": [
     "dist/",
     "src/",
     "tsconfig.json"
   ],
   "scripts": {
-    "test": "nyc mocha --require source-map-support/register --require ts-node/register test/**/*.tsx",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "build": "rimraf dist && tsc",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "npm run lint:es && npm run lint:package && npm run lint:style",
+    "lint:es": "eslint src/**/*.{ts,tsx} --ext .ts,.tsx --ignore-path .prettierignore",
+    "lint:es:fix": "npm run lint:es -- --fix",
+    "lint:fix": "npm run lint:es:fix && npm run lint:package:fix && npm run lint:style:fix",
+    "lint:package": "sort-package-json --check",
+    "lint:package:fix": "sort-package-json",
+    "lint:style": "npm run lint:style:base -- --check",
+    "lint:style:base": "prettier src/**/*.{ts,tsx,js,json} ./*.{ts,tsx,js,json}",
+    "lint:style:fix": "npm run lint:style:base -- --write",
+    "test": "nyc mocha --require source-map-support/register --require ts-node/register test/**/*.tsx"
   },
   "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
+    "all": true,
     "exclude": [
       "coverage/**/*",
       "test/**/*",
@@ -39,26 +48,32 @@
       "**/*.d.ts",
       "./*.js"
     ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
     "reporter": [
       "lcov"
     ],
-    "all": true,
     "require": [
       "ts-node/register",
       "source-map-support/register"
     ]
   },
-  "main": "dist/index.js",
-  "types": "src/index.ts",
   "devDependencies": {
-    "@types/chai": "^4.1.5",
-    "@types/mocha": "^5.2.5",
+    "@lusito/eslint-config": "^1.0.1",
+    "@lusito/prettier-config": "^1.0.0",
+    "@lusito/stylelint-config": "^1.0.0",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
-    "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
-    "source-map-support": "^0.5.9",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.0.3"
+    "coveralls": "^3.0.11",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
+    "rimraf": "^3.0.2",
+    "sort-package-json": "^1.40.0",
+    "source-map-support": "^0.5.16",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
   }
 }

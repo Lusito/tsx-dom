@@ -6,62 +6,66 @@
 
 function applyChild(element: HTMLElement, child: ComponentChild) {
     if (child || child === 0) {
-        if (child instanceof HTMLElement)
-            element.appendChild(child);
+        if (child instanceof HTMLElement) element.appendChild(child);
         else if (typeof child === "string" || typeof child === "number")
             element.appendChild(document.createTextNode(child.toString()));
-        else
-            console.warn("Unknown type to append: ", child);
+        else console.warn("Unknown type to append: ", child);
     }
 }
 
 function applyChildren(element: HTMLElement, children: ComponentChild[]) {
     for (const child of children) {
-        if (Array.isArray(child))
-            child.forEach((grandChild) => applyChild(element, grandChild));
-        else
-            applyChild(element, child);
+        if (Array.isArray(child)) child.forEach((grandChild) => applyChild(element, grandChild));
+        else applyChild(element, child);
     }
 }
 
 function transferKnownProperties(source: any, target: any) {
-    for (const key in source) {
-        if (target.hasOwnProperty(key))
-            target[key] = source[key];
-    }
+    for (const key of Object.keys(source)) target[key] = source[key];
 }
 
 export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChild[];
-export interface BaseProps { children?: ComponentChildren; }
+export interface BaseProps {
+    children?: ComponentChildren;
+}
 export type ComponentFactory = (props: BaseProps) => JSX.Element;
-export type ComponentAttributes = { [s: string]: string | number | boolean | undefined | null | Partial<CSSStyleDeclaration> | EventListenerOrEventListenerObject };
+export type ComponentAttributes = {
+    [s: string]:
+        | string
+        | number
+        | boolean
+        | undefined
+        | null
+        | Partial<CSSStyleDeclaration>
+        | EventListenerOrEventListenerObject;
+};
 
-export function h(tag: string | ComponentFactory, attrs: null | ComponentAttributes, ...children: ComponentChild[]): JSX.Element {
-    if (typeof tag === "function")
-        return tag({ ...attrs, children });
+export function h(
+    tag: string | ComponentFactory,
+    attrs: null | ComponentAttributes,
+    ...children: ComponentChild[]
+): JSX.Element {
+    if (typeof tag === "function") return tag({ ...attrs, children });
 
     const element = document.createElement(tag);
 
     if (attrs) {
         // Special handler for style with a value of type JSX.StyleAttributes
-        if (attrs.style && typeof (attrs.style) !== "string") {
+        if (attrs.style && typeof attrs.style !== "string") {
             transferKnownProperties(attrs.style, element.style);
             delete attrs.style;
         }
 
-        for (const name in attrs) {
+        for (const name of Object.keys(attrs)) {
             const value = attrs[name];
             if (name.startsWith("on")) {
                 const finalName = name.replace(/Capture$/, "");
                 const useCapture = name !== finalName;
                 const eventName = finalName.toLowerCase().substring(2);
                 element.addEventListener(eventName, value as EventListenerOrEventListenerObject, useCapture);
-            }
-            else if (value === true)
-                element.setAttribute(name, name);
-            else if (value || value === 0)
-                element.setAttribute(name, value.toString());
+            } else if (value === true) element.setAttribute(name, name);
+            else if (value || value === 0) element.setAttribute(name, value.toString());
         }
     }
 
@@ -70,15 +74,20 @@ export function h(tag: string | ComponentFactory, attrs: null | ComponentAttribu
 }
 
 declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         // Return type of jsx syntax
         type Element = HTMLElement;
 
         // specify the property/children name to use
-        interface ElementAttributesProperty { props: any; }
-        interface ElementChildrenAttribute { children: any; }
+        interface ElementAttributesProperty {
+            props: any;
+        }
+        interface ElementChildrenAttribute {
+            children: any;
+        }
 
-        type EventHandler<E extends Event> = (this: HTMLElement, ev: MouseEvent) => void;
+        type EventHandler<TEvent extends Event> = (this: HTMLElement, ev: MouseEvent) => void;
 
         type ClipboardEventHandler = EventHandler<ClipboardEvent>;
         type CompositionEventHandler = EventHandler<CompositionEvent>;
@@ -419,8 +428,8 @@ declare global {
             vocab?: string;
         }
 
-        type IntrinsicElementsHTML = { [K in keyof HTMLElementTagNameMap]?: HTMLAttributes };
+        type IntrinsicElementsHTML = { [TKey in keyof HTMLElementTagNameMap]?: HTMLAttributes };
 
-        interface IntrinsicElements extends IntrinsicElementsHTML { }
+        type IntrinsicElements = IntrinsicElementsHTML;
     }
 }
