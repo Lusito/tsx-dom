@@ -19,11 +19,9 @@
   "license": "MIT",
   "author": "Santo Pfingsten",
   "main": "dist/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist/",
-    "src/",
-    "tsconfig.json"
+    "dist"
   ],
   "scripts": {
     "build": "rimraf dist && tsc",

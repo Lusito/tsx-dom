@@ -14,8 +14,9 @@
     "alwaysStrict": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
+    "declaration": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node"
   },
-  "exclude": ["test"]
+  "exclude": ["test", "dist"]
 }
