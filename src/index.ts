@@ -89,7 +89,7 @@ declare global {
             children: any;
         }
 
-        type EventHandler<TEvent extends Event> = (this: HTMLElement, ev: MouseEvent) => void;
+        type EventHandler<TEvent extends Event> = (this: HTMLElement, ev: TEvent) => void;
 
         type ClipboardEventHandler = EventHandler<ClipboardEvent>;
         type CompositionEventHandler = EventHandler<CompositionEvent>;
