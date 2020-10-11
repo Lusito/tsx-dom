@@ -1,6 +1,6 @@
 {
   "name": "tsx-dom",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A simple way to use tsx syntax to create native dom elements using document.createElement.",
   "keywords": [
     "TypeScript",
@@ -59,19 +59,19 @@
     ]
   },
   "devDependencies": {
-    "@lusito/eslint-config": "^1.3.0",
+    "@lusito/eslint-config": "^1.3.1",
     "@lusito/prettier-config": "^1.2.0",
     "@lusito/stylelint-config": "^1.2.0",
-    "@types/chai": "^4.2.12",
+    "@types/chai": "^4.2.13",
     "@types/mocha": "^8.0.3",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "mocha": "^8.1.3",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.44.0",
+    "sort-package-json": "^1.46.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   }
 }
