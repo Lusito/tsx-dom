@@ -10,6 +10,7 @@ function applyChild(element: HTMLElement, child: ComponentChild) {
         if (child instanceof HTMLElement) element.appendChild(child);
         else if (typeof child === "string" || typeof child === "number")
             element.appendChild(document.createTextNode(child.toString()));
+        else if (Array.isArray(child)) applyChildren(element, child);
         else console.warn("Unknown type to append: ", child);
     }
 }
@@ -27,7 +28,7 @@ function transferKnownProperties(source: any, target: any) {
     }
 }
 
-export type ComponentChild = JSX.Element | string | number | boolean | undefined | null;
+export type ComponentChild = ComponentChild[] | JSX.Element | string | number | boolean | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChild[];
 export interface BaseProps {
     children?: ComponentChildren;
