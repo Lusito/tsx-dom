@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /**
  * License: MIT
  * @author Santo Pfingsten
@@ -6,37 +7,47 @@
 
 export interface FakeEventListener {
     name: string;
-    value: Function;
+    value: (...args: unknown[]) => unknown;
     useCapture: boolean;
 }
 
 export class FakeTextNode {
     public readonly element: false = false;
 
-    constructor(public readonly text: string) {
+    public readonly text: string;
+
+    constructor(text: string) {
+        this.text = text;
     }
 }
 
 export class FakeElementNode {
     public readonly element: true = true;
+
     public readonly attributes: { [s: string]: string } = {};
+
     public readonly eventListeners: FakeEventListener[] = [];
+
     public readonly children: FakeNode[] = [];
+
     public readonly style = {
         border: "",
         height: "",
-        background: ""
+        background: "",
     };
 
-    constructor(public readonly tag: string) {
+    public readonly tag: string;
+
+    constructor(tag: string) {
+        this.tag = tag;
     }
 
     public setAttribute(key: string, value: string) {
         this.attributes[key] = value;
     }
 
-    public addEventListener(name: string, value: Function, useCapture: boolean) {
-        this.eventListeners.push({ name, value, useCapture })
+    public addEventListener(name: string, value: (...args: unknown[]) => unknown, useCapture: boolean) {
+        this.eventListeners.push({ name, value, useCapture });
     }
 
     public appendChild(child: FakeNode) {
@@ -46,8 +57,7 @@ export class FakeElementNode {
 
 export type FakeNode = FakeElementNode | FakeTextNode;
 
-// @ts-ignore
-global.HTMLElement = FakeElementNode;
+global.HTMLElement = FakeElementNode as any;
 
 export class FakeDocument {
     public nodes: FakeNode[] = [];
@@ -71,5 +81,4 @@ export class FakeDocument {
 
 export const fakeDoc = new FakeDocument();
 
-// @ts-ignore
-global.document = fakeDoc;
+global.document = fakeDoc as any;
