@@ -103,6 +103,30 @@ describe("Basic tests", () => {
         }
     });
 
+    it("should support nested arrays", () => {
+        const a = ["foo", <div></div>];
+        const b = <div></div>;
+        const c = [<div></div>, [<div></div>, <div></div>, "bar"]] as any;
+        const d = <div></div>;
+        const e = <div></div>;
+        const value = 1234;
+        const list = [d, e, value];
+        const t = <div>{a}{b}{c}{list}</div> as any as FakeNode;
+        assert.isTrue(t.element);
+        t.element && assert.deepEqual(t.children, [
+            { element: false, text: "foo" },
+            a[1] as any as FakeNode,
+            b as any as FakeNode,
+            c[0] as any as FakeNode,
+            c[1][0] as any as FakeNode,
+            c[1][1] as any as FakeNode,
+            { element: false, text: "bar" },
+            d as any as FakeNode,
+            e as any as FakeNode,
+            { element: false, text: value.toString() }
+        ]);
+    });
+
     context("with style passed as object", () => {
         it("should set only the styles which are already on the style object", () => {
             const style = {
