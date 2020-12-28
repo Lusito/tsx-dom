@@ -6,19 +6,22 @@
  */
 
 function applyChild(element: HTMLElement, child: ComponentChild) {
-    if (child || child === 0) {
-        if (child instanceof HTMLElement) element.appendChild(child);
-        else if (typeof child === "string" || typeof child === "number")
-            element.appendChild(document.createTextNode(child.toString()));
-        else if (Array.isArray(child)) applyChildren(element, child);
-        else console.warn("Unknown type to append: ", child);
-    }
+    if (child instanceof HTMLElement) element.appendChild(child);
+    else if (typeof child === "string" || typeof child === "number")
+        element.appendChild(document.createTextNode(child.toString()));
+    else console.warn("Unknown type to append: ", child);
 }
 
 function applyChildren(element: HTMLElement, children: ComponentChild[]) {
     for (const child of children) {
-        if (Array.isArray(child)) child.forEach((grandChild) => applyChild(element, grandChild));
-        else applyChild(element, child);
+        if (!child && child !== 0) continue;
+
+        if (Array.isArray(child)) {
+            for (const grandChild of child) {
+                if (Array.isArray(grandChild)) applyChildren(element, grandChild);
+                else applyChild(element, grandChild);
+            }
+        } else applyChild(element, child);
     }
 }
 
