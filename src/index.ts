@@ -16,12 +16,8 @@ function applyChildren(element: HTMLElement, children: ComponentChild[]) {
     for (const child of children) {
         if (!child && child !== 0) continue;
 
-        if (Array.isArray(child)) {
-            for (const grandChild of child) {
-                if (Array.isArray(grandChild)) applyChildren(element, grandChild);
-                else applyChild(element, grandChild);
-            }
-        } else applyChild(element, child);
+        if (Array.isArray(child)) applyChildren(element, child);
+        else applyChild(element, child);
     }
 }
 
