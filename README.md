@@ -1,9 +1,8 @@
 # tsx-dom
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
-
-|Master|[![Build Status](https://travis-ci.org/Lusito/tsx-dom.svg?branch=master)](https://travis-ci.org/Lusito/tsx-dom)|[![Code Coverage](https://coveralls.io/repos/github/Lusito/tsx-dom/badge.svg?branch=master)](https://coveralls.io/github/Lusito/tsx-dom)|
-|---|---|---|
+[![Build Status](https://travis-ci.org/Lusito/tsx-dom.svg?branch=master)](https://travis-ci.org/Lusito/tsx-dom)
+[![Code Coverage](https://coveralls.io/repos/github/Lusito/tsx-dom/badge.svg?branch=master)](https://coveralls.io/github/Lusito/tsx-dom)
 
 A simple way to use tsx syntax to create native dom elements using document.createElement.
 This project has taken definitions from [preact](https://github.com/developit/preact) from Jason Miller as a starting point.
@@ -101,7 +100,7 @@ const el = <div>
 
 As you can see in the example above, even variables can be inserted as children. Arrays will be expanded. Falsey values (except 0) will be ignored. HTMLElement values will be appended as is, string or number values will become text-nodes.
 
-### Report isssues
+### Report issues
 
 Something not working quite as expected? Do you need a feature that has not been implemented yet? Check the [issue tracker](https://github.com/Lusito/tsx-dom/issues) and add a new one if your problem is not already listed. Please try to provide a detailed description of your problem, including the steps to reproduce it.
 
