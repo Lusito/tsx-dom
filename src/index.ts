@@ -53,7 +53,6 @@ export function h(
 
     let element: JSX.Element;
     if(attrs?.xmlns) {
-        console.log("CREATING SVG ELEMENT!!");
         element = document.createElementNS(attrs.xmlns as string, tag) as SVGElement;
     }
     else 
