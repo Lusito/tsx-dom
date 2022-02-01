@@ -5,14 +5,14 @@
  * @see https://github.com/Lusito/tsx-dom
  */
 
-function applyChild(element: HTMLElement, child: ComponentChild) {
-    if (child instanceof HTMLElement) element.appendChild(child);
+function applyChild(element: JSX.Element, child: ComponentChild) {
+    if (child instanceof HTMLElement || child instanceof SVGElement) element.appendChild(child);
     else if (typeof child === "string" || typeof child === "number")
         element.appendChild(document.createTextNode(child.toString()));
     else console.warn("Unknown type to append: ", child);
 }
 
-function applyChildren(element: HTMLElement, children: ComponentChild[]) {
+function applyChildren(element: JSX.Element, children: ComponentChild[]) {
     for (const child of children) {
         if (!child && child !== 0) continue;
 
@@ -51,7 +51,13 @@ export function h(
 ): JSX.Element {
     if (typeof tag === "function") return tag({ ...attrs, children });
 
-    const element = document.createElement(tag);
+    let element: JSX.Element;
+    if(attrs?.xmlns) {
+        console.log("CREATING SVG ELEMENT!!");
+        element = document.createElementNS(attrs.xmlns as string, tag) as SVGElement;
+    }
+    else 
+        element = document.createElement(tag);
 
     if (attrs) {
         // Special handler for style with a value of type JSX.StyleAttributes
@@ -80,7 +86,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         // Return type of jsx syntax
-        type Element = HTMLElement;
+        type Element = HTMLElement | SVGElement;
 
         // specify the property/children name to use
         interface ElementAttributesProperty {
