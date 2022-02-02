@@ -67,7 +67,9 @@ export function h(
 
         for (const name of Object.keys(attrs)) {
             const value = attrs[name];
-            if (name.startsWith("on")) {
+            if (name === "dangerouslySetInnerHTML" && typeof value === 'string') {
+                element.innerHTML = value;
+            } else if (name.startsWith("on")) {
                 const finalName = name.replace(/Capture$/, "");
                 const useCapture = name !== finalName;
                 const eventName = finalName.toLowerCase().substring(2);
@@ -113,6 +115,8 @@ declare global {
 
         interface DOMAttributes {
             children?: ComponentChildren[] | ComponentChildren;
+
+            dangerouslySetInnerHTML?: string;
 
             // Image Events
             onLoad?: GenericEventHandler;
