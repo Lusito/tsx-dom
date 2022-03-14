@@ -61,6 +61,9 @@ export function h(
         }
 
         for (const name of Object.keys(attrs)) {
+            // Ignore some debug props that might be added by bundlers
+            if (name === "__source" || name === "__self") continue;
+
             const value = attrs[name];
             if (name.startsWith("on")) {
                 const finalName = name.replace(/Capture$/, "");
