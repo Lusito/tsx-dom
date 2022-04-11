@@ -21,12 +21,6 @@ function applyChildren(element: HTMLElement, children: ComponentChild[]) {
     }
 }
 
-function transferKnownProperties(source: any, target: any) {
-    for (const key of Object.keys(source)) {
-        if (Object.prototype.hasOwnProperty.call(target, key)) target[key] = source[key];
-    }
-}
-
 export type ComponentChild = ComponentChild[] | JSX.Element | string | number | boolean | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChild[];
 export interface BaseProps {
@@ -54,18 +48,17 @@ export function h(
     const element = document.createElement(tag);
 
     if (attrs) {
-        // Special handler for style with a value of type JSX.StyleAttributes
-        if (attrs.style && typeof attrs.style !== "string") {
-            transferKnownProperties(attrs.style, element.style);
-            delete attrs.style;
-        }
-
         for (const name of Object.keys(attrs)) {
             // Ignore some debug props that might be added by bundlers
             if (name === "__source" || name === "__self") continue;
 
             const value = attrs[name];
-            if (name.startsWith("on")) {
+            if (name === "style" && typeof attrs.style !== "string") {
+                // Special handler for style with a value of type JSX.StyleAttributes
+                for (const key of Object.keys(value)) {
+                    element.style[key] = value[key];
+                }
+            } else if (name.startsWith("on")) {
                 const finalName = name.replace(/Capture$/, "");
                 const useCapture = name !== finalName;
                 const eventName = finalName.toLowerCase().substring(2);
