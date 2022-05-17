@@ -77,7 +77,9 @@ export function h(
                 const useCapture = name !== finalName;
                 const eventName = finalName.toLowerCase().substring(2);
                 element.addEventListener(eventName, value as EventListenerOrEventListenerObject, useCapture);
-            } else if (value === true) element.setAttribute(name, name);
+            } else if (name === "dangerouslySetInnerHTML")
+                element.innerHTML = value as string;
+            else if (value === true) element.setAttribute(name, name);
             else if (value || value === 0) element.setAttribute(name, value.toString());
         }
     }
@@ -118,6 +120,8 @@ declare global {
 
         interface DOMAttributes {
             children?: ComponentChildren[] | ComponentChildren;
+
+            dangerouslySetInnerHTML?: string;
 
             // Image Events
             onLoad?: GenericEventHandler;
