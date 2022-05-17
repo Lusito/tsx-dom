@@ -23,7 +23,7 @@ function applyChildren(element: JSX.Element, children: ComponentChild[]) {
 
 function transferKnownProperties(source: any, target: any) {
     for (const key of Object.keys(source)) {
-        if (Object.prototype.hasOwnProperty.call(target, key)) target[key] = source[key];
+        if (key in target) target[key] = source[key];
     }
 }
 
@@ -61,12 +61,6 @@ export function h(
     const element = createElement(tag, attrs);
 
     if (attrs) {
-        // Special handler for style with a value of type JSX.StyleAttributes
-        if (attrs.style && typeof attrs.style !== "string") {
-            transferKnownProperties(attrs.style, element.style);
-            delete attrs.style;
-        }
-
         for (const name of Object.keys(attrs)) {
             // Ignore some debug props that might be added by bundlers
             if (name === "__source" || name === "__self" || name === "is" || name === "xmlns") continue;
@@ -77,6 +71,9 @@ export function h(
                 const useCapture = name !== finalName;
                 const eventName = finalName.toLowerCase().substring(2);
                 element.addEventListener(eventName, value as EventListenerOrEventListenerObject, useCapture);
+            } else if (name === "style" && typeof value !== "string") {
+                // Special handler for style with a value of type CSSStyleDeclaration
+                transferKnownProperties(value, element.style);
             } else if (name === "dangerouslySetInnerHTML")
                 element.innerHTML = value as string;
             else if (value === true) element.setAttribute(name, name);
