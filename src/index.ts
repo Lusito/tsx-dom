@@ -5,14 +5,14 @@
  * @see https://github.com/Lusito/tsx-dom
  */
 
-function applyChild(element: HTMLElement, child: ComponentChild) {
-    if (child instanceof HTMLElement) element.appendChild(child);
+function applyChild(element: JSX.Element, child: ComponentChild) {
+    if (child instanceof Element) element.appendChild(child);
     else if (typeof child === "string" || typeof child === "number")
         element.appendChild(document.createTextNode(child.toString()));
     else console.warn("Unknown type to append: ", child);
 }
 
-function applyChildren(element: HTMLElement, children: ComponentChild[]) {
+function applyChildren(element: JSX.Element, children: ComponentChild[]) {
     for (const child of children) {
         if (!child && child !== 0) continue;
 
@@ -44,6 +44,13 @@ export type ComponentAttributes = {
         | EventListenerOrEventListenerObject;
 };
 
+function createElement(tag: string, attrs: ComponentAttributes | null): JSX.Element {
+    const options = attrs?.is ? { is: attrs.is as string } : undefined;
+    if(attrs?.xmlns)
+        return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
+    return document.createElement(tag, options);
+}
+
 export function h(
     tag: string | ComponentFactory,
     attrs: null | ComponentAttributes,
@@ -51,7 +58,7 @@ export function h(
 ): JSX.Element {
     if (typeof tag === "function") return tag({ ...attrs, children });
 
-    const element = document.createElement(tag);
+    const element = createElement(tag, attrs);
 
     if (attrs) {
         // Special handler for style with a value of type JSX.StyleAttributes
@@ -62,7 +69,7 @@ export function h(
 
         for (const name of Object.keys(attrs)) {
             // Ignore some debug props that might be added by bundlers
-            if (name === "__source" || name === "__self") continue;
+            if (name === "__source" || name === "__self" || name === "is" || name === "xmlns") continue;
 
             const value = attrs[name];
             if (name.startsWith("on")) {
@@ -83,7 +90,7 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
         // Return type of jsx syntax
-        type Element = HTMLElement;
+        type Element = HTMLElement | SVGElement;
 
         // specify the property/children name to use
         interface ElementAttributesProperty {
