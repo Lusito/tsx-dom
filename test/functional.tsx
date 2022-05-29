@@ -18,11 +18,11 @@ interface FooProps extends BaseProps {
 }
 
 function Foo(props: FooProps) {
-    return (props as unknown) as JSX.Element;
+    return props as unknown as JSX.Element;
 }
 
 function Bar(props: BaseProps) {
-    return (props as unknown) as JSX.Element;
+    return props as unknown as JSX.Element;
 }
 
 function FooBar(props: BaseProps) {
@@ -39,37 +39,32 @@ describe("Functional component tests", () => {
     before(() => fakeDoc.reset());
 
     it("should pass all attributes as given", () => {
-        const t = ((<Foo text="one" num={2} bool={true} none={undefined} zero={null} />) as any) as FooProps;
+        const t = (<Foo text="one" num={2} bool={true} none={undefined} zero={null} />) as any as FooProps;
         assert.deepEqual(t, { text: "one", num: 2, bool: true, none: undefined, zero: null, children: [] });
     });
 
     it("should pass all children as given", () => {
         const value = 12;
-        const t = ((
+        const t = (
             <Bar>
                 <div></div>
                 <b></b>
                 text
                 {value}
             </Bar>
-        ) as any) as BaseProps;
+        ) as any as BaseProps;
         assert.deepEqual(t, {
-            children: [
-                (fakeDoc.nodes[0] as any) as HTMLElement,
-                (fakeDoc.nodes[1] as any) as HTMLElement,
-                "text",
-                value,
-            ],
+            children: [fakeDoc.nodes[0] as any as HTMLElement, fakeDoc.nodes[1] as any as HTMLElement, "text", value],
         });
     });
 
     it("should allow appending multiple divs and props.children", () => {
-        const t = ((
+        const t = (
             <FooBar>
                 <div></div>
                 <b></b>
             </FooBar>
-        ) as any) as FakeNode;
+        ) as any as FakeNode;
         assert.isTrue(t.element);
     });
 });

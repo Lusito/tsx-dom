@@ -57,7 +57,7 @@ export class FakeElementNode {
 
 export type FakeNode = FakeElementNode | FakeTextNode;
 
-global.HTMLElement = FakeElementNode as any;
+global.Element = FakeElementNode as any;
 
 export class FakeDocument {
     public nodes: FakeNode[] = [];

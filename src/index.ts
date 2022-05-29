@@ -46,8 +46,7 @@ export type ComponentAttributes = {
 
 function createElement(tag: string, attrs: ComponentAttributes | null): JSX.Element {
     const options = attrs?.is ? { is: attrs.is as string } : undefined;
-    if(attrs?.xmlns)
-        return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
+    if (attrs?.xmlns) return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
     return document.createElement(tag, options);
 }
 
@@ -74,8 +73,7 @@ export function h(
             } else if (name === "style" && typeof value !== "string") {
                 // Special handler for style with a value of type CSSStyleDeclaration
                 transferKnownProperties(value, element.style);
-            } else if (name === "dangerouslySetInnerHTML")
-                element.innerHTML = value as string;
+            } else if (name === "dangerouslySetInnerHTML") element.innerHTML = value as string;
             else if (value === true) element.setAttribute(name, name);
             else if (value || value === 0) element.setAttribute(name, value.toString());
         }
