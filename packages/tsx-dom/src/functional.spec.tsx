@@ -6,8 +6,8 @@
 
 import { assert } from "chai";
 
-import { fakeDoc, FakeNode } from "./fakeDocument";
-import { h, BaseProps } from "../src";
+import { fakeDoc, FakeNode } from "../testUtils";
+import { h, BaseProps } from ".";
 
 interface FooProps extends BaseProps {
     text: string;

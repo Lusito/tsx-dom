@@ -6,8 +6,8 @@
 
 import { assert } from "chai";
 
-import { fakeDoc, FakeNode } from "./fakeDocument";
-import { h } from "../src";
+import { fakeDoc, FakeNode } from "../testUtils";
+import { h } from ".";
 
 describe("Basic tests", () => {
     before(() => fakeDoc.reset());
