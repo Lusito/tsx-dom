@@ -1,17 +1,14 @@
-# tsx-dom Monorepo
+# tsx-dom-types
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
-## Included Projects
+Types for creating JSX/TSX libraries like [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
 
-### [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom)
+## Installation via NPM
 
-A simple way to use tsx syntax to create native dom elements using document.createElement.
+```npm i tsx-dom-types```
 
-
-### [tsx-dom-types](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom)
-
-This project is here, so that other projects like tsx-dom can use the types independently.
+To see how to use it, you might want to take a look at the code of [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
 
 ## Report issues
 
@@ -23,5 +20,5 @@ Awesome! If you would like to contribute with a new feature or submit a bugfix, 
 
 ## License
 
-tsx-dom has been released under the [MIT](https://github.com/Lusito/tsx-dom/blob/master/LICENSE) license, meaning you
+tsx-dom-types has been released under the [MIT](https://github.com/Lusito/tsx-dom/blob/master/LICENSE) license, meaning you
 can use it free of charge, without strings attached in commercial and non-commercial projects. Credits are appreciated but not mandatory.

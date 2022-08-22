@@ -1,0 +1,20 @@
+{
+  "name": "tsx-dom-types",
+  "version": "1.0.0",
+  "description": "Types for creating JSX/TSX libraries like tsx-dom",
+  "keywords": [
+    "TypeScript",
+    "tsx",
+    "jsx"
+  ],
+  "homepage": "https://github.com/Lusito/tsx-dom",
+  "bugs": {
+    "url": "https://github.com/Lusito/tsx-dom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lusito/tsx-dom.git"
+  },
+  "license": "MIT",
+  "author": "Santo Pfingsten"
+}

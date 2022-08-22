@@ -1,13 +1,6 @@
-/**
- * License: MIT
- * @author Santo Pfingsten
- * @see https://github.com/Lusito/tsx-dom
- */
-
-import { assert } from "chai";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fakeDoc, FakeNode } from "../testUtils";
-import { h, BaseProps } from ".";
+import { BaseProps } from ".";
 
 interface FooProps extends BaseProps {
     text: string;
@@ -36,11 +29,11 @@ function FooBar(props: BaseProps) {
 }
 
 describe("Functional component tests", () => {
-    before(() => fakeDoc.reset());
+    beforeEach(() => fakeDoc.reset());
 
     it("should pass all attributes as given", () => {
         const t = (<Foo text="one" num={2} bool={true} none={undefined} zero={null} />) as any as FooProps;
-        assert.deepEqual(t, { text: "one", num: 2, bool: true, none: undefined, zero: null, children: [] });
+        expect(t).toEqual({ text: "one", num: 2, bool: true, none: undefined, zero: null });
     });
 
     it("should pass all children as given", () => {
@@ -53,8 +46,8 @@ describe("Functional component tests", () => {
                 {value}
             </Bar>
         ) as any as BaseProps;
-        assert.deepEqual(t, {
-            children: [fakeDoc.nodes[0] as any as HTMLElement, fakeDoc.nodes[1] as any as HTMLElement, "text", value],
+        expect(t).toEqual({
+            children: [fakeDoc.nodes[0], fakeDoc.nodes[1], "text", value],
         });
     });
 
@@ -65,6 +58,6 @@ describe("Functional component tests", () => {
                 <b></b>
             </FooBar>
         ) as any as FakeNode;
-        assert.isTrue(t.element);
+        expect(t.element).toBe(true);
     });
 });

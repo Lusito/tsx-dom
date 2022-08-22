@@ -1,9 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-classes-per-file */
-/**
- * License: MIT
- * @author Santo Pfingsten
- * @see https://github.com/Lusito/tsx-dom
- */
 
 export interface FakeEventListener {
     name: string;
@@ -12,7 +8,7 @@ export interface FakeEventListener {
 }
 
 export class FakeTextNode {
-    public readonly element: false = false;
+    public readonly element = false as const;
 
     public readonly text: string;
 
@@ -22,7 +18,7 @@ export class FakeTextNode {
 }
 
 export class FakeElementNode {
-    public readonly element: true = true;
+    public readonly element = true as const;
 
     public readonly attributes: { [s: string]: string } = {};
 
@@ -57,7 +53,7 @@ export class FakeElementNode {
 
 export type FakeNode = FakeElementNode | FakeTextNode;
 
-global.Element = FakeElementNode as any;
+globalThis.Element = FakeElementNode as any;
 
 export class FakeDocument {
     public nodes: FakeNode[] = [];
@@ -81,4 +77,4 @@ export class FakeDocument {
 
 export const fakeDoc = new FakeDocument();
 
-global.document = fakeDoc as any;
+globalThis.document = fakeDoc as any;

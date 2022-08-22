@@ -1,43 +1,36 @@
-/**
- * License: MIT
- * @author Santo Pfingsten
- * @see https://github.com/Lusito/tsx-dom
- */
-
-import { assert } from "chai";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { fakeDoc, FakeNode } from "../testUtils";
-import { h } from ".";
+import ".";
 
 describe("Basic tests", () => {
-    before(() => fakeDoc.reset());
+    beforeEach(() => fakeDoc.reset());
 
     it("should return the element from document.createElement", () => {
         const t = (<div></div>) as any as FakeNode;
-        assert.equal(t, fakeDoc.nodes[0]);
-        assert.isTrue(t.element);
-        t.element && assert.equal(t.tag, "div");
+        expect(t).toEqual(fakeDoc.nodes[0]);
+        expect(t.element).toBe(true);
+        t.element && expect(t.tag).toBe("div");
     });
 
     it("should set all attributes correctly", () => {
         const t = (<div checked={true} colSpan={1337} title="foo bar"></div>) as any as FakeNode;
-        assert.isTrue(t.element);
-        t.element && assert.deepEqual(t.attributes, { checked: "checked", colSpan: "1337", title: "foo bar" });
+        expect(t.element).toBe(true);
+        t.element && expect(t.attributes).toEqual({ checked: "checked", colSpan: "1337", title: "foo bar" });
     });
 
     it("should not set falsy attributes, except 0", () => {
         const t = (<div checked={false} colSpan={0} title={undefined}></div>) as any as FakeNode;
-        assert.isTrue(t.element);
-        t.element && assert.deepEqual(t.attributes, { colSpan: "0" });
+        expect(t.element).toBe(true);
+        t.element && expect(t.attributes).toEqual({ colSpan: "0" });
     });
 
     it("should attach event listeners", () => {
         const onClick = () => 0;
         const onBlur = () => 0;
         const t = (<div onClick={onClick} onBlur={onBlur}></div>) as any as FakeNode;
-        assert.isTrue(t.element);
+        expect(t.element).toBe(true);
         t.element &&
-            assert.deepEqual(t.eventListeners, [
+            expect(t.eventListeners).toEqual([
                 { name: "click", value: onClick, useCapture: false },
                 { name: "blur", value: onBlur, useCapture: false },
             ]);
@@ -47,9 +40,9 @@ describe("Basic tests", () => {
         const onClick = () => 0;
         const onBlur = () => 0;
         const t = (<div onClickCapture={onClick} onBlurCapture={onBlur}></div>) as any as FakeNode;
-        assert.isTrue(t.element);
+        expect(t.element).toBe(true);
         t.element &&
-            assert.deepEqual(t.eventListeners, [
+            expect(t.eventListeners).toEqual([
                 { name: "click", value: onClick, useCapture: true },
                 { name: "blur", value: onBlur, useCapture: true },
             ]);
@@ -77,17 +70,17 @@ describe("Basic tests", () => {
                 {list}
             </div>
         ) as any as FakeNode;
-        assert.isTrue(t.element);
+        expect(t.element).toBe(true);
         t.element &&
-            assert.deepEqual(t.children, [
-                a as any as FakeNode,
-                b as any as FakeNode,
+            expect(t.children).toEqual([
+                a,
+                b,
                 { element: false, text: "text" },
                 { element: false, text: "0" },
                 { element: false, text: value.toString() },
-                c as any as FakeNode,
-                d as any as FakeNode,
-                e as any as FakeNode,
+                c,
+                d,
+                e,
             ]);
     });
 
@@ -100,9 +93,9 @@ describe("Basic tests", () => {
             };
             const type = {} as any;
             const t = (<div>{type}</div>) as any as FakeNode;
-            assert.isTrue(t.element);
-            t.element && assert.isEmpty(t.children);
-            assert.deepEqual(warns, [["Unknown type to append: ", type]]);
+            expect(t.element).toBe(true);
+            t.element && expect(t.children).toHaveLength(0);
+            expect(warns).toEqual([["Unknown type to append: ", type]]);
         } finally {
             console.warn = warn;
         }
@@ -124,23 +117,23 @@ describe("Basic tests", () => {
                 {list}
             </div>
         ) as any as FakeNode;
-        assert.isTrue(t.element);
+        expect(t.element).toBe(true);
         t.element &&
-            assert.deepEqual(t.children, [
+            expect(t.children).toEqual([
                 { element: false, text: "foo" },
-                a[1] as any as FakeNode,
-                b as any as FakeNode,
-                c[0] as any as FakeNode,
-                c[1][0] as any as FakeNode,
-                c[1][1] as any as FakeNode,
+                a[1],
+                b,
+                c[0],
+                c[1][0],
+                c[1][1],
                 { element: false, text: "bar" },
-                d as any as FakeNode,
-                e as any as FakeNode,
+                d,
+                e,
                 { element: false, text: value.toString() },
             ]);
     });
 
-    context("with style passed as object", () => {
+    describe("with style passed as object", () => {
         it("should set only the styles which are already on the style object", () => {
             const style = {
                 border: "1",
@@ -149,16 +142,16 @@ describe("Basic tests", () => {
                 color: "4",
             };
             const t = (<div style={style}></div>) as any as FakeNode;
-            assert.isTrue(t.element);
-            t.element && assert.deepEqual(t.style, { border: "1", height: "2", background: "3" });
+            expect(t.element).toBe(true);
+            t.element && expect(t.style).toEqual({ border: "1", height: "2", background: "3" });
         });
     });
 
-    context("with style passed as string", () => {
+    describe("with style passed as string", () => {
         it("should leave the style attribute untouched", () => {
             const t = (<div style="border: 1px solid black;"></div>) as any as FakeNode;
-            assert.isTrue(t.element);
-            t.element && assert.deepEqual(t.style, { border: "", height: "", background: "" });
+            expect(t.element).toBe(true);
+            t.element && expect(t.style).toEqual({ border: "", height: "", background: "" });
         });
     });
 });

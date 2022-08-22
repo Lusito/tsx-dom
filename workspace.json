@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "tsx-dom": "packages/tsx-dom",
+    "tsx-dom-types": "packages/tsx-dom-types"
+  }
+}

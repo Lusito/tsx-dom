@@ -1,21 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
-    "lib": ["es2015", "dom"],
-    "jsx": "react",
-    "jsxFactory": "h",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "declaration": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node"
-  }
+  "extends": "./tsconfig.base.json"
 }
