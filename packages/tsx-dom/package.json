@@ -1,6 +1,6 @@
 {
   "name": "tsx-dom",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "A simple way to use tsx syntax to create native dom elements using document.createElement.",
   "keywords": [
     "TypeScript",
