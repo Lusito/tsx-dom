@@ -1,0 +1,17 @@
+@import "../../style/colors";
+@import "../../style/spacings";
+
+.pagination {
+    list-style: none;
+    display: flex;
+    margin: #{$space-md} 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination > li {
+    padding: $space-md;
+    margin: 0 $space-md 0 0;
+    background: $panel-color;
+    border-radius: $space-sm;
+}

@@ -5,6 +5,8 @@
     "scatman": "packages/scatman",
     "tsx-dom": "packages/tsx-dom",
     "tsx-dom-ssr": "packages/tsx-dom-ssr",
+    "tsx-dom-ssr-demo": "packages/tsx-dom-ssr-demo",
+    "tsx-dom-ssr-demo-elements": "packages/tsx-dom-ssr-demo-elements",
     "tsx-dom-types": "packages/tsx-dom-types"
   }
 }

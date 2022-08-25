@@ -1,0 +1,9 @@
+@import "../../style/colors";
+@import "../../style/spacings";
+
+.location {
+    background: $panel-color;
+    border-radius: $space-sm;
+    padding: $space-md;
+    margin-bottom: $space-md;
+}

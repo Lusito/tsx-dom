@@ -1,0 +1,28 @@
+@import "../../style/colors";
+@import "../../style/spacings";
+@import "../../style/breakpoints";
+
+.header {
+    display: flex;
+    flex-direction: column;
+
+    > a {
+        padding: $space-md;
+        margin: $space-md $space-md $space-md 0;
+        background: $panel-color;
+        border-radius: $space-sm;
+    }
+
+    @include from("small") {
+        flex-direction: row;
+    }
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: larger;
+    margin-right: $space-lg;
+    flex-grow: 1;
+}

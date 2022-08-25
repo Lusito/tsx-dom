@@ -1,0 +1,10 @@
+@import "../../style/colors";
+@import "../../style/spacings";
+
+.footer {
+    padding: $space-md;
+    margin: $space-md $space-md $space-md 0;
+    background: $panel-color;
+    border-radius: $space-sm;
+    text-align: center;
+}

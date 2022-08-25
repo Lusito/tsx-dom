@@ -7,15 +7,19 @@
   "scripts": {
     "build": "nx run-many --target=build",
     "build:libs": "nx run-many --target=build --projects=dom-helmet,scatman,tsx-dom,tsx-dom-ssr,tsx-dom-types",
-    "lint": "npm run lint:es && npm run lint:package && npm run lint:style",
+    "build:demo": "nx build tsx-dom-ssr-demo --skip-nx-cache",
+    "lint": "npm run lint:es && npm run lint:scss && npm run lint:package && npm run lint:style",
     "lint:es": "nx run-many --all --target=lint",
     "lint:es:fix": "npm run lint:es -- --fix",
-    "lint:fix": "npm run lint:es:fix && npm run lint:package:fix && npm run lint:style:fix",
+    "lint:fix": "npm run lint:es:fix && npm run lint:scss:fix && npm run lint:package:fix && npm run lint:style:fix",
     "lint:package": "npm run lint:package:fix -- --check",
     "lint:package:fix": "sort-package-json package.json \"packages/*/package.json\"",
+    "lint:scss": "stylelint --ignore-path .prettierignore \"packages/*/src/**/*.scss\"",
+    "lint:scss:fix": "npm run lint:scss --fix",
     "lint:style": "npm run lint:style:base -- --check",
     "lint:style:base": "prettier \"packages/*/src/**/*.{ts,tsx,js,json,scss}\" \"packages/*/*.{ts,tsx,js,json,scss}\"",
     "lint:style:fix": "npm run lint:style:base -- --write",
+    "start": "nx run-many --target=serve --projects=tsx-dom-ssr-demo,tsx-dom-ssr-demo-elements",
     "test": "nx run-many --target=test --all"
   },
   "dependencies": {
