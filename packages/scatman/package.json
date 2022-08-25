@@ -1,0 +1,21 @@
+{
+  "name": "scatman",
+  "version": "0.8.0",
+  "description": "Lightning fast navigation on mostly static pages.",
+  "keywords": [
+    "TypeScript",
+    "tsx",
+    "jsx",
+    "dom"
+  ],
+  "homepage": "https://github.com/Lusito/tsx-dom",
+  "bugs": {
+    "url": "https://github.com/Lusito/tsx-dom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lusito/tsx-dom.git"
+  },
+  "license": "MIT",
+  "author": "Santo Pfingsten"
+}

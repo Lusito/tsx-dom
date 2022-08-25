@@ -1,7 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "dom-helmet": "packages/dom-helmet",
+    "scatman": "packages/scatman",
     "tsx-dom": "packages/tsx-dom",
+    "tsx-dom-ssr": "packages/tsx-dom-ssr",
     "tsx-dom-types": "packages/tsx-dom-types"
   }
 }

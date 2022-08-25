@@ -1,0 +1,21 @@
+{
+  "name": "dom-helmet",
+  "version": "0.8.0",
+  "description": "A document head manager for plain dom (inspired by react-helmet)",
+  "keywords": [
+    "TypeScript",
+    "tsx",
+    "jsx",
+    "dom"
+  ],
+  "homepage": "https://github.com/Lusito/tsx-dom",
+  "bugs": {
+    "url": "https://github.com/Lusito/tsx-dom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lusito/tsx-dom.git"
+  },
+  "license": "MIT",
+  "author": "Santo Pfingsten"
+}

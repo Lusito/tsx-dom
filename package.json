@@ -5,7 +5,8 @@
   "license": "MIT",
   "author": "Santo Pfingsten",
   "scripts": {
-    "build": "nx build --all",
+    "build": "nx run-many --target=build",
+    "build:libs": "nx run-many --target=build --projects=dom-helmet,scatman,tsx-dom,tsx-dom-ssr,tsx-dom-types",
     "lint": "npm run lint:es && npm run lint:package && npm run lint:style",
     "lint:es": "nx run-many --all --target=lint",
     "lint:es:fix": "npm run lint:es -- --fix",

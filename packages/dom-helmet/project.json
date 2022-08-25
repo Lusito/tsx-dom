@@ -1,0 +1,32 @@
+{
+  "sourceRoot": "packages/dom-helmet/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/dom-helmet",
+        "main": "packages/dom-helmet/src/index.ts",
+        "tsConfig": "packages/dom-helmet/tsconfig.lib.json",
+        "assets": ["packages/dom-helmet/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/dom-helmet/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/dom-helmet"],
+      "options": {
+        "jestConfig": "packages/dom-helmet/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

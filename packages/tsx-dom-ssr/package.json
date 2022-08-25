@@ -1,0 +1,35 @@
+{
+  "name": "tsx-dom-ssr",
+  "version": "0.8.0",
+  "description": "A simple way to use tsx syntax to do async server-side-rendering.",
+  "keywords": [
+    "TypeScript",
+    "tsx",
+    "jsx",
+    "create-element",
+    "SSR",
+    "async"
+  ],
+  "homepage": "https://github.com/Lusito/tsx-dom",
+  "bugs": {
+    "url": "https://github.com/Lusito/tsx-dom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lusito/tsx-dom.git"
+  },
+  "license": "MIT",
+  "author": "Santo Pfingsten",
+  "type": "commonjs",
+  "exports": {
+    ".": "./src/index.js",
+    "./jsx-runtime": "./src/jsx-runtime.js"
+  },
+  "typesVersions": {
+    "*": {
+      "jsx-runtime": [
+        "src/jsx-runtime"
+      ]
+    }
+  }
+}

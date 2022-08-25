@@ -16,7 +16,12 @@
     "noImplicitOverride": true,
     "baseUrl": ".",
     "paths": {
+      "dom-helmet": ["packages/dom-helmet/src/index.ts"],
+      "scatman": ["packages/scatman/src/index.ts"],
       "tsx-dom": ["packages/tsx-dom/src/index.ts"],
+      "tsx-dom/jsx-runtime": ["packages/tsx-dom/src/jsx-runtime.ts"],
+      "tsx-dom-ssr": ["packages/tsx-dom-ssr/src/index.ts"],
+      "tsx-dom-ssr/jsx-runtime": ["packages/tsx-dom-ssr/src/jsx-runtime.ts"],
       "tsx-dom-types": ["packages/tsx-dom-types/src/index.ts"]
     }
   },
