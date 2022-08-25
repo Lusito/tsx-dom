@@ -9,6 +9,7 @@
         "outputPath": "dist/packages/dom-helmet",
         "main": "packages/dom-helmet/src/index.ts",
         "tsConfig": "packages/dom-helmet/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
         "assets": ["packages/dom-helmet/*.md"]
       }
     },
