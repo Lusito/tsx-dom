@@ -16,10 +16,13 @@ export interface HTMLComponentProps extends BaseProps {
 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
-export type IntrinsicElementsHTMLAndSVG = {
+export type IntrinsicElementsHTML = {
     [TKey in keyof HTMLElementTagNameMap]?: HTMLAttributes &
         HTMLComponentProps &
         EventAttributes<HTMLElementTagNameMap[TKey]>;
-} & {
+};
+export type IntrinsicElementsSVG = {
     [TKey in SVGOnlyElementKeys]?: SVGAttributes & HTMLComponentProps & EventAttributes<SVGElementTagNameMap[TKey]>;
 };
+
+export type IntrinsicElementsHTMLAndSVG = IntrinsicElementsHTML & IntrinsicElementsSVG;

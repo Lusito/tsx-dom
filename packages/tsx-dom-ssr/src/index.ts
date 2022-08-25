@@ -1,4 +1,4 @@
-import type { ComponentChildren, CustomElementsHTML, IntrinsicElementsHTMLAndSVG } from "./types";
+import type { ComponentChildren, CustomElementsHTML, IntrinsicElementsHTML, IntrinsicElementsSVG } from "./types";
 
 export * from "./createContext";
 export * from "./createElement";
@@ -6,6 +6,16 @@ export * from "./domUtils";
 export * from "./jsx-runtime";
 export * from "./ErrorBoundary";
 export * from "./types";
+
+export interface TsxConfig {
+    [s: string]: boolean;
+}
+
+// Returns TIF if T is specified as true in TsxConfig, otherwise TELSE
+type IfTsxConfig<T extends string, TIF, TELSE> = TsxConfig[T] extends false ? TELSE : TIF;
+
+type IntrinsicElementsCombined = IfTsxConfig<"html", IntrinsicElementsHTML, unknown> &
+    IfTsxConfig<"svg", IntrinsicElementsSVG, unknown>;
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -25,6 +35,6 @@ declare global {
 
         // The available string tags
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface IntrinsicElements extends IntrinsicElementsHTMLAndSVG, CustomElementsHTML {}
+        interface IntrinsicElements extends IntrinsicElementsCombined, CustomElementsHTML {}
     }
 }

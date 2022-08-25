@@ -8,7 +8,47 @@ A simple way to use tsx syntax to do async server-side-rendering.
 
 ```npm i tsx-dom-ssr```
 
+Enable TSX parsing in your tsconfig.json:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    ...
+```
+
+Or with the new JSX Transform:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "tsx-dom-ssr",
+    ...
+  },
+```
+
 Examples on how to use it will follow.
+
+## Configuration
+
+By default, support for HTML and SVG Elements is enabled. You can limit this (to prevent certain tags from being used)
+by creating a `d.ts` file (e.g. `tsx-dom-ssr-config.d.ts`), in your source folder with this content:
+
+```ts
+import 'tsx-dom-ssr';
+
+declare module "tsx-dom-ssr" {
+    export interface TsxConfig {
+        // Set one of these to false to disable support for them
+        svg: false;
+        // html: false;
+    }
+}
+```
+
+Setting any of these to false will just limit the possible types. It does not affect the code in any way.
 
 ## Report issues
 
