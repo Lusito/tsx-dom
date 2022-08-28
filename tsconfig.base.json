@@ -1,4 +1,10 @@
 {
+  "ts-node": {
+    // these options are overrides used only by ts-node
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
@@ -14,6 +20,7 @@
     "skipDefaultLibCheck": true,
     "strict": true,
     "noImplicitOverride": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "dom-helmet": ["packages/dom-helmet/src/index.ts"],
