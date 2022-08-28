@@ -4,9 +4,10 @@
   "description": "Lightning fast navigation on mostly static pages.",
   "keywords": [
     "TypeScript",
-    "tsx",
-    "jsx",
-    "dom"
+    "progressive-enhancement",
+    "page",
+    "transition",
+    "animation"
   ],
   "homepage": "https://github.com/Lusito/tsx-dom",
   "bugs": {

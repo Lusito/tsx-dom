@@ -4,9 +4,8 @@
   "description": "A document head manager for plain dom (inspired by react-helmet)",
   "keywords": [
     "TypeScript",
-    "tsx",
-    "jsx",
-    "dom"
+    "dom",
+    "head"
   ],
   "homepage": "https://github.com/Lusito/tsx-dom",
   "bugs": {
