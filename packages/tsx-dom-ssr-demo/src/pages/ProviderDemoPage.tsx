@@ -1,15 +1,15 @@
 import { ErrorBoundary } from "tsx-dom-ssr";
 
-import { LazyImage } from "../components/LazyImage/LazyImage";
+import { ProviderExample } from "../components/ProviderExample/ProviderExample";
 import { SomeNumber } from "../contexts/SomeNumber";
 import { RequestError } from "../errors/RequestError";
 import { DefaultLayout } from "../layouts/DefaultLayout";
 
-export function DemoPage() {
+export function ProviderDemoPage() {
     return (
         <DefaultLayout title="Providers">
             <SomeNumber.Provider value={20}>
-                <LazyImage src="hello.png" />
+                <ProviderExample />
                 <ErrorBoundary
                     render={() => (
                         <ErrorBoundary

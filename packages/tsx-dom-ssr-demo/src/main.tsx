@@ -2,10 +2,8 @@ import express from "express";
 import fs from "fs";
 import compression from "compression";
 
-import { respondHTML } from "./utils/renderHTML";
-import { DemoPage } from "./pages/DemoPage";
 import { ramRouter } from "./routers/ramRouter";
-import { SequentialPage } from "./pages/SequentialPage";
+import { demoRouter } from "./routers/demoRouter";
 
 const app = express();
 app.use(compression());
@@ -21,11 +19,7 @@ if (process.env.NODE_ENV !== "production") {
     });
 }
 
-app.get("/", (req, res) => respondHTML(res, <DemoPage />));
-
-app.get("/sequential", (req, res) => respondHTML(res, <SequentialPage />));
-
-app.get("/custom-elements.js", async (req, res) => {
+app.get("/custom-elements.js", (req, res) => {
     let filePath = "./dist/packages/tsx-dom-ssr-demo-elements/main.esm.js";
     if (!fs.existsSync(filePath)) {
         filePath = filePath.replace(/\.esm\.js$/, ".js");
@@ -34,6 +28,7 @@ app.get("/custom-elements.js", async (req, res) => {
 });
 
 app.use(ramRouter);
+app.use(demoRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

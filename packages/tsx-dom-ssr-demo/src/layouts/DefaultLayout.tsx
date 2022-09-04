@@ -24,6 +24,10 @@ export const DefaultLayout = withCss(classes, ({ children, title }: DefaultLayou
                 <h1>{title}</h1>
                 {children}
             </div>
+            <p>
+                {"Other Demos: "}
+                <a href="/demos/providers">Providers</a>, <a href="/demos/sequential">Sequential requests</a>
+            </p>
             <Footer />
         </body>
     </html>
