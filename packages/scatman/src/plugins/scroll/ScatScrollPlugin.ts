@@ -46,15 +46,16 @@ export class ScatScrollPlugin implements ScatPlugin {
         window.history.scrollRestoration = "auto";
     }
 
-    private scrollTo(top = 0) {
-        window.scrollTo({ left: 0, top, behavior: this.options.behavior });
+    private resetScroll() {
+        this.scrollTo(0, window);
+        document.querySelectorAll(".scatman-scroll-area").forEach((element) => this.scrollTo(0, element));
+    }
+
+    private scrollTo(top: number, element: Window | Element) {
+        element.scrollTo({ left: 0, top, behavior: this.options.behavior });
     }
 
     private scrollToHash(hash: string) {
-        this.scrollTo(this.getScrollTop(hash));
-    }
-
-    private getScrollTop(hash: string) {
         const name = hash.slice(1);
         let element: Element | undefined | null = document.getElementById(name);
         if (!element) {
@@ -62,14 +63,24 @@ export class ScatScrollPlugin implements ScatPlugin {
         }
 
         if (element) {
-            return element.getBoundingClientRect().top + window.pageYOffset;
+            const scrollContainer = element.closest(".scatman-scroll-area");
+            const { top } = element.getBoundingClientRect();
+
+            if (!scrollContainer) {
+                return this.scrollTo(top + window.pageYOffset, window);
+            }
+
+            const { top: parentTop } = scrollContainer.getBoundingClientRect();
+            const relativeTop = top - parentTop;
+
+            return this.scrollTo(relativeTop + scrollContainer.scrollTop, scrollContainer);
         }
 
         console.warn(`Element ${hash} not found`);
-        return 0;
+        this.scrollTo(0, window);
     }
 
-    private onSamePage = () => this.scrollTo();
+    private onSamePage = () => this.resetScroll();
 
     private onSamePageWithHash = (event: MouseEvent) => {
         if (!event) return;
@@ -94,7 +105,7 @@ export class ScatScrollPlugin implements ScatPlugin {
     private doScrolling({ popstate, hash }: ScatPageLoadEvent) {
         if (!popstate) {
             if (hash) this.scrollToHash(hash);
-            else this.scrollTo();
+            else this.resetScroll();
         }
     }
 }
