@@ -1,4 +1,4 @@
-import { ComponentAttributes, ComponentChild } from "./types";
+import { Component, ComponentAttributes, ComponentChild, NativeWebComponent } from "./types";
 
 function applyChild(element: JSX.Element, child: ComponentChild) {
     if (child instanceof Element) element.appendChild(child);
@@ -22,4 +22,9 @@ export function createDomElement(tag: string, attrs: ComponentAttributes | null)
     if (attrs?.xmlns) return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
 
     return document.createElement(tag, options);
+}
+
+export function isClassConstuctor(func: Component): func is NativeWebComponent {
+    const prototype = <PropertyDescriptor>Object.getOwnPropertyDescriptor(func, "prototype");
+    return !prototype.writable;
 }

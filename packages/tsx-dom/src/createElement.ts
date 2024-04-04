@@ -1,15 +1,17 @@
 import { setAttributes } from "./setAttributes";
-import type { ComponentAttributes, ComponentChild, Component } from "./types";
-import { applyChildren, createDomElement } from "./utils";
+import type { Component, ComponentAttributes, ComponentChild } from "./types";
+import { applyChildren, createDomElement, isClassConstuctor } from "./utils";
 
 export function createElement(
-    tag: string | Component,
+    Tag: string | Component,
     attrs: null | ComponentAttributes,
     ...children: ComponentChild[]
 ): JSX.Element {
-    if (typeof tag === "function") return tag({ ...attrs, children });
+    if (typeof Tag === "function") {
+        return isClassConstuctor(Tag) ? new Tag({ ...attrs, children }) : Tag({ ...attrs, children });
+    }
 
-    const element = createDomElement(tag, attrs);
+    const element = createDomElement(Tag, attrs);
 
     if (attrs) setAttributes(element, attrs as ComponentAttributes);
 

@@ -1,12 +1,14 @@
 import { setAttributes } from "./setAttributes";
-import type { BaseProps, ComponentAttributes, Component } from "./types";
-import { applyChildren, createDomElement } from "./utils";
+import type { BaseProps, Component, ComponentAttributes } from "./types";
+import { applyChildren, createDomElement, isClassConstuctor } from "./utils";
 
-export function jsx(tag: string | Component, props: BaseProps): JSX.Element {
-    if (typeof tag === "function") return tag(props);
-
+export function jsx(Tag: string | Component, props: BaseProps): JSX.Element {
     const { children, ...attrs } = props;
-    const element = createDomElement(tag, attrs as ComponentAttributes);
+    if (typeof Tag === "function") {
+        return isClassConstuctor(Tag) ? new Tag({ ...attrs, children }) : Tag({ ...attrs, children });
+    }
+
+    const element = createDomElement(Tag, attrs as ComponentAttributes);
 
     if (attrs) setAttributes(element, attrs as ComponentAttributes);
 
@@ -14,4 +16,4 @@ export function jsx(tag: string | Component, props: BaseProps): JSX.Element {
     return element;
 }
 
-export { jsx as jsxs, jsx as jsxDEV };
+export { jsx as jsxDEV, jsx as jsxs };

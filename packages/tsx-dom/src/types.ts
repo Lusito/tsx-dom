@@ -1,11 +1,13 @@
-import type { EventAttributes, StyleAttributes, SVGAttributes, HTMLAttributes } from "tsx-dom-types";
+import type { EventAttributes, HTMLAttributes, SVGAttributes, StyleAttributes } from "tsx-dom-types";
 
 export type ComponentChild = ComponentChild[] | JSX.Element | string | number | boolean | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChild[];
 export interface BaseProps {
     children?: ComponentChildren;
 }
-export type Component = (props: BaseProps) => JSX.Element;
+export type NativeWebComponent = new (props: BaseProps) => JSX.Element;
+export type JsxComponent = (props: BaseProps) => JSX.Element;
+export type Component = JsxComponent | NativeWebComponent;
 export type ComponentAttributes = {
     [s: string]: string | number | boolean | undefined | null | StyleAttributes | EventListenerOrEventListenerObject;
 };
