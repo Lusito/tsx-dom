@@ -6,8 +6,8 @@
   "author": "Santo Pfingsten",
   "scripts": {
     "build": "nx run-many --target=build",
-    "build:libs": "nx run-many --target=build --projects=dom-helmet,scatman,tsx-dom,tsx-dom-ssr,tsx-dom-types",
     "build:demo": "nx build tsx-dom-ssr-demo --skip-nx-cache",
+    "build:libs": "nx run-many --target=build --projects=dom-helmet,scatman,tsx-dom,tsx-dom-ssr,tsx-dom-types",
     "lint": "npm run lint:es && npm run lint:scss && npm run lint:package && npm run lint:style",
     "lint:es": "nx run-many --all --target=lint",
     "lint:es:fix": "npm run lint:es -- --fix",
@@ -24,9 +24,6 @@
     "test": "nx run-many --target=test --all"
   },
   "dependencies": {
-    "@fontsource/source-code-pro": "^4.5.11",
-    "@fontsource/source-sans-pro": "^4.5.11",
-    "@fontsource/source-serif-pro": "^4.5.9",
     "@types/compression": "^1.7.2",
     "@types/express": "^4.17.13",
     "compression": "^1.7.4",
@@ -36,8 +33,7 @@
     "highlight.js": "^11.6.0",
     "image-size": "^1.0.2",
     "isomorphic-style-loader": "^5.3.2",
-    "node-cache": "^5.1.2",
-    "url-loader": "^4.1.1"
+    "node-cache": "^5.1.2"
   },
   "devDependencies": {
     "@lusito/eslint-config": "2.0.3",

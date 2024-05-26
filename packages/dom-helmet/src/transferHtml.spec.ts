@@ -57,7 +57,7 @@ describe("transferHtml", () => {
         const falseHtml = el.querySelector("body > html") as HTMLHtmlElement;
         expect(html).toBeTruthy();
         expect(falseHtml).toBeTruthy();
-        
+
         expect(() => transferHtml(falseHtml, html)).toThrow();
     });
 });
