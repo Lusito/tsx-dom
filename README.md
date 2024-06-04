@@ -4,31 +4,41 @@
 
 ## Included Projects
 
-### [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom)
+### [tsx-dom](./packages/tsx-dom/README.md)
 
 A simple way to use tsx syntax to create native dom elements using document.createElement.
 
-### [tsx-dom-ssr](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom-ssr)
+### [tsx-dom-ssr](./packages/tsx-dom-ssr/README.md)
 
 A simple way to use tsx syntax to create native dom elements using document.createElement.
 This library is mainly aimed at Server-Side-Rendering by allowing async data fetching.
 
-### [tsx-dom-types](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom)
+### [tsx-dom-types](./packages/tsx-dom/README.md)
 
 This project is here, so that other projects like tsx-dom can use the types independently.
 
-### [dom-helmet](https://github.com/Lusito/tsx-dom/tree/master/packages/dom-helmet)
+### [dom-helmet](./packages/dom-helmet/README.md)
 
 This is a helper similar to [react-helmet](https://github.com/nfl/react-helmet).
 
 It can be used on a generated dom tree to adjust the topmost head, body and html tags.
 This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.
 
-### [scatman](https://github.com/Lusito/tsx-dom/tree/master/packages/scatman)
+### [scatman](./packages/scatman/README.md)
 
 Lightning fast navigation on mostly static pages. Forked off of [swup](https://github.com/swup/swup), heavily refactored and ported to TypeScript.
 
-## Report issues
+## Demo Projects
+
+### [tsx-dom-demo](./demos/tsx-dom-demo/README.md)
+
+A simple To-Do list showing one way you might use tsx-dom.
+
+### [tsx-dom-ssr-demo](./demos/tsx-dom-ssr-demo/README.md)
+
+A more complex demo showcasing tsx-dom-ssr with the [Rick and Morty API](https://rickandmortyapi.com/)
+
+## Report Issues
 
 Something not working quite as expected? Do you need a feature that has not been implemented yet? Check the [issue tracker](https://github.com/Lusito/tsx-dom/issues) and add a new one if your problem is not already listed. Please try to provide a detailed description of your problem, including the steps to reproduce it.
 
