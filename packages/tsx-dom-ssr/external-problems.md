@@ -2,7 +2,7 @@
 
 tsx-dom-ssr doesn't provide a server and it never will. It's all about rendering the dom.
 
-You can easily use express.js or similar. With nx you can easily set up a monorepo just like this one.
+You can easily use fastify, express.js or similar. With nx you can easily set up a monorepo just like this one.
 It's even possible to easily set up simple hot reload functionality.
 
 ## Routing

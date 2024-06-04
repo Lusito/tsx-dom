@@ -2,8 +2,8 @@
 import { addAbortSignal, ComponentChildren, toDom } from "tsx-dom-ssr";
 import { domHelmet } from "dom-helmet";
 import { Window } from "happy-dom";
-import { Response } from "express";
 import { CssModule } from "@lusito/require-libs";
+import { FastifyReply } from "fastify";
 
 import { RequestError } from "../errors/RequestError";
 import { ErrorPage } from "../pages/ErrorPage";
@@ -52,16 +52,16 @@ export async function renderHTML(children: ComponentChildren) {
     return `<!DOCTYPE html>${wrapper.innerHTML}`;
 }
 
-export async function respondHTML(res: Response, children: ComponentChildren) {
+export async function respondHTML(res: FastifyReply, children: ComponentChildren) {
     try {
         const html = await renderHTML(children);
-        res.send(html);
+        res.type("text/html").send(html);
     } catch (e) {
         try {
             // Try to render an error page
             const html = await renderHTML(<ErrorPage error={e} />);
 
-            res.status(e instanceof RequestError ? e.status : 500).send(html);
+            res.type("text/html").status(e instanceof RequestError ? e.status : 500).send(html);
         } catch (e2) {
             console.error("Uncaught exception", e2);
             res.status(500).send(`Unknown Error ${String(e2)}`);
