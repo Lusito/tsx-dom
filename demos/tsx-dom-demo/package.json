@@ -5,8 +5,9 @@
   "license": "MIT",
   "author": "Santo Pfingsten",
   "scripts": {
-    "build": "esbuild src/index.tsx --bundle --outdir=www/dist",
-    "start": "npm run build -- --watch --servedir=www",
+    "build": "npm run build:base -- --minify",
+    "build:base": "esbuild src/index.tsx --bundle --outdir=www/dist",
+    "start": "npm run build:base -- --watch --servedir=www",
     "test": "tsc"
   },
   "nodemonConfig": {
