@@ -12,9 +12,9 @@ Enable TSX parsing in your tsconfig.json:
 {
   "compilerOptions": {
     "jsx": "react",
-    "jsxFactory": "h",
+    "jsxFactory": "h"
     // ...
-  },
+  }
   // ...
 }
 ```
@@ -25,9 +25,9 @@ Or with the new JSX Transform:
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "tsx-dom-ssr",
+    "jsxImportSource": "tsx-dom-ssr"
     // ...
-  },
+  }
   // ...
 }
 ```
