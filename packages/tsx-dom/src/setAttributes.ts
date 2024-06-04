@@ -7,6 +7,9 @@ function transferKnownProperties(source: any, target: any) {
     }
 }
 
+/** "on" followed by an uppercase character. Not sure if there are any events with anything other than A-Z. Checking unicode just to be safe */
+const eventAttributeName = /^on\p{Lu}/u;
+
 export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) {
     for (const name of Object.keys(attrs)) {
         // Ignore some debug props that might be added by bundlers
@@ -15,7 +18,7 @@ export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) 
         const value = attrs[name];
         if (name === "ref") {
             (value as RefType<any>).current = element;
-        } else if (name.startsWith("on")) {
+        } else if (eventAttributeName.test(name)) {
             const finalName = name.replace(/Capture$/, "");
             const useCapture = name !== finalName;
             const eventName = finalName.toLowerCase().substring(2);

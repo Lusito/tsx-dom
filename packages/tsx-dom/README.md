@@ -77,7 +77,7 @@ document.body.appendChild(myImg);
 
 ## Attributes and event handlers
 
-Attributes on plain dom starting with a lowercase "on" will be added as event listeners. If the attribute ends with "Capture", then the capture parameter will be set to true. For example `onClickCapture={fn}` will result in `element.addEventListener("click", fn, true)`.
+Attributes on plain dom starting with a lowercase "on" and followed by an uppercase character will be added as event listeners. If the attribute ends with "Capture", then the capture parameter will be set to true. For example `onClickCapture={fn}` will result in `element.addEventListener("click", fn, true)`.
 
 Other attributes will be set via `element.setAttribute()`. Passing `true` as a value is the same as passing the attribute name as value.
 
