@@ -118,13 +118,30 @@ h2 {
 }
 
 my-custom-element {
-    display: block;
-    background: #4a8f3c;
-    width: 30%;
+    position: relative;
+    display: flex;
     padding: 10px;
-    transition: all ease-in-out 10s;
+    box-sizing: border-box;
+    text-wrap: balance;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
 }
 
-my-custom-element.active {
-    width: 100%;
+my-custom-element::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    background: #4a8f3c;
+    height: 20%;
+    transition: all ease-in-out 10s;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+my-custom-element.active::before {
+    height: 100%;
+    background: var(--active-color);
+    opacity: 0.9;
 }

@@ -12,8 +12,12 @@ export const MyCustomElement = defineCustomElement<MyCustomElementProps>(
         timeout?: ReturnType<typeof setTimeout>;
 
         connectedCallback() {
-            this.textContent = "Just minding my own business..";
             console.log("connected");
+            this.textContent = "I could use a little social interaction.";
+            const activeColor = this.getAttribute("activeColor");
+            if (activeColor) {
+                this.setAttribute("style", `--active-color: ${activeColor}`);
+            }
 
             this.observer = new IntersectionObserver(([entry]) => this.setIntersecting(entry.isIntersecting));
             this.observer.observe(this);
@@ -30,20 +34,13 @@ export const MyCustomElement = defineCustomElement<MyCustomElementProps>(
             }, 1000);
         }
 
-        setIntersecting(active: boolean) {
+        setIntersecting(intersecting: boolean) {
             // Prevent initial execution
-            if (active === this.classList.contains("active")) return;
+            if (intersecting === this.classList.contains("active")) return;
 
-            console.log("intersecting", active);
-            this.classList.toggle("active", active);
-            const activeColor = this.getAttribute("activeColor");
-            if (activeColor && active) {
-                this.style.background = activeColor;
-                this.setText("Stop watching me you pervert!");
-            } else {
-                this.style.background = "";
-                this.setText("Oh, good, you're gone!");
-            }
+            console.log("intersecting", intersecting);
+            this.classList.toggle("active", intersecting);
+            this.setText(intersecting ? "I'LL HUNT YOU DOWN AND GUT YOU LIKE A FISH!" : "I'm all toasty inside.");
         }
     },
 );
