@@ -11,7 +11,7 @@ export function createElement(
 
     const element = createDomElement(tag, attrs);
 
-    if (attrs) setAttributes(element, attrs as ComponentAttributes);
+    if (attrs) setAttributes(element, attrs);
 
     applyChildren(element, children);
     return element;

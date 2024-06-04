@@ -2,13 +2,11 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
-Lightning fast navigation on mostly static pages. Forked off of [swup](https://github.com/swup/swup), heavily refactored and ported to TypeScript.
+Lightning fast navigation on pages that are mostly static. Forked off of [swup](https://github.com/swup/swup), heavily refactored and ported to TypeScript.
 
-## Installation via NPM
+## How to Use
 
-`npm i scatman`
-
-Examples on how to use it will follow.
+Check out the [documentation](https://lusito.github.io/tsx-dom/scatman/setup.html)
 
 ## Report issues
 

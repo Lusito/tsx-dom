@@ -1,0 +1,10 @@
+title: dom-helmet
+description: A document head manager for plain dom (inspired by react-helmet)
+keywords:
+  - TypeScript
+  - DOM
+  - head
+sidebar:
+  - "setup"
+  - "usage"
+  - "supported-tags"

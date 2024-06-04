@@ -12,68 +12,9 @@ Also using innerHTML and the likes should be forbidden, since it's not allowed i
 
 This project allows you to create a UI using react-like components, without including react.
 
-## Installation via NPM
+## How to Use
 
-`npm i tsx-dom`
-
-Enable TSX parsing in your tsconfig.json:
-
-```jsonc
-{
-  "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "h",
-    // ...
-  },
-  // ...
-}
-```
-
-Or with the new JSX Transform:
-
-```jsonc
-{
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "tsx-dom",
-    // ...
-  },
-  // ...
-}
-```
-
-## Configuration
-
-By default, support for HTML and SVG Elements is enabled. You can limit this
-(for example to do less casting or to prevent certain tags from being used)
-by creating a `d.ts` file (e.g. `tsx-dom-config.d.ts`), in your source folder with this content:
-
-```ts
-import "tsx-dom";
-
-declare module "tsx-dom" {
-  export interface TsxConfig {
-    // Set one of these to false to disable support for them
-    svg: false;
-    // html: false;
-  }
-}
-```
-
-Setting any of these to false will just limit the possible types. It does not affect the code in any way.
-
-## Plain dom elements
-
-```TypeScript
-// This import is required
-import { h } from "tsx-dom";
-
-// jsx tags (<...>) always return an HTMLElement, so cast it to whatever type you need
-const myImg = <img src="my/path.png" onClick={() => console.log("click")} /> as HTMLImageElement;
-
-// Use it like any element created with document.createElement(...);
-document.body.appendChild(myImg);
-```
+Check out the [documentation](https://lusito.github.io/tsx-dom/tsx-dom/setup.html)
 
 ## Attributes and event handlers
 
@@ -121,7 +62,7 @@ document.body.appendChild(<ImageButton src="danger.png">Will Robinson</ImageButt
 
 ## Types of children
 
-In dom elements and Functional components, you can add as many children as you like.
+In DOM elements and Functional components, you can add as many children as you like.
 
 ```TypeScript
 const danger = "Danger"; // Try: ["Whoop", "Dee", "Doo", 0, 1, 2]

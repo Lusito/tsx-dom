@@ -4,86 +4,12 @@
 
 This is a helper similar to [react-helmet](https://github.com/nfl/react-helmet).
 
-It can be used on a generated dom tree to adjust the topmost head, body and html tags.
+It can be used on a generated DOM tree to adjust the topmost head, body and html tags.
 This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.
 
-## Installation via NPM
+## How to Use
 
-`npm i dom-helmet`
-
-## Usage
-
-```ts
-import { domHelmet } from "dom-helmet";
-
-// domHelmet expects 3 dom-nodes, which will be modified in-place:
-domHelmet({
-    html: ...,
-    head: ...,
-    body: ...,
-});
-```
-
-## Example
-
-This:
-
-```html
-<html class="initial">
-  <head>
-    <title>Initial Title</title>
-    <meta charset="utf-8" />
-  </head>
-  <body class="initial">
-    <div>
-      <html class="html-more"></html>
-      <head>
-        <title>Changed Title</title>
-        <meta charset="utf-16" />
-      </head>
-      <body class="body-more">
-        <div>Some Dialog</div>
-      </body>
-      Some Content
-    </div>
-  </body>
-</html>
-```
-
-Will turn into this:
-
-```html
-<html class="initial html-more">
-  <head>
-    <title>Changed Title</title>
-    <meta charset="utf-16" />
-  </head>
-  <body class="initial body-more">
-    <div>Some Content</div>
-    <div>Some Dialog</div>
-  </body>
-</html>
-```
-
-## Head Tags
-
-- All children of `html > body head` elements will be moved into `html > head`.
-- Duplicates will be removed if not within the same (false) head element:
-  - Tags: title, base, meta, link, script (with src attribute) and any tag with an id attribute
-- Finally the false head elements will be removed.
-
-## Body Tags
-
-- All children of `html > body body` elements will be moved into `html > body`.
-- Attributes from these false body tags will be transferred to `html > body`
-  - Classes and styles will be appended, other attributes will replace the previous value.
-- Finally the false body elements will be removed.
-
-## HTML Tags
-
-- Attributes from false html tags (`html html`) will be transferred to the root `html` element.
-  - Classes and styles will be appended, other attributes will replace the previous value.
-- Finally the false html elements will be removed.
+Check out the [documentation](https://lusito.github.io/tsx-dom/dom-helmet/setup.html)
 
 ## Report issues
 

@@ -1,0 +1,8 @@
+title: tsx-dom-types
+description: Types for creating JSX/TSX libraries like tsx-dom
+keywords:
+  - TypeScript
+  - tsx
+  - jsx
+sidebar:
+  - "setup"

@@ -1,0 +1,13 @@
+title: tsx-dom-ssr
+description: A simple way to use tsx syntax to do async server-side-rendering.
+keywords:
+  - TypeScript
+  - tsx
+  - jsx
+  - create-element
+  - SSR
+  - async
+sidebar:
+  - "setup"
+  - "configuration"
+  - "external-problems"

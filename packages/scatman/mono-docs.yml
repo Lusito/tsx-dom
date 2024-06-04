@@ -1,0 +1,10 @@
+title: scatman
+description: Lightning fast navigation on pages that are mostly static.
+keywords:
+  - TypeScript
+  - progressive-enhancement
+  - page
+  - transition
+  - animation
+sidebar:
+  - "setup"

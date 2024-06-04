@@ -4,39 +4,25 @@
 
 ## Included Projects
 
-### [tsx-dom](./packages/tsx-dom/README.md)
-
-A simple way to use tsx syntax to create native dom elements using document.createElement.
-
-### [tsx-dom-ssr](./packages/tsx-dom-ssr/README.md)
-
-A simple way to use tsx syntax to create native dom elements using document.createElement.
-This library is mainly aimed at Server-Side-Rendering by allowing async data fetching.
-
-### [tsx-dom-types](./packages/tsx-dom/README.md)
-
-This project is here, so that other projects like tsx-dom can use the types independently.
-
-### [dom-helmet](./packages/dom-helmet/README.md)
-
-This is a helper similar to [react-helmet](https://github.com/nfl/react-helmet).
-
-It can be used on a generated dom tree to adjust the topmost head, body and html tags.
-This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.
-
-### [scatman](./packages/scatman/README.md)
-
-Lightning fast navigation on mostly static pages. Forked off of [swup](https://github.com/swup/swup), heavily refactored and ported to TypeScript.
+- [tsx-dom](https://lusito.github.io/tsx-dom/tsx-dom/index.html)\
+  A simple way to use tsx syntax to create native dom elements using `document.createElement`.
+- [tsx-dom-ssr](https://lusito.github.io/tsx-dom/tsx-dom-ssr/index.html)\
+  The same as above, but aimed at Server-Side-Rendering by allowing async data fetching.
+- [tsx-dom-types](https://lusito.github.io/tsx-dom/tsx-dom/index.html)\
+  This project is here, so that other projects like [tsx-dom](https://lusito.github.io/tsx-dom/tsx-dom/index.html) and [tsx-dom-ssr](https://lusito.github.io/tsx-dom/tsx-dom-ssr/index.html) can use the types independently.
+- [dom-helmet](https://lusito.github.io/tsx-dom/dom-helmet/index.html)\
+  This is a helper similar to [react-helmet](https://github.com/nfl/react-helmet).
+  It can be used on a generated DOM tree to adjust the topmost `<head>`, `<body>` and `<html>` tags.
+  This can be useful in server-side-rendering when component logic needs to adjust the `<head>`, `<body>` or `<html>` tag.
+- [scatman](https://lusito.github.io/tsx-dom/scatman/index.html)\
+  Lightning fast navigation on pages that are mostly static. Forked off of [swup](https://github.com/swup/swup), heavily refactored and ported to TypeScript.
 
 ## Demo Projects
 
-### [tsx-dom-demo](./demos/tsx-dom-demo/README.md)
-
-A simple To-Do list showing one way you might use tsx-dom.
-
-### [tsx-dom-ssr-demo](./demos/tsx-dom-ssr-demo/README.md)
-
-A more complex demo showcasing tsx-dom-ssr with the [Rick and Morty API](https://rickandmortyapi.com/)
+- tsx-dom-demo\
+  A simple To-Do list showing one way you might use [tsx-dom](https://lusito.github.io/tsx-dom/tsx-dom/index.html).
+- tsx-dom-ssr-demo\
+  A more complex demo showcasing [tsx-dom-ssr](https://lusito.github.io/tsx-dom/tsx-dom-ssr/index.html) with the [Rick and Morty API](https://rickandmortyapi.com/)
 
 ## Report Issues
 

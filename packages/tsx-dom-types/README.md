@@ -4,11 +4,9 @@
 
 Types for creating JSX/TSX libraries like [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
 
-## Installation via NPM
+## How to Use
 
-`npm i tsx-dom-types`
-
-To see how to use it, you might want to take a look at the code of [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
+Check out the [documentation](https://lusito.github.io/tsx-dom/tsx-dom-types/setup.html)
 
 ## Report issues
 

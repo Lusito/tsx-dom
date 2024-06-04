@@ -4,7 +4,8 @@
   "license": "MIT",
   "author": "Santo Pfingsten",
   "scripts": {
-    "start": "esbuild src/index.tsx --bundle --watch --outdir=www/dist --servedir=www",
+    "build": "esbuild src/index.tsx --bundle --outdir=www/dist",
+    "start": "npm run build -- --watch --servedir=www",
     "test": "tsc"
   },
   "nodemonConfig": {
@@ -15,7 +16,6 @@
   },
   "dependencies": {
     "esbuild": "^0.21.4",
-    "nodemon": "^3.1.3",
     "tsx-dom": "^2.0.0"
   }
 }

@@ -1,0 +1,30 @@
+siteName: "tsx-dom monorepo"
+title: ""
+description: Lightweight DOM libraries
+footer:
+  - MIT License | https://github.com/Lusito/tsx-dom/blob/master/LICENSE
+  - Copyright © 2024 Santo Pfingsten
+keywords:
+  - TypeScript
+  - tsx
+  - jsx
+  - create-element
+  - SSR
+  - async
+  - progressive-enhancement
+  - DOM
+  - head
+links:
+  - Github | https://github.com/lusito/tsx-dom
+adjustPaths:
+  - ^\/packages\/([^/]+)(\/docs)?/([^/]+\.html)$|/$1/$3
+  - ^\/packages\/([^/]+)(\/docs)?/([^/]+/)?$|/$1/$3
+projects:
+  - packages/dom-helmet
+  - packages/scatman
+  - packages/tsx-dom
+  - packages/tsx-dom-ssr
+  - packages/tsx-dom-types
+buildOptions:
+  out: docs-dist
+  siteUrl: https://lusito.github.io/tsx-dom

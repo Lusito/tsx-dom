@@ -1,0 +1,11 @@
+title: tsx-dom
+description: A simple way to use tsx syntax to create native DOM elements using document.createElement.
+keywords:
+  - TypeScript
+  - tsx
+  - jsx
+  - create-element
+sidebar:
+  - "setup"
+  - "configuration"
+  - "examples"
