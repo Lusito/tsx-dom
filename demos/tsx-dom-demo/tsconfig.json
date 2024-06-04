@@ -5,8 +5,8 @@
     "lib": ["ES2021", "DOM"],
     "skipLibCheck": true,
     "paths": {
-      "tsx-dom": ["../tsx-dom/src/index.ts"],
-      "tsx-dom/jsx-runtime": ["../tsx-dom/src/jsx-runtime.ts"]
+      "tsx-dom": ["../../packages/tsx-dom/src/index.ts"],
+      "tsx-dom/jsx-runtime": ["../../packages/tsx-dom/src/jsx-runtime.ts"]
     }
   }
 }

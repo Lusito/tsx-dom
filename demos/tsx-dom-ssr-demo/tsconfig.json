@@ -1,0 +1,14 @@
+{
+  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/tsx-dom-ssr", "@lusito/tsconfig/es2021"],
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "lib": ["ES2021", "DOM"],
+    "paths": {
+      "dom-helmet": ["../../packages/dom-helmet/src/index.ts"],
+      "scatman": ["../../packages/scatman/src/index.ts"],
+      "tsx-dom-ssr": ["../../packages/tsx-dom-ssr/src/index.ts"],
+      "tsx-dom-ssr/jsx-runtime": ["../../packages/tsx-dom-ssr/src/jsx-runtime.ts"]
+    }
+  }
+}

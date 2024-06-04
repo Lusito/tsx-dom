@@ -9,9 +9,9 @@
     "packages/scatman",
     "packages/tsx-dom-types",
     "packages/tsx-dom",
-    "packages/tsx-dom-demo",
     "packages/tsx-dom-ssr",
-    "packages/tsx-dom-ssr-demo"
+    "demos/tsx-dom-demo",
+    "demos/tsx-dom-ssr-demo"
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
