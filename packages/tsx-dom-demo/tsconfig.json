@@ -1,0 +1,12 @@
+{
+  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/tsx-dom", "@lusito/tsconfig/es2021"],
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2021", "DOM"],
+    "skipLibCheck": true,
+    "paths": {
+      "tsx-dom": ["../tsx-dom/src/index.ts"],
+      "tsx-dom/jsx-runtime": ["../tsx-dom/src/jsx-runtime.ts"]
+    }
+  }
+}

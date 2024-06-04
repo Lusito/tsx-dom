@@ -1,0 +1,118 @@
+/* Font: Free for personal use. For commercial licensing, please see http://kimberlygeswein.com. Thanks! */
+@font-face {
+    font-family: "Annie Use Your Telescope";
+    font-style: normal;
+    font-weight: 400;
+    src: url("annieuseyourtelescope.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body,
+input,
+button {
+    font-family: "Annie Use Your Telescope", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    background: black;
+    color: white;
+}
+
+div {
+    margin: 4px 0;
+}
+
+button,
+input,
+span {
+    margin: 0 4px;
+}
+
+h2 {
+    color: #4a8f3c;
+}
+
+.todo-list {
+    font-size: 24px;
+    font-weight: bold;
+    list-style: none;
+    padding-left: 0;
+    width: 400px;
+}
+
+.todo-list .todo-list-new-entry {
+    display: flex;
+}
+
+.todo-list button,
+.todo-list input {
+    border-radius: 0;
+    border: none;
+}
+
+.todo-list .todo-list-new-entry input {
+    padding: 0 6px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px dashed #4a8f3c;
+    flex-grow: 1;
+}
+
+.todo-list button {
+    background: black;
+    color: #4a8f3c;
+    font-size: 24px;
+    font-weight: bold;
+    height: 29px;
+    width: 29px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.todo-list button:focus {
+    outline: none;
+}
+
+.todo-list .todo-list-form {
+    display: flex;
+    margin-top: 20px;
+}
+
+.todo-list .todo-list-form :first-child {
+    flex-grow: 1;
+}
+
+.todo-list .todo-list-form :last-child {
+    flex-shrink: 0;
+}
+
+.todo-list-entry {
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+}
+
+.todo-list-entry .label {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.todo-list-entry .label::before {
+    content: "☐";
+    margin-right: 8px;
+}
+
+.todo-list-entry.checked .label::before {
+    content: "☑";
+    color: red;
+}
+
+.todo-list-entry.checked .label {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+.todo-list-entry .remove {
+    color: red;
+}

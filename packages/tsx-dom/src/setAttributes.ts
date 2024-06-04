@@ -1,4 +1,4 @@
-import { ComponentAttributes } from "./types";
+import { ComponentAttributes, RefType } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transferKnownProperties(source: any, target: any) {
@@ -13,7 +13,9 @@ export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) 
         if (name === "__source" || name === "__self") continue;
 
         const value = attrs[name];
-        if (name.startsWith("on")) {
+        if (name === "ref") {
+            (value as RefType<any>).current = element;
+        } else if (name.startsWith("on")) {
             const finalName = name.replace(/Capture$/, "");
             const useCapture = name !== finalName;
             const eventName = finalName.toLowerCase().substring(2);

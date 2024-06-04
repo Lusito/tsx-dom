@@ -9,6 +9,7 @@
     "packages/scatman",
     "packages/tsx-dom-types",
     "packages/tsx-dom",
+    "packages/tsx-dom-demo",
     "packages/tsx-dom-ssr",
     "packages/tsx-dom-ssr-demo"
   ],

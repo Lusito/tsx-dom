@@ -10,19 +10,24 @@ export type ComponentAttributes = {
     [s: string]: string | number | boolean | undefined | null | StyleAttributes | EventListenerOrEventListenerObject;
 };
 
-export interface HTMLComponentProps extends BaseProps {
+export interface HTMLComponentProps<T> extends BaseProps {
     dangerouslySetInnerHTML?: string;
+    ref?: RefType<T>;
 }
 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
     [TKey in keyof HTMLElementTagNameMap]?: HTMLAttributes &
-        HTMLComponentProps &
+        HTMLComponentProps<HTMLElementTagNameMap[TKey]> &
         EventAttributes<HTMLElementTagNameMap[TKey]>;
 };
 export type IntrinsicElementsSVG = {
-    [TKey in SVGOnlyElementKeys]?: SVGAttributes & HTMLComponentProps & EventAttributes<SVGElementTagNameMap[TKey]>;
+    [TKey in SVGOnlyElementKeys]?: SVGAttributes &
+        HTMLComponentProps<SVGElementTagNameMap[TKey]> &
+        EventAttributes<SVGElementTagNameMap[TKey]>;
 };
 
 export type IntrinsicElementsHTMLAndSVG = IntrinsicElementsHTML & IntrinsicElementsSVG;
+
+export type RefType<T> = { current: T | null };

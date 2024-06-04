@@ -1,5 +1,5 @@
 import { setAttributes } from "./setAttributes";
-import type { ComponentAttributes, ComponentChild, Component } from "./types";
+import type { ComponentAttributes, ComponentChild, Component, RefType } from "./types";
 import { applyChildren, createDomElement } from "./utils";
 
 export function createElement(
@@ -18,3 +18,5 @@ export function createElement(
 }
 
 export const h = createElement;
+
+export const createRef = <T>(): RefType<T> => ({ current: null });
