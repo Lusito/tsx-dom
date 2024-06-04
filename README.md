@@ -8,7 +8,6 @@
 
 A simple way to use tsx syntax to create native dom elements using document.createElement.
 
-
 ### [tsx-dom-ssr](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom-ssr)
 
 A simple way to use tsx syntax to create native dom elements using document.createElement.

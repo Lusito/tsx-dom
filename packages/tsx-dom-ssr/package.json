@@ -22,14 +22,21 @@
   "author": "Santo Pfingsten",
   "type": "commonjs",
   "exports": {
-    ".": "./src/index.js",
-    "./jsx-runtime": "./src/jsx-runtime.js"
+    ".": "./dist/index.js",
+    "./jsx-runtime": "./dist/jsx-runtime.js"
   },
+  "main": "dist/index.js",
   "typesVersions": {
     "*": {
       "jsx-runtime": [
-        "src/jsx-runtime"
+        "dist/jsx-runtime"
       ]
     }
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "tsx-dom-types": "^1.0.0"
   }
 }

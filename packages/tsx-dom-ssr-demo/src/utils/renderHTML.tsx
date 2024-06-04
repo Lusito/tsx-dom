@@ -3,6 +3,7 @@ import { addAbortSignal, ComponentChildren, toDom } from "tsx-dom-ssr";
 import { domHelmet } from "dom-helmet";
 import { Window } from "happy-dom";
 import { Response } from "express";
+import { CssModule } from "@lusito/require-libs";
 
 import { RequestError } from "../errors/RequestError";
 import { ErrorPage } from "../pages/ErrorPage";
@@ -44,7 +45,7 @@ export async function renderHTML(children: ComponentChildren) {
     for (const cssModule of cssModules) {
         const style = document.createElement("style");
         // eslint-disable-next-line no-underscore-dangle
-        style.innerHTML = cssModule._getCss();
+        style.innerHTML = cssModule.__CSS;
         head.appendChild(style);
     }
 

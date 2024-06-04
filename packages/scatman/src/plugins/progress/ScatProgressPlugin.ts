@@ -38,7 +38,7 @@ export class ScatProgressPlugin implements ScatPlugin {
         let container = document.querySelector(this.options.container);
         if (!container) {
             console.warn(
-                `Could not find container for progress bar using "${this.options.container}". Using body instead`
+                `Could not find container for progress bar using "${this.options.container}". Using body instead`,
             );
             container = document.body;
         }

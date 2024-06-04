@@ -53,7 +53,7 @@ export class ScatA11yPlugin implements ScatPlugin {
         node.setAttribute("role", "status");
         node.setAttribute(
             "style",
-            "position: fixed; width: 1px; height: 1px; top: -10px; left: -10px; z-index: -1; overflow: hidden;"
+            "position: fixed; width: 1px; height: 1px; top: -10px; left: -10px; z-index: -1; overflow: hidden;",
         );
 
         document.body.appendChild(node);

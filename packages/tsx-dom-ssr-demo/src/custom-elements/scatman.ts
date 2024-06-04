@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         new ScatScrollPlugin(scatman),
         new ScatProgressPlugin(scatman),
         new ScatPreloadPlugin(scatman),
-        new ScatA11yPlugin(scatman)
+        new ScatA11yPlugin(scatman),
     );
 });

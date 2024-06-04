@@ -10,7 +10,7 @@ export function removeDuplicatesBySelectorAndAttribute(
     falseElement: Element,
     target: Element,
     selector: string,
-    attribute: string
+    attribute: string,
 ) {
     const originalElements = target.querySelectorAll(selector);
     falseElement.querySelectorAll(selector).forEach((newElement) => {

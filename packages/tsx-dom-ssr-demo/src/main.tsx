@@ -1,5 +1,4 @@
 import express from "express";
-import fs from "fs";
 import compression from "compression";
 
 import { ramRouter } from "./routers/ramRouter";
@@ -20,23 +19,14 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.get("/custom-elements.js", (req, res) => {
-    let filePath = "./dist/packages/tsx-dom-ssr-demo-elements/main.esm.js";
-    if (!fs.existsSync(filePath)) {
-        filePath = filePath.replace(/\.esm\.js$/, ".js");
-    }
-    res.sendFile(filePath, { root: process.cwd() });
+    res.sendFile("./dist/custom-elements.js", { root: process.cwd() });
 });
 
 app.use(ramRouter);
 app.use(demoRouter);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`---------------------------------------`);
+    console.log(`🚀 running at: http://localhost:${port}`);
+    console.log(`---------------------------------------`);
 });
-
-// Extend ComponentThis
-declare module "tsx-dom-ssr" {
-    export interface ComponentThis {
-        cssModules: CssModule[];
-    }
-}

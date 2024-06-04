@@ -1,21 +1,12 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/tsx-dom-ssr", "@lusito/tsconfig/es2021"],
   "compilerOptions": {
-    "module": "commonjs",
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "lib": ["ES2021", "DOM"],
+    "module": "CommonJS",
     "jsxImportSource": ".",
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
+    "paths": {
+      "tsx-dom-types": ["../tsx-dom-types/src/index.ts"]
     }
-  ]
+  }
 }

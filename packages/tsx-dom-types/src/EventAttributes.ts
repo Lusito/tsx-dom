@@ -1,6 +1,6 @@
 export type EventHandler<TTarget extends EventTarget, TEvent extends Event> = (
     this: TTarget,
-    ev: Omit<TEvent, "currentTarget"> & { readonly currentTarget: TTarget }
+    ev: Omit<TEvent, "currentTarget"> & { readonly currentTarget: TTarget },
 ) => void;
 
 export interface EventAttributesBase<T extends EventTarget> {

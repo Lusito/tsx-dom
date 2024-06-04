@@ -1,4 +1,6 @@
-import { scatman } from "../scatman";
+import { CustomElementProps } from "tsx-dom-ssr";
+
+import { scatman } from "./scatman";
 
 class PagePicker extends HTMLSelectElement {
     onChangeHandler = () => {
@@ -22,3 +24,9 @@ customElements.define("page-picker", PagePicker, { extends: "select" });
 export type PagePickerProps = {
     url: string;
 };
+
+declare module "tsx-dom-ssr" {
+    interface CustomElementsHTML {
+        "page-picker": CustomElementProps<PagePickerProps, "select">;
+    }
+}

@@ -47,7 +47,7 @@ export class ScatHeadPlugin implements ScatPlugin {
         const addTags = newTags.filter((newTag) => !oldTags.some((oldTag) => oldTag.outerHTML === newTag.outerHTML));
         const removeTags = oldTags.filter(
             (oldTag) =>
-                !this.isPersistentTag(oldTag) && !newTags.some((newTag) => oldTag.outerHTML === newTag.outerHTML)
+                !this.isPersistentTag(oldTag) && !newTags.some((newTag) => oldTag.outerHTML === newTag.outerHTML),
         );
 
         removeTags.forEach((tag) => tag.remove());

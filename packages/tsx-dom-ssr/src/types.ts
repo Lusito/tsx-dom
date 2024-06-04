@@ -2,7 +2,7 @@ import type { HTMLAttributes, SVGAttributes, StyleAttributes } from "tsx-dom-typ
 
 export type VNode = (
     document: Document,
-    thisArg: ComponentThis
+    thisArg: ComponentThis,
 ) => Promise<HTMLElement | SVGElement | DocumentFragment | Text>;
 
 export interface BaseProps {
@@ -13,6 +13,8 @@ export interface HTMLComponentProps extends BaseProps {
     dangerouslySetInnerHTML?: string;
     tsxTag?: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 }
+
+export type CustomElementProps<T, TBase extends keyof JSX.IntrinsicElements> = T & JSX.IntrinsicElements[TBase];
 
 export interface ComponentThis {
     abortSignal: AbortSignal;

@@ -1,0 +1,5 @@
+{
+  "extends": ".",
+  "compilerOptions": { "paths": {} },
+  "files": ["src/index.ts"]
+}

@@ -59,7 +59,7 @@ export class ScatCssPlugin implements ScatAnimationPlugin {
                         }
                     };
                     element.addEventListener("transitionend", listener);
-                })
+                }),
         );
         return promises;
     }

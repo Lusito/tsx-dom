@@ -1,0 +1,4 @@
+{
+  "extends": ".",
+  "files": ["src/index.ts"]
+}

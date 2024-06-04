@@ -16,5 +16,12 @@
     "url": "https://github.com/Lusito/tsx-dom.git"
   },
   "license": "MIT",
-  "author": "Santo Pfingsten"
+  "author": "Santo Pfingsten",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "happy-dom": "^14.12.0"
+  }
 }

@@ -12,12 +12,15 @@
         margin: 0 math.div($space-md, 2) $space-md math.div($space-md, 2);
         box-sizing: border-box;
         width: 100%;
+
         @include from("small") {
             width: calc(50% - $space-md);
         }
+
         @include from("medium") {
             width: calc(100% / 3 - $space-md);
         }
+
         @include from("large") {
             width: calc(25% - $space-md);
         }

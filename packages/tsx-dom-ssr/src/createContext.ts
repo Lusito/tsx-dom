@@ -23,7 +23,7 @@ export function createContext<T>(options: CreateContextOptions<T>): Context<T> {
                 toDom(document, props.children, {
                     ...thisArg,
                     [type]: props.value,
-                })
+                }),
         ),
         for(componentThis) {
             if (type in componentThis) {

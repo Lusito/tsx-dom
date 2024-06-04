@@ -40,7 +40,7 @@ export const ErrorBoundary = internalComponent((props: ErrorBoundaryProps) => as
 // If generators will be used, keep async functions or replace them entirely with generators?
 export function addAbortSignal<T>(
     thisArg: T,
-    abortController: AbortController
+    abortController: AbortController,
 ): T & Pick<ComponentThis, "abortSignal" | "withAbortSignal"> {
     const abortSignal = abortController.signal;
 

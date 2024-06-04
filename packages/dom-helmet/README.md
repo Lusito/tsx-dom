@@ -9,7 +9,7 @@ This can be useful in server-side-rendering when component logic needs to adjust
 
 ## Installation via NPM
 
-```npm i dom-helmet```
+`npm i dom-helmet`
 
 ## Usage
 
@@ -30,23 +30,23 @@ This:
 
 ```html
 <html class="initial">
-    <head>
-        <title>Initial Title</title>
-        <meta charset="utf-8" />
-    </head>
-    <body class="initial">
-        <div>
-            <html class="html-more"></html>
-            <head>
-                <title>Changed Title</title>
-                <meta charset="utf-16" />
-            </head>
-            <body class="body-more">
-                <div>Some Dialog</div>
-            </body>
-            Some Content
-        </div>
-    </body>
+  <head>
+    <title>Initial Title</title>
+    <meta charset="utf-8" />
+  </head>
+  <body class="initial">
+    <div>
+      <html class="html-more"></html>
+      <head>
+        <title>Changed Title</title>
+        <meta charset="utf-16" />
+      </head>
+      <body class="body-more">
+        <div>Some Dialog</div>
+      </body>
+      Some Content
+    </div>
+  </body>
 </html>
 ```
 
@@ -54,36 +54,36 @@ Will turn into this:
 
 ```html
 <html class="initial html-more">
-    <head>
-        <title>Changed Title</title>
-        <meta charset="utf-16" />
-    </head>
-    <body class="initial body-more">
-        <div>Some Content</div>
-        <div>Some Dialog</div>
-    </body>
+  <head>
+    <title>Changed Title</title>
+    <meta charset="utf-16" />
+  </head>
+  <body class="initial body-more">
+    <div>Some Content</div>
+    <div>Some Dialog</div>
+  </body>
 </html>
 ```
 
 ## Head Tags
 
--   All children of `html > body head` elements will be moved into `html > head`.
--   Duplicates will be removed if not within the same (false) head element:
-    -   Tags: title, base, meta, link, script (with src attribute) and any tag with an id attribute
--   Finally the false head elements will be removed.
+- All children of `html > body head` elements will be moved into `html > head`.
+- Duplicates will be removed if not within the same (false) head element:
+  - Tags: title, base, meta, link, script (with src attribute) and any tag with an id attribute
+- Finally the false head elements will be removed.
 
 ## Body Tags
 
--   All children of `html > body body` elements will be moved into `html > body`.
--   Attributes from these false body tags will be transferred to `html > body`
-    -   Classes and styles will be appended, other attributes will replace the previous value.
--   Finally the false body elements will be removed.
+- All children of `html > body body` elements will be moved into `html > body`.
+- Attributes from these false body tags will be transferred to `html > body`
+  - Classes and styles will be appended, other attributes will replace the previous value.
+- Finally the false body elements will be removed.
 
 ## HTML Tags
 
--   Attributes from false html tags (`html html`) will be transferred to the root `html` element.
-    -   Classes and styles will be appended, other attributes will replace the previous value.
--   Finally the false html elements will be removed.
+- Attributes from false html tags (`html html`) will be transferred to the root `html` element.
+  - Classes and styles will be appended, other attributes will replace the previous value.
+- Finally the false html elements will be removed.
 
 ## Report issues
 

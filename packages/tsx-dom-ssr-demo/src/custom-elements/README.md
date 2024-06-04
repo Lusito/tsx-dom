@@ -1,7 +1,6 @@
-# SSR Demo Project Custom Elements
+# Custom Elements
 
-This is a demo project for using custom-elements in combination with tsx-dom-ssr.
+This folder is the entire frontend-code for the demo project using custom-elements.
 
 - It includes scatman for fast page transitions
 - It includes a custom-element to change the page on dropdown changes.
-

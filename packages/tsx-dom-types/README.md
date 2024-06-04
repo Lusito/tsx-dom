@@ -6,7 +6,7 @@ Types for creating JSX/TSX libraries like [tsx-dom](https://github.com/Lusito/ts
 
 ## Installation via NPM
 
-```npm i tsx-dom-types```
+`npm i tsx-dom-types`
 
 To see how to use it, you might want to take a look at the code of [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
 

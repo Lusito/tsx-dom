@@ -1,19 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/es2021"],
   "compilerOptions": {
-    "module": "commonjs",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+    "outDir": "./dist",
+    "lib": ["ES2021", "DOM"],
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "jsxImportSource": "."
+  }
 }

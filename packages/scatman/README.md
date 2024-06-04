@@ -6,7 +6,7 @@ Lightning fast navigation on mostly static pages. Forked off of [swup](https://g
 
 ## Installation via NPM
 
-```npm i scatman```
+`npm i scatman`
 
 Examples on how to use it will follow.
 

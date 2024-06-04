@@ -5,12 +5,13 @@ import { Header } from "../components/Header/Header";
 import { reloadScript } from "../utils/reloadScript";
 import { withCss } from "../utils/withCss";
 import classes from "./DefaultLayout.module.scss";
+import globalStyles from "./styles.scss";
 
 interface DefaultLayoutProps extends BaseProps {
     title: string;
 }
 
-export const DefaultLayout = withCss(classes, ({ children, title }: DefaultLayoutProps) => (
+export const DefaultLayout = withCss([classes, globalStyles], ({ children, title }: DefaultLayoutProps) => (
     <html>
         <head>
             <title>{title}</title>

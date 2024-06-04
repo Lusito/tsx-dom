@@ -14,27 +14,32 @@ This project allows you to create a UI using react-like components, without incl
 
 ## Installation via NPM
 
-```npm i tsx-dom```
+`npm i tsx-dom`
 
 Enable TSX parsing in your tsconfig.json:
 
-```json
+```jsonc
 {
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "h",
-    ...
+    // ...
+  },
+  // ...
+}
 ```
 
 Or with the new JSX Transform:
 
-```json
+```jsonc
 {
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "tsx-dom",
-    ...
+    // ...
   },
+  // ...
+}
 ```
 
 ## Configuration
@@ -44,14 +49,14 @@ By default, support for HTML and SVG Elements is enabled. You can limit this
 by creating a `d.ts` file (e.g. `tsx-dom-config.d.ts`), in your source folder with this content:
 
 ```ts
-import 'tsx-dom';
+import "tsx-dom";
 
 declare module "tsx-dom" {
-    export interface TsxConfig {
-        // Set one of these to false to disable support for them
-        svg: false;
-        // html: false;
-    }
+  export interface TsxConfig {
+    // Set one of these to false to disable support for them
+    svg: false;
+    // html: false;
+  }
 }
 ```
 

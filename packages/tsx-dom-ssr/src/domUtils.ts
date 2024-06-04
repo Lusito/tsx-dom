@@ -4,7 +4,7 @@ function toDomRecursive(
     document: Document,
     children: ComponentChildren,
     thisArg: ComponentThis,
-    result: Array<ReturnType<VNode>>
+    result: Array<ReturnType<VNode>>,
 ) {
     if (Array.isArray(children)) {
         for (const child of children) toDomRecursive(document, child, thisArg, result);
