@@ -9,7 +9,7 @@ import { EpisodesPage } from "../pages/EpisodesPage";
 import { EpisodePage } from "../pages/EpisodePage";
 import { HomePage } from "../pages/HomePage";
 
-export async function ramRouter(app: FastifyInstance) {
+export async function rickAndMortyRouter(app: FastifyInstance) {
     app.get("/", (req, res) => {
         respondHTML(res, <HomePage />);
     });

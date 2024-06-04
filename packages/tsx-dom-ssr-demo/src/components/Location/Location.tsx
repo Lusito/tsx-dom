@@ -1,4 +1,4 @@
-import { RamLocation } from "../../types/ramTypes";
+import { RamLocation } from "../../types/rickAndMortyTypes";
 import { withCss } from "../../utils/withCss";
 import classes from "./Location.module.scss";
 

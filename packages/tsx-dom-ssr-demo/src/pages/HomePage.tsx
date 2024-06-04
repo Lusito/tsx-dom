@@ -2,7 +2,7 @@ import { ComponentThis } from "tsx-dom-ssr";
 
 import { Character } from "../components/Character/Character";
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { RamCharacter } from "../types/ramTypes";
+import { RamCharacter } from "../types/rickAndMortyTypes";
 import { fetchRAM } from "../utils/fetchUtils";
 import { withCss } from "../utils/withCss";
 import classes from "./HomePage.module.scss";

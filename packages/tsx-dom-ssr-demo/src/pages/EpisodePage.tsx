@@ -3,7 +3,7 @@ import { ComponentThis } from "tsx-dom-ssr";
 import { CharactersList } from "../components/CharactersList/CharactersList";
 import { Episode } from "../components/Episode/Episode";
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { RamEpisode } from "../types/ramTypes";
+import { RamEpisode } from "../types/rickAndMortyTypes";
 import { fetchRAM } from "../utils/fetchUtils";
 
 export type EpisodePageProps = {

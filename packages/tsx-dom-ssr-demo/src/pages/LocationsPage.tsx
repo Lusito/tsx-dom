@@ -3,7 +3,7 @@ import { ComponentThis } from "tsx-dom-ssr";
 import { Location } from "../components/Location/Location";
 import { Pagination } from "../components/Pagination/Pagination";
 import { PaginationLayout } from "../layouts/PaginationLayout";
-import { RamLocation } from "../types/ramTypes";
+import { RamLocation } from "../types/rickAndMortyTypes";
 import { fetchRAMPage } from "../utils/fetchUtils";
 
 type LocationsPageProps = {

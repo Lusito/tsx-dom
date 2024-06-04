@@ -1,4 +1,4 @@
-import { RamEpisode } from "../../types/ramTypes";
+import { RamEpisode } from "../../types/rickAndMortyTypes";
 import { withCss } from "../../utils/withCss";
 import classes from "./Episode.module.scss";
 

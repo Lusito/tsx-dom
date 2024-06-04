@@ -1,6 +1,6 @@
 import { ComponentThis } from "tsx-dom-ssr";
 
-import { RamCharacter } from "../../types/ramTypes";
+import { RamCharacter } from "../../types/rickAndMortyTypes";
 import { fetchRAM } from "../../utils/fetchUtils";
 
 export type CharactersListProps = {

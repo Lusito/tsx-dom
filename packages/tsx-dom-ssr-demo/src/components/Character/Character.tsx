@@ -1,4 +1,4 @@
-import { RamCharacter, RamNameAndUrl } from "../../types/ramTypes";
+import { RamCharacter, RamNameAndUrl } from "../../types/rickAndMortyTypes";
 import { withCss } from "../../utils/withCss";
 import { InfoRow, InfoTable } from "../InfoTable/InfoTable";
 import classes from "./Character.module.scss";

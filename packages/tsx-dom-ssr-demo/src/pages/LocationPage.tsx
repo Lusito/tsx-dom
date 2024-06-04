@@ -3,7 +3,7 @@ import { ComponentThis } from "tsx-dom-ssr";
 import { CharactersList } from "../components/CharactersList/CharactersList";
 import { Location } from "../components/Location/Location";
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { RamCharacter, RamLocation } from "../types/ramTypes";
+import { RamCharacter, RamLocation } from "../types/rickAndMortyTypes";
 import { fetchRAM } from "../utils/fetchUtils";
 
 export type LocationPageProps = {

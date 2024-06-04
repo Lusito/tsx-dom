@@ -2,7 +2,7 @@ import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import { join } from "path";
 
-import { ramRouter } from "./routers/ramRouter";
+import { rickAndMortyRouter } from "./routers/rickAndMortyRouter";
 import { demoRouter } from "./routers/demoRouter";
 
 const app = fastify();
@@ -24,7 +24,7 @@ app.register(fastifyStatic, {
     prefix: "/",
 });
 
-app.register(ramRouter);
+app.register(rickAndMortyRouter);
 app.register(demoRouter, { prefix: "/demos"});
 
 const start = async () => {

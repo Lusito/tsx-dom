@@ -2,7 +2,7 @@ import { ComponentThis } from "tsx-dom-ssr";
 
 import { Character } from "../components/Character/Character";
 import { DefaultLayout } from "../layouts/DefaultLayout";
-import { RamCharacter, RamEpisode } from "../types/ramTypes";
+import { RamCharacter, RamEpisode } from "../types/rickAndMortyTypes";
 import { fetchRAM } from "../utils/fetchUtils";
 
 export type CharacterPageProps = {

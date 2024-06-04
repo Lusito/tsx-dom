@@ -1,7 +1,7 @@
 import { Character } from "../components/Character/Character";
 import { Pagination } from "../components/Pagination/Pagination";
 import { PaginationLayout } from "../layouts/PaginationLayout";
-import { RamCharacter } from "../types/ramTypes";
+import { RamCharacter } from "../types/rickAndMortyTypes";
 import { fetchRAMPage } from "../utils/fetchUtils";
 import { withCss } from "../utils/withCss";
 import classes from "./CharactersPage.module.scss";

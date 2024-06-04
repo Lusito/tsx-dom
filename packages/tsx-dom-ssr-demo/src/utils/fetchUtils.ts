@@ -1,7 +1,7 @@
 import NodeCache from "node-cache";
 
 import { RequestError } from "../errors/RequestError";
-import type { RamPage } from "../types/ramTypes";
+import type { RamPage } from "../types/rickAndMortyTypes";
 
 type StatusListener<T> = { resolve: (value: T) => void; reject: (value: unknown) => void };
 type StatusProgress<T> = { status: "progress"; listeners: Array<StatusListener<T>> };
