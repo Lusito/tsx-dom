@@ -1,6 +1,7 @@
 import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "./types";
 
 export * from "./createElement";
+export * from "./defineCustomElement";
 export * from "./jsx-runtime";
 export * from "./types";
 

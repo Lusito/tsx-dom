@@ -116,3 +116,16 @@ h2 {
 .todo-list-entry .remove {
     color: red;
 }
+
+my-custom-element {
+    display: block;
+    background: #4a8f3c;
+    width: 30%;
+    padding: 10px;
+    transition: all ease-in-out 10s;
+}
+
+my-custom-element.active {
+    width: 100%;
+}
+
