@@ -1,5 +1,6 @@
 {
   "name": "tsx-dom-ssr-demo",
+  "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "author": "Santo Pfingsten",
