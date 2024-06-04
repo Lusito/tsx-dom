@@ -18,7 +18,8 @@
     "lint": "mono-lint",
     "lint:fix": "mono-lint --fix",
     "release": "mono-release",
-    "start": "npm start -w tsx-dom-ssr-demo",
+    "start": "npm start -w tsx-dom-demo",
+    "start:ssr": "npm start -w tsx-dom-ssr-demo",
     "test": "npm test --workspaces --if-present"
   },
   "devDependencies": {

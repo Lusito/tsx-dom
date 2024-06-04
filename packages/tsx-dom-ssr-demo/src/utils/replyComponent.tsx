@@ -52,19 +52,23 @@ export async function renderHTML(children: ComponentChildren) {
     return `<!DOCTYPE html>${wrapper.innerHTML}`;
 }
 
-export async function respondHTML(res: FastifyReply, children: ComponentChildren) {
+function replyHTML(reply: FastifyReply, html: string, status = 200) {
+    return reply.type("text/html; charset=UTF-8").status(status).send(html);
+}
+
+export async function replyComponent(reply: FastifyReply, children: ComponentChildren) {
     try {
         const html = await renderHTML(children);
-        res.type("text/html").send(html);
+        replyHTML(reply, html);
     } catch (e) {
         try {
             // Try to render an error page
             const html = await renderHTML(<ErrorPage error={e} />);
 
-            res.type("text/html").status(e instanceof RequestError ? e.status : 500).send(html);
+            replyHTML(reply, html, e instanceof RequestError ? e.status : 500);
         } catch (e2) {
             console.error("Uncaught exception", e2);
-            res.status(500).send(`Unknown Error ${String(e2)}`);
+            reply.status(500).send(`Unknown Error ${String(e2)}`);
         }
     }
 }

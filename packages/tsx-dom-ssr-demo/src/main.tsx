@@ -6,7 +6,7 @@ import { rickAndMortyRouter } from "./routers/rickAndMortyRouter";
 import { demoRouter } from "./routers/demoRouter";
 
 const app = fastify();
-const port = 3000;
+const port = 8000;
 
 if (process.env.NODE_ENV !== "production") {
     // SSE hot reload:
@@ -25,11 +25,11 @@ app.register(fastifyStatic, {
 });
 
 app.register(rickAndMortyRouter);
-app.register(demoRouter, { prefix: "/demos"});
+app.register(demoRouter, { prefix: "/demos" });
 
 const start = async () => {
     try {
-        await app.listen({ port: 3000 });
+        await app.listen({ port });
         console.log(`---------------------------------------`);
         console.log(`🚀 running at: http://localhost:${port}`);
         console.log(`---------------------------------------`);

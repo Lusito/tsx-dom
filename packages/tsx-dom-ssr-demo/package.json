@@ -14,7 +14,7 @@
     ]
   },
   "dependencies": {
-    "@fastify/static": "^6.5.0",
+    "@fastify/static": "^7.0.4",
     "@lusito/require-libs": "^0.14.0",
     "dom-helmet": "^0.8.0",
     "esbuild": "^0.21.4",
@@ -22,10 +22,9 @@
     "fastify": "^4.27.0",
     "happy-dom": "^14.12.0",
     "node-cache": "^5.1.2",
-    "nodemon": "^3.1.2",
+    "nodemon": "^3.1.3",
     "pirates": "^4.0.6",
     "scatman": "^0.9.0",
-    "tsx-dom-ssr": "^0.8.0",
-    "tsx-dom-types": "^1.0.0"
+    "tsx-dom-ssr": "^0.8.0"
   }
 }
