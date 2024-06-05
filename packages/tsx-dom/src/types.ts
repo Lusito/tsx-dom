@@ -15,6 +15,8 @@ export interface HTMLComponentProps<T> extends BaseProps {
     ref?: RefType<T>;
 }
 
+export type CustomElementProps<T, TBase extends keyof JSX.IntrinsicElements> = T & JSX.IntrinsicElements[TBase];
+
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
@@ -29,5 +31,8 @@ export type IntrinsicElementsSVG = {
 };
 
 export type IntrinsicElementsHTMLAndSVG = IntrinsicElementsHTML & IntrinsicElementsSVG;
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface CustomElementsHTML {}
 
 export type RefType<T> = { current: T | null };

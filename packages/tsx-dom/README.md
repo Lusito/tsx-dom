@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
-A simple way to use tsx syntax to create native dom elements using document.createElement.
+A simple way to use tsx syntax to create native dom elements using `document.createElement`.
 This project has taken definitions from [preact](https://github.com/developit/preact) from Jason Miller as a starting point.
 
 ## Why?
@@ -15,66 +15,6 @@ This project allows you to create a UI using react-like components, without incl
 ## How to Use
 
 Check out the [documentation](https://lusito.github.io/tsx-dom/tsx-dom/setup.html)
-
-## Attributes and event handlers
-
-Attributes on plain dom starting with a lowercase "on" and followed by an uppercase character will be added as event listeners. If the attribute ends with "Capture", then the capture parameter will be set to true. For example `onClickCapture={fn}` will result in `element.addEventListener("click", fn, true)`.
-
-Other attributes will be set via `element.setAttribute()`. Passing `true` as a value is the same as passing the attribute name as value.
-
-## Functional components
-
-Just like in react, functional components can be used when they are written in UpperCamelCase.
-If you define an interface for the props, the props will be type checked.
-
-```TypeScript
-import { h } from "tsx-dom";
-
-interface ImageButtonProps {
-    src: string;
-    label: string;
-}
-
-export function ImageButton({ src, label }: ImageButtonProps) {
-    return <button><img src={src} /> {label}</button>;
-}
-
-document.body.appendChild(<ImageButton src="danger.png" label="Will Robinson"/>);
-```
-
-## Children
-
-Functional Components can of course have children, so you could write the above like this:
-
-```TypeScript
-import { h, BaseProps } from "tsx-dom";
-
-interface ImageButtonProps extends BaseProps {
-    src: string;
-}
-
-export function ImageButton({ src, children }: ImageButtonProps) {
-    return <button><img src={src} /> {children}</button>;
-}
-
-document.body.appendChild(<ImageButton src="danger.png">Will Robinson</ImageButton>);
-```
-
-## Types of children
-
-In DOM elements and Functional components, you can add as many children as you like.
-
-```TypeScript
-const danger = "Danger"; // Try: ["Whoop", "Dee", "Doo", 0, 1, 2]
-const el = <div>
-    <img src="danger.png" />
-    Will Robinson,
-    {danger}
-    <b>!!!</b>
-</div>;
-```
-
-As you can see in the example above, even variables can be inserted as children. Arrays will be expanded. Falsey values (except 0) will be ignored. HTMLElement values will be appended as is, string or number values will become text-nodes.
 
 ## Report issues
 

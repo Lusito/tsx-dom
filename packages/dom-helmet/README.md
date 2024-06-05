@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
-This is a helper similar to [react-helmet](https://github.com/nfl/react-helmet).
+A document head manager for plain dom (inspired by [react-helmet](https://github.com/nfl/react-helmet)).
 
 It can be used on a generated DOM tree to adjust the topmost head, body and html tags.
 This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.

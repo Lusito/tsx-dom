@@ -1,4 +1,4 @@
-import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "./types";
+import { CustomElementsHTML, IntrinsicElementsHTML, IntrinsicElementsSVG } from "./types";
 
 export * from "./createElement";
 export * from "./defineCustomElement";
@@ -33,6 +33,6 @@ declare global {
 
         // The available string tags
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface IntrinsicElements extends IntrinsicElementsCombined {}
+        interface IntrinsicElements extends IntrinsicElementsCombined, CustomElementsHTML {}
     }
 }
