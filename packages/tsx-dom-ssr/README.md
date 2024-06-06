@@ -8,7 +8,7 @@ A simple way to use tsx syntax to do async server-side-rendering using `document
 
 Check out the [documentation](https://lusito.github.io/tsx-dom/tsx-dom-ssr/setup.html)
 
-## Report issues
+## Report Issues
 
 Something not working quite as expected? Do you need a feature that has not been implemented yet? Check the [issue tracker](https://github.com/Lusito/tsx-dom/issues) and add a new one if your problem is not already listed. Please try to provide a detailed description of your problem, including the steps to reproduce it.
 

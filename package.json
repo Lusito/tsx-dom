@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "@lusito/eslint-config": "3.1.3",
-    "@lusito/mono": "^0.18.0",
-    "@lusito/mono-docs": "^0.17.0",
+    "@lusito/mono": "^0.19.1",
+    "@lusito/mono-docs": "^0.18.0",
     "@lusito/prettier-config": "3.1.0",
     "@lusito/stylelint-config": "3.0.0",
     "@lusito/tsconfig": "^1.0.5",
@@ -56,6 +56,11 @@
     "lintMarkdownLinks": {
       "warnOnlyPatterns": [
         "^https:\\/\\/lusito\\.github\\.io\\/tsx-dom\\/"
+      ]
+    },
+    "lintMarkdownTitles": {
+      "ignorePatterns": [
+        "(tsx-dom(-ssr|-types)?|scatman|dom-helmet)"
       ]
     }
   }

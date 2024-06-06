@@ -1,4 +1,4 @@
-# Lightweight DOM libraries
+# Lightweight DOM Libraries
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
