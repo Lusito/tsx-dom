@@ -6,7 +6,8 @@
     "skipLibCheck": true,
     "paths": {
       "tsx-dom": ["../../packages/tsx-dom/src/index.ts"],
-      "tsx-dom/jsx-runtime": ["../../packages/tsx-dom/src/jsx-runtime.ts"]
+      "tsx-dom/jsx-runtime": ["../../packages/tsx-dom/src/jsx-runtime.ts"],
+      "tsx-dom-types": ["../../packages/tsx-dom-types/src/index.ts"]
     }
   }
 }
