@@ -1,8 +1,8 @@
 import { setAttributes } from "./setAttributes";
-import type { BaseProps, Component } from "./types";
+import type { BaseProps, FC } from "./types";
 import { applyChildren, createDomElement } from "./utils";
 
-export function jsx(tag: string | Component, props: BaseProps): JSX.Element {
+export function jsx(tag: string | FC, props: BaseProps): JSX.Element {
     if (typeof tag === "function") return tag(props);
 
     const { children, ...attrs } = props;

@@ -9,5 +9,8 @@ keywords:
   - async
 sidebar:
   - "setup"
+  - "html-tags"
+  - "components"
+  - "custom-elements"
   - "configuration"
   - "external-problems"

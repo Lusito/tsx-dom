@@ -1,9 +1,9 @@
 import { setAttributes } from "./setAttributes";
-import type { ComponentAttributes, ComponentChild, Component, RefType } from "./types";
+import type { ComponentAttributes, ComponentChild, FC, RefType } from "./types";
 import { applyChildren, createDomElement } from "./utils";
 
 export function createElement(
-    tag: string | Component,
+    tag: string | FC,
     attrs: null | ComponentAttributes,
     ...children: ComponentChild[]
 ): JSX.Element {

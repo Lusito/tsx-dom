@@ -5,7 +5,7 @@ export type ComponentChildren = ComponentChild | ComponentChild[];
 export interface BaseProps {
     children?: ComponentChildren;
 }
-export type Component<T = BaseProps> = (props: T) => JSX.Element;
+export type FC<T = BaseProps> = (props: T) => JSX.Element;
 export type ComponentAttributes = {
     [s: string]: string | number | boolean | undefined | null | StyleAttributes | EventListenerOrEventListenerObject;
 };
@@ -15,9 +15,9 @@ export interface HTMLComponentProps<T extends Element> extends BaseProps {
     ref?: RefType<T>;
 }
 
-export type CustomElementProps<T, TBase extends keyof HTMLElementTagNameMap | null> = T &
-    (TBase extends keyof HTMLElementTagNameMap
-        ? JSX.IntrinsicElements[TBase]
+export type CustomElementProps<TBase, TName extends keyof HTMLElementTagNameMap | null> = TBase &
+    (TName extends keyof HTMLElementTagNameMap
+        ? JSX.IntrinsicElements[TName]
         : HTMLAttributes & HTMLComponentProps<Element>);
 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;

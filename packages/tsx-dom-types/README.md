@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Lusito/tsx-dom/blob/master/LICENSE)
 
-Types for creating JSX/TSX libraries like [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom).
+Types for creating JSX/TSX libraries like [tsx-dom](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom) or [tsx-dom-ssr](https://github.com/Lusito/tsx-dom/tree/master/packages/tsx-dom-ssr).
 
 ## How to Use
 

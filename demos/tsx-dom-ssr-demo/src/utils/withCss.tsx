@@ -1,5 +1,5 @@
 import { CssModule } from "@lusito/require-libs";
-import { Component } from "tsx-dom-ssr";
+import { FC } from "tsx-dom-ssr";
 
 // Extend ComponentThis
 declare module "tsx-dom-ssr" {
@@ -8,7 +8,7 @@ declare module "tsx-dom-ssr" {
     }
 }
 
-export function withCss<T>(cssModules: CssModule[] | CssModule, factory: Component<T>): Component<T> {
+export function withCss<T>(cssModules: CssModule[] | CssModule, factory: FC<T>): FC<T> {
     return function WithCss(props) {
         for (const cssModule of Array.isArray(cssModules) ? cssModules : [cssModules]) {
             if (!this.cssModules.includes(cssModule)) {

@@ -1,4 +1,4 @@
-# Plain DOM Elements
+# HTML Tags
 
 ## Example
 
@@ -22,7 +22,7 @@ Other attributes will be set via `element.setAttribute()`. Passing `true` as a v
 
 ## Children
 
-You can add as many children as you like. Even deeply nested arrays are allowed
+You can add as many children as you like. Even deeply nested arrays are allowed.
 
 ```tsx
 const danger = "Danger";

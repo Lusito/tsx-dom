@@ -14,8 +14,8 @@ export interface HTMLComponentProps extends BaseProps {
     tsxTag?: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 }
 
-export type CustomElementProps<T, TBase extends keyof JSX.IntrinsicElements | null> = T &
-    (TBase extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[TBase] : HTMLAttributes & HTMLComponentProps);
+export type CustomElementProps<TBase, TName extends keyof HTMLElementTagNameMap | null> = TBase &
+    (TName extends keyof HTMLElementTagNameMap ? JSX.IntrinsicElements[TName] : HTMLAttributes & HTMLComponentProps);
 
 export interface ComponentThis {
     abortSignal: AbortSignal;
@@ -23,7 +23,7 @@ export interface ComponentThis {
     [s: symbol]: unknown;
 }
 
-export type Component<T = BaseProps> = (this: ComponentThis, props: T) => ComponentChildren;
+export type FC<T = BaseProps> = (this: ComponentThis, props: T) => ComponentChildren;
 export type ComponentAttributes = {
     [s: string]: string | number | boolean | StyleAttributes;
 };

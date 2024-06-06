@@ -1,8 +1,8 @@
-import type { BaseProps, Component, ComponentChildren } from "./types";
+import type { BaseProps, FC, ComponentChildren } from "./types";
 import { jsx } from "./jsx-runtime";
 
 export function createElement(
-    tag: string | Component,
+    tag: string | FC,
     props: BaseProps | null,
     ...children: ComponentChildren[]
 ): ComponentChildren {

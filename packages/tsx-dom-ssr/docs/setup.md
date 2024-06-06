@@ -6,6 +6,10 @@
 npm i tsx-dom-ssr
 ```
 
+You will additionally need some kind of DOM environment if you are running tsx-dom-ssr using node. You can use [jsdom](https://github.com/jsdom/jsdom) or [happy-dom](https://github.com/capricorn86/happy-dom) for example.
+
+## TypeScript Configuration
+
 Enable TSX parsing in your tsconfig.json:
 
 ```json

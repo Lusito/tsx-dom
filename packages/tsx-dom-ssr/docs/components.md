@@ -13,7 +13,7 @@ function Button({ text }: ButtonProps) {
   return <button class="my-button">{text}</button>;
 }
 
-document.body.appendChild(<Button text="Click me" />);
+const child = <Button text="Click me" />;
 ```
 
 ## With Children
@@ -21,7 +21,7 @@ document.body.appendChild(<Button text="Click me" />);
 Of course, you can also pass down children:
 
 ```tsx
-import { BaseProps } from "tsx-dom";
+import { BaseProps } from "tsx-dom-ssr";
 
 interface ButtonProps extends BaseProps {
   variant: "primary" | "secondary";
@@ -31,7 +31,7 @@ function Button({ variant, children }: ButtonProps) {
   return <button class={`my-button my-button-${variant}`}>{children}</button>;
 }
 
-document.body.appendChild(<Button variant="primary">Click Me</Button>);
+const child = <Button variant="primary">Click Me</Button>;
 ```
 
 ## Arrow Functions
@@ -39,7 +39,7 @@ document.body.appendChild(<Button variant="primary">Click Me</Button>);
 Of course, you can also use arrow functions. There's a type `FC` to help with that:
 
 ```tsx
-import { BaseProps, FC } from "tsx-dom";
+import { BaseProps, FC } from "tsx-dom-ssr";
 
 interface ButtonProps extends BaseProps {
   variant: "primary" | "secondary";
@@ -49,5 +49,25 @@ const Button: FC<ButtonProps> = ({ variant, children }) => (
   <button class={`my-button my-button-${variant}`}>{children}</button>
 );
 
-document.body.appendChild(<Button variant="primary">Click Me</Button>);
+const child = <Button variant="primary">Click Me</Button>;
+```
+
+## Async Functions
+
+And of course the big benefit of tsx-dom-ssr is to be able to render things asynchronously:
+
+```tsx
+async function TodoList() {
+  const todos = await fetchTodos();
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li>{todo}</li>
+      ))}
+    </ul>
+  );
+}
+
+const child = <TodoList />;
 ```

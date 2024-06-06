@@ -1,6 +1,6 @@
 import { setAttributes } from "./setAttributes";
 import { toDom } from "./domUtils";
-import type { BaseProps, Component, ComponentAttributes, ComponentChildren, VNode } from "./types";
+import type { BaseProps, FC, ComponentAttributes, ComponentChildren, VNode } from "./types";
 
 function hasChildrenSet(children: ComponentChildren) {
     if (Array.isArray(children)) {
@@ -44,7 +44,7 @@ export function createHtmlElementNode(tag: string, { children, ...attrs }: BaseP
     };
 }
 
-export function createComponentNode(tag: Component<BaseProps>, props: BaseProps): ComponentChildren {
+export function createComponentNode(tag: FC<BaseProps>, props: BaseProps): ComponentChildren {
     return async (document, thisArg) => {
         const children = await tag.call(thisArg, props);
 
@@ -56,6 +56,6 @@ export type InternalComponent<T = BaseProps> = ((props: T) => ComponentChildren)
     __tsxInternal: boolean;
 };
 
-export function internalComponent<T>(comp: Component<T>): InternalComponent<T> {
+export function internalComponent<T>(comp: FC<T>): InternalComponent<T> {
     return Object.assign(comp, { __tsxInternal: true });
 }
