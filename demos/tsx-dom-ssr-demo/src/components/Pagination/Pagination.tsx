@@ -13,7 +13,7 @@ export const Pagination = withCss(classes, ({ currentPage, totalPages, url }: Pa
             <a href={currentPage > 1 ? url(currentPage - 1) : undefined}>Prev</a>
         </li>
         <li>
-            <page-picker url={url("{{PAGE}}")} tsxTag="select" autoComplete="off">
+            <page-picker url={url("{{PAGE}}")} tsxTag="select" autocomplete="off">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <option value={index + 1} selected={index + 1 === currentPage}>
                         Page {index + 1}

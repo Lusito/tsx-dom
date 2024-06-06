@@ -34,7 +34,6 @@ declare global {
         }
 
         // The available string tags
-        // eslint-disable-next-line @typescript-eslint/no-empty-interface
         interface IntrinsicElements extends IntrinsicElementsCombined, CustomElementsHTML {}
     }
 }

@@ -1,4 +1,4 @@
-import type { HTMLAttributes, SVGAttributes, StyleAttributes } from "tsx-dom-types";
+import type { ElementAttributes, HTMLAttributes, SVGAttributes, StyleAttributes } from "tsx-dom-types";
 
 export type VNode = (
     document: Document,
@@ -14,7 +14,8 @@ export interface HTMLComponentProps extends BaseProps {
     tsxTag?: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
 }
 
-export type CustomElementProps<T, TBase extends keyof JSX.IntrinsicElements> = T & JSX.IntrinsicElements[TBase];
+export type CustomElementProps<T, TBase extends keyof JSX.IntrinsicElements | null> = T &
+    (TBase extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[TBase] : HTMLAttributes & HTMLComponentProps);
 
 export interface ComponentThis {
     abortSignal: AbortSignal;
@@ -30,14 +31,14 @@ export type ComponentAttributes = {
 export type ComponentChild = VNode | string | number | false | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChildren[] | Promise<ComponentChild | ComponentChildren[]>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CustomElementsHTML {}
 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
-    [TKey in keyof HTMLElementTagNameMap]?: HTMLAttributes & HTMLComponentProps;
+    [TKey in keyof HTMLElementTagNameMap]?: ElementAttributes<HTMLElementTagNameMap[TKey], HTMLAttributes> &
+        HTMLComponentProps;
 };
 export type IntrinsicElementsSVG = {
-    [TKey in SVGOnlyElementKeys]?: SVGAttributes & HTMLComponentProps;
+    [TKey in SVGOnlyElementKeys]?: ElementAttributes<SVGElementTagNameMap[TKey], SVGAttributes> & HTMLComponentProps;
 };

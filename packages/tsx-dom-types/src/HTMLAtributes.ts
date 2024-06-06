@@ -1,32 +1,42 @@
+/** CSSStyleDeclaration contains methods, readonly properties and an index signature, which we all need to filter out. */
+export type CSSProperties = Partial<
+    Pick<
+        CSSStyleDeclaration,
+        {
+            [K in keyof CSSStyleDeclaration]: K extends string
+                ? CSSStyleDeclaration[K] extends string
+                    ? K
+                    : never
+                : never;
+        }[keyof CSSStyleDeclaration]
+    >
+>;
+
 export interface HTMLAttributes {
     // Standard HTML Attributes
     accept?: string;
     acceptCharset?: string;
     accessKey?: string;
     action?: string;
-    allowFullScreen?: boolean;
-    allowTransparency?: boolean;
+    allow?: string;
+    allowFullscreen?: boolean;
     alt?: string;
     as?: string;
     async?: boolean;
-    autoComplete?: string;
-    autoCorrect?: string;
-    autoFocus?: boolean;
-    autoPlay?: boolean;
+    autocomplete?: string;
+    autofocus?: boolean;
+    autoplay?: boolean;
     capture?: boolean | string;
     cellPadding?: number | string;
     cellSpacing?: number | string;
-    charSet?: string;
-    challenge?: string;
+    charset?: string;
     checked?: boolean;
     class?: string;
     cols?: number;
     colSpan?: number;
     content?: string;
     contentEditable?: boolean;
-    contextMenu?: string;
     controls?: boolean;
-    controlsList?: string;
     coords?: string;
     crossOrigin?: string;
     data?: string;
@@ -37,11 +47,13 @@ export interface HTMLAttributes {
     disabled?: boolean;
     disableRemotePlayback?: boolean;
     download?: string;
+    decoding?: "sync" | "async" | "auto";
     draggable?: boolean;
-    encType?: string;
+    enctype?: string;
+    enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send";
     form?: string;
     formAction?: string;
-    formEncType?: string;
+    formEnctype?: string;
     formMethod?: string;
     formNoValidate?: boolean;
     formTarget?: string;
@@ -51,17 +63,14 @@ export interface HTMLAttributes {
     hidden?: boolean;
     high?: number;
     href?: string;
-    hrefLang?: string;
+    hreflang?: string;
     for?: string;
     htmlFor?: string;
     httpEquiv?: string;
-    icon?: string;
     id?: string;
     inputMode?: string;
     integrity?: string;
     is?: string;
-    keyParams?: string;
-    keyType?: string;
     kind?: string;
     label?: string;
     lang?: string;
@@ -69,13 +78,11 @@ export interface HTMLAttributes {
     loading?: "eager" | "lazy";
     loop?: boolean;
     low?: number;
-    manifest?: string;
     marginHeight?: number;
     marginWidth?: number;
     max?: number | string;
     maxLength?: number;
     media?: string;
-    mediaGroup?: string;
     method?: string;
     min?: number | string;
     minLength?: number;
@@ -87,12 +94,21 @@ export interface HTMLAttributes {
     open?: boolean;
     optimum?: number;
     pattern?: string;
+    ping?: string;
     placeholder?: string;
     playsInline?: boolean;
     poster?: string;
     preload?: string;
-    radioGroup?: string;
     readOnly?: boolean;
+    referrerPolicy?:
+        | "no-referrer"
+        | "no-referrer-when-downgrade"
+        | "origin"
+        | "origin-when-cross-origin"
+        | "same-origin"
+        | "strict-origin"
+        | "strict-origin-when-cross-origin"
+        | "unsafe-url";
     rel?: string;
     required?: boolean;
     role?: string;
@@ -100,9 +116,7 @@ export interface HTMLAttributes {
     rowSpan?: number;
     sandbox?: string;
     scope?: string;
-    scoped?: boolean;
     scrolling?: string;
-    seamless?: boolean;
     selected?: boolean;
     shape?: string;
     size?: number;
@@ -111,13 +125,12 @@ export interface HTMLAttributes {
     span?: number;
     spellcheck?: boolean;
     src?: string;
+    srcdoc?: string;
+    srclang?: string;
     srcset?: string;
-    srcDoc?: string;
-    srcLang?: string;
-    srcSet?: string;
     start?: number;
     step?: number | string;
-    style?: string | Partial<CSSStyleDeclaration>;
+    style?: string | CSSProperties;
     summary?: string;
     tabIndex?: number;
     target?: string;
@@ -127,23 +140,5 @@ export interface HTMLAttributes {
     value?: string | string[] | number;
     volume?: string | number;
     width?: number | string;
-    wmode?: string;
     wrap?: string;
-
-    // RDFa Attributes
-    about?: string;
-    datatype?: string;
-    inlist?: boolean;
-    prefix?: string;
-    property?: string;
-    resource?: string;
-    typeof?: string;
-    vocab?: string;
-
-    // Microdata Attributes
-    itemProp?: string;
-    itemScope?: boolean;
-    itemType?: string;
-    itemID?: string;
-    itemRef?: string;
 }
