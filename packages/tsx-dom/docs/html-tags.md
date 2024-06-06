@@ -14,11 +14,21 @@ const myImg = (<img src="my/path.png" onClick={() => console.log("click")} />) a
 document.body.appendChild(myImg);
 ```
 
-## Attributes and event handlers
+## Attributes and Event Handlers
 
 Attributes on plain dom starting with a lowercase "on" and followed by an uppercase character will be added as event listeners. If the attribute ends with "Capture", then the capture parameter will be set to true. For example `onClickCapture={fn}` will result in `element.addEventListener("click", fn, true)`.
 
 Other attributes will be set via `element.setAttribute()`. Passing `true` as a value is the same as passing the attribute name as value.
+
+## Special Attributes
+
+Some Attributes have special handling:
+
+- `class` can be specified either as `string`, `Record<string, boolean>` or Array of both. `null`, `undefined` and `false` are valid values as well. Only truthy values count and duplicates will be filtered.
+- `style` can be specified either as `string` or as Object. The latter has obviously the benefit of autocompletion and type checking.
+- `innerHTML` can only be specified via `dangerouslySetInnerHTML`, as you should normally avoid this.
+- `__source` and `__self` have special meaning in JSX and will be ignored. You shouldn't use anything with `__` prefix anyway.
+- `ref` can be used to connect the element to a reference. See [Referencing Elements](./referencing-elements.md)
 
 ## Children
 

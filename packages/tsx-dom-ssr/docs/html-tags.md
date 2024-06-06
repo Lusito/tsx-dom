@@ -67,11 +67,20 @@ async function main() {
 }
 ```
 
-## Attributes and event handlers
+## Attributes and Event Handlers
 
 Since this is a library for server side rendering, no event listeneres can be defined on the JSX. Frontend code needs to be written separately.
 
 All Attributes will be set via `element.setAttribute()`. Passing `true` as a value is the same as passing the attribute name as value.
+
+## Special Attributes
+
+Some Attributes have special handling:
+
+- `class` can be specified either as `string`, `Record<string, boolean>` or Array of both. `null`, `undefined` and `false` are valid values as well. Only truthy values count and duplicates will be filtered.
+- `style` can be specified either as `string` or as Object. The latter has obviously the benefit of autocompletion and type checking.
+- `innerHTML` can only be specified via `dangerouslySetInnerHTML`, as you should normally avoid this.
+- `__source` and `__self` have special meaning in JSX and will be ignored. You shouldn't use anything with `__` prefix anyway.
 
 ## Children
 

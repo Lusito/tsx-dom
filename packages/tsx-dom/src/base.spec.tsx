@@ -13,13 +13,14 @@ describe("Basic tests", () => {
     });
 
     it("should set all attributes correctly", () => {
-        const t = (<div checked={true} colSpan={1337} title="foo bar"></div>) as any as FakeNode;
+        const t = (<td contentEditable={true} colSpan={1337} title="foo bar"></td>) as any as FakeNode;
         expect(t.element).toBe(true);
-        t.element && expect(t.attributes).toEqual({ checked: "checked", colSpan: "1337", title: "foo bar" });
+        t.element &&
+            expect(t.attributes).toEqual({ contentEditable: "contentEditable", colSpan: "1337", title: "foo bar" });
     });
 
     it("should not set falsy attributes, except 0", () => {
-        const t = (<div checked={false} colSpan={0} title={undefined}></div>) as any as FakeNode;
+        const t = (<td contentEditable={false} colSpan={0} title={undefined}></td>) as any as FakeNode;
         expect(t.element).toBe(true);
         t.element && expect(t.attributes).toEqual({ colSpan: "0" });
     });

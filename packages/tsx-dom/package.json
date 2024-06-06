@@ -31,7 +31,8 @@
     }
   },
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json"
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "test": "jest"
   },
   "dependencies": {
     "tsx-dom-types": "^1.0.0"

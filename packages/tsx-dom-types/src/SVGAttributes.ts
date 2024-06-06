@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "./HTMLAtributes";
+import { HTMLAttributes } from "./HTMLAttributes";
 
 export interface SVGAttributes extends HTMLAttributes {
     accumulate?: "none" | "sum";

@@ -1,3 +1,5 @@
+import { ClassType, classnames } from "tsx-dom-types";
+
 import { ComponentAttributes } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -13,7 +15,10 @@ export function setAttributes(element: HTMLElement | SVGElement, attrs: Componen
         if (name === "__source" || name === "__self" || name === "tsxTag") continue;
 
         const value = attrs[name];
-        if (name === "style" && typeof value !== "string") {
+        if (name === "class") {
+            const finalValue = classnames(value as ClassType);
+            if (finalValue) element.setAttribute(name, finalValue);
+        } else if (name === "style" && typeof value !== "string") {
             // Special handler for style with a value of type CSSStyleDeclaration
             transferKnownProperties(value, element.style);
         } else if (name === "dangerouslySetInnerHTML") element.innerHTML = value as string;

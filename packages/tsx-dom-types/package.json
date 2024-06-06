@@ -19,6 +19,7 @@
   "author": "Santo Pfingsten",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json"
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "test": "jest"
   }
 }

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "./HTMLAtributes";
+import { HTMLAttributes } from "./HTMLAttributes";
 import { SVGAttributes } from "./SVGAttributes";
 
 type SpecialKeys<T extends Element> = T extends HTMLLabelElement | HTMLOutputElement

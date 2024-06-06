@@ -12,6 +12,11 @@ export type CSSProperties = Partial<
     >
 >;
 
+// For convenience, so that no classnames utility function needs to be used.
+export type ClassRecord = Record<string, null | undefined | boolean>;
+export type ClassEntry = string | null | undefined | false | ClassRecord;
+export type ClassType = ClassEntry | ClassEntry[];
+
 export interface HTMLAttributes {
     // Standard HTML Attributes
     accept?: string;
@@ -31,7 +36,7 @@ export interface HTMLAttributes {
     cellSpacing?: number | string;
     charset?: string;
     checked?: boolean;
-    class?: string;
+    class?: ClassType;
     cols?: number;
     colSpan?: number;
     content?: string;

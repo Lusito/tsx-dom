@@ -1,3 +1,5 @@
+import { ClassType, classnames } from "tsx-dom-types";
+
 import { ComponentAttributes, RefType } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,7 +18,10 @@ export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) 
         if (name === "__source" || name === "__self") continue;
 
         const value = attrs[name];
-        if (name === "ref") {
+        if (name === "class") {
+            const finalValue = classnames(value as ClassType);
+            if (finalValue) element.setAttribute(name, finalValue);
+        } else if (name === "ref") {
             (value as RefType<any>).current = element;
         } else if (eventAttributeName.test(name)) {
             const finalName = name.replace(/Capture$/, "");

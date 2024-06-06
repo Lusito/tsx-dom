@@ -68,22 +68,22 @@ In order to do that, we need to extend the JSX Types by using the `CustomElement
 import { CustomElementProps } from "tsx-dom";
 
 class MyCustomElement extends HTMLElement {
-    connectedCallback() {
-        console.log("connected", this.getAttribute("logMessage"));
-    }
-    // ...
+  connectedCallback() {
+    console.log("connected", this.getAttribute("logMessage"));
+  }
+  // ...
 }
 
 customElements.define("my-custom-element", MyCustomElement);
 
 type MyCustomElementProps = {
-    logMessage: string;
+  logMessage: string;
 };
 
 declare module "tsx-dom" {
-    interface CustomElementsHTML {
-        "my-custom-element": CustomElementProps<MyCustomElementProps, null>;
-    }
+  interface CustomElementsHTML {
+    "my-custom-element": CustomElementProps<MyCustomElementProps, null>;
+  }
 }
 
 document.body.appendChild(<my-custom-element logMessage="Hello there!" />);
