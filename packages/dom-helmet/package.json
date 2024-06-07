@@ -1,6 +1,6 @@
 {
   "name": "dom-helmet",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "A document head manager for plain dom (inspired by react-helmet)",
   "keywords": [
     "TypeScript",
