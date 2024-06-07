@@ -15,7 +15,7 @@ keywords:
   - DOM
   - head
 links:
-  - Demo | /demo/
+  - Demo | https://lusito.github.io/tsx-dom/demo/
   - Github | https://github.com/lusito/tsx-dom
 adjustPaths:
   - ^\/packages\/([^/]+)(\/docs)?/([^/]+\.html)$|/$1/$3
