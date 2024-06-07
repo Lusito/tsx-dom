@@ -54,7 +54,10 @@ document.body.appendChild(<MyCustomSelect disabled logMessage="Hello there!" />)
 
 ## By Declaring JSX Types
 
-Another way is to stay pure and write the HTML as you normally would:
+The above only works if you write the custom element code yourself.
+If you use an existing custom-element, you can use the method below.
+
+You can write the HTML as you normally would:
 
 ```tsx
 document.body.appendChild(<my-custom-element logMessage="Hello there!" />);

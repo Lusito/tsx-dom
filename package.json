@@ -36,7 +36,7 @@
   "dependencies": {
     "@lusito/eslint-config": "3.1.3",
     "@lusito/mono": "^0.19.1",
-    "@lusito/mono-docs": "^0.18.0",
+    "@lusito/mono-docs": "^0.18.1",
     "@lusito/prettier-config": "3.1.0",
     "@lusito/stylelint-config": "3.0.0",
     "@lusito/tsconfig": "^1.0.5",
