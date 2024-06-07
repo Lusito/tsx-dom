@@ -25,6 +25,6 @@
     "node-cache": "5.1.2",
     "pirates": "4.0.6",
     "scatman": "0.10.0",
-    "tsx-dom-ssr": "1.0.0"
+    "tsx-dom-ssr": "1.0.1"
   }
 }
