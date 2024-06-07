@@ -1,6 +1,6 @@
 import { setAttributes } from "./setAttributes";
 import type { ComponentAttributes, ComponentChild, FC, RefType } from "./types";
-import { applyChildren, createDomElement } from "./utils";
+import { applyChildren, applyTsxTag, createDomElement } from "./utils";
 
 export function createElement(
     tag: string | FC,
@@ -9,9 +9,10 @@ export function createElement(
 ): JSX.Element {
     if (typeof tag === "function") return tag({ ...attrs, children });
 
-    const element = createDomElement(tag, attrs);
+    const { finalTag, finalAttrs } = applyTsxTag(tag, attrs);
+    const element = createDomElement(finalTag, finalAttrs);
 
-    if (attrs) setAttributes(element, attrs);
+    if (finalAttrs) setAttributes(element, finalAttrs);
 
     applyChildren(element, children);
     return element;

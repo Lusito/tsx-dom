@@ -23,3 +23,15 @@ export function createDomElement(tag: string, attrs: ComponentAttributes | null)
 
     return document.createElement(tag, options);
 }
+
+export function applyTsxTag<T extends null | ComponentAttributes>(tag: string, attrs: T) {
+    let finalTag = tag;
+    let finalAttrs = attrs;
+    if (finalAttrs && "tsxTag" in finalAttrs) {
+        finalTag = finalAttrs.tsxTag as string;
+        if (!finalAttrs.is && tag.includes("-")) {
+            finalAttrs = { ...finalAttrs, is: tag };
+        }
+    }
+    return { finalTag, finalAttrs };
+}

@@ -15,7 +15,7 @@ const eventAttributeName = /^on\p{Lu}/u;
 export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) {
     for (const name of Object.keys(attrs)) {
         // Ignore some debug props that might be added by bundlers
-        if (name === "__source" || name === "__self") continue;
+        if (name === "__source" || name === "__self" || name === "tsxTag") continue;
 
         const value = attrs[name];
         if (name === "class") {

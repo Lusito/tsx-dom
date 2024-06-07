@@ -20,7 +20,7 @@
 ## Demo Projects
 
 - tsx-dom-demo\
-  A simple To-Do list showing one way you might use [tsx-dom](https://lusito.github.io/tsx-dom/tsx-dom/index.html).
+  A simple [To-Do list](https://lusito.github.io/tsx-dom/demo/) showing one way you might use [tsx-dom](https://lusito.github.io/tsx-dom/tsx-dom/index.html).
 - tsx-dom-ssr-demo\
   A more complex demo showcasing [tsx-dom-ssr](https://lusito.github.io/tsx-dom/tsx-dom-ssr/index.html) with the [Rick and Morty API](https://rickandmortyapi.com/)
 

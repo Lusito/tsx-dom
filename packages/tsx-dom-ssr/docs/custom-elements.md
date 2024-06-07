@@ -76,3 +76,27 @@ const child = (
     </my-custom-select>,
 );
 ```
+
+## The `is` Attribute vs `tsxTag`
+
+Let's say you have a custom element `word-count`, but it should fall back to a p tag when the custom-element has not been registered (yet).
+Normally, you would do it like this:
+
+```html
+<p is="word-count"></p>
+```
+
+This tells the browser it's a `p` tag, but execute the code for `word-count` on it, once it's defined.
+This won't work properly with tsx-dom, as you will get no intellisense for the respective props of that custom element.
+
+In order to solve this issue, we have the `tsxTag` attribute, which does the exact inverse:
+
+```tsx
+const child = <word-count tsxTag="p" />;
+```
+
+By doing this, you'll get the correct props while writing the JSX syntax, but the generated HTML will still be:
+
+```html
+<p is="word-count"></p>
+```
