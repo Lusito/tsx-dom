@@ -31,7 +31,7 @@ export const MyCustomElement = defineCustomElement<MyCustomElementProps>(
             clearTimeout(this.timeout);
             this.timeout = setTimeout(() => {
                 this.textContent = text;
-            }, 1000);
+            }, 2000);
         }
 
         setIntersecting(intersecting: boolean) {

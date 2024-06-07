@@ -132,16 +132,17 @@ my-custom-element {
 my-custom-element::before {
     content: "";
     position: absolute;
-    inset: auto 0 0 0;
+    inset: auto 0 40% 0;
     background: #4a8f3c;
     height: 20%;
-    transition: all ease-in-out 10s;
+    transition: all ease-in-out 6s;
     z-index: -1;
     opacity: 0.5;
 }
 
 my-custom-element.active::before {
     height: 100%;
+    bottom: 0;
     background: var(--active-color);
     opacity: 0.9;
 }
