@@ -3,6 +3,7 @@ import { TodoList } from "./TodoList";
 
 export const App = () => (
     <div>
+        <h1>tsx-dom demo</h1>
         <h2>GRINCH TO DO LIST</h2>
         <TodoList />
         <h2>Custom Elements Demo</h2>
