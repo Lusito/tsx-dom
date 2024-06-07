@@ -1,3 +1,3 @@
-export function transferChildren(source: HTMLElement, target: HTMLElement) {
+export function transferChildren(source: Element, target: Element) {
     Array.from(source.childNodes).forEach((node) => target.appendChild(node));
 }

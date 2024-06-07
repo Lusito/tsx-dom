@@ -4,8 +4,9 @@
 
 A document head manager for plain dom (inspired by [react-helmet](https://github.com/nfl/react-helmet)).
 
-It can be used on a generated DOM tree to adjust the topmost head, body and html tags.
-This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.
+- It can be used on a generated DOM tree to adjust the topmost head, body and html tags.
+- This can be useful in server-side-rendering when component logic needs to adjust the head, body or html tag.
+- There's also the possibility of using portals to transfer any element from one place to another!
 
 ## How to Use
 
