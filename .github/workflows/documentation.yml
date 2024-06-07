@@ -11,7 +11,10 @@ jobs:
       - uses: volta-cli/action@v4
       - name: Install
         run: npm ci
+      # Build first, since the node_modules will link to the local packages while mono-docs requires tsx-dom to be present
       - name: Build
+        run: npm run docs:build
+      - name: Build Docs
         run: npm run docs:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
