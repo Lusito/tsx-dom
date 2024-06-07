@@ -1,4 +1,4 @@
-import { ElementAttributes, HTMLAttributes } from "tsx-dom-types";
+import { ElementAttributes, HTMLAttributes, HTMLElementAttributes } from "tsx-dom-types";
 
 import { jsx } from "./jsx-runtime";
 import { FC, HTMLComponentProps } from "./types";
@@ -15,11 +15,7 @@ export function defineCustomElement<T extends Record<string, any>, TName extends
     name: string,
     constructor: CustomElementConstructor<HTMLElementTagNameMap[TName]>,
     options: { extends: TName },
-): FC<
-    T &
-        HTMLComponentProps<HTMLElementTagNameMap[TName]> &
-        ElementAttributes<HTMLElementTagNameMap[TName], HTMLAttributes>
->;
+): FC<T & HTMLComponentProps<HTMLElementTagNameMap[TName]> & HTMLElementAttributes<TName>>;
 export function defineCustomElement(
     name: string,
     constructor: CustomElementConstructor<HTMLElement>,

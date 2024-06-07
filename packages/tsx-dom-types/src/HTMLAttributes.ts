@@ -17,6 +17,18 @@ export type ClassRecord = Record<string, null | undefined | boolean>;
 export type ClassEntry = string | null | undefined | false | ClassRecord;
 export type ClassType = ClassEntry | ClassEntry[];
 
+/**
+ * Some tags properties can't be inferred correctly.
+ * To fix these properties, this manual override is defined.
+ * Since it's an interface, users can even override them from outside.
+ */
+export interface HTMLTagFixes {
+    meta: {
+        charset?: string;
+        property?: string;
+    };
+}
+
 export interface HTMLAttributes {
     // Standard HTML Attributes
     accept?: string;

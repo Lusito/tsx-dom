@@ -1,4 +1,4 @@
-import type { ElementAttributes, HTMLAttributes, SVGAttributes, StyleAttributes } from "tsx-dom-types";
+import type { HTMLAttributes, HTMLElementAttributes, SVGElementAttributes, StyleAttributes } from "tsx-dom-types";
 
 export type VNode = (
     document: Document,
@@ -41,9 +41,8 @@ export interface CustomElementsHTML {}
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
-    [TKey in keyof HTMLElementTagNameMap]?: ElementAttributes<HTMLElementTagNameMap[TKey], HTMLAttributes> &
-        HTMLComponentProps;
+    [TKey in keyof HTMLElementTagNameMap]?: HTMLElementAttributes<TKey> & HTMLComponentProps;
 };
 export type IntrinsicElementsSVG = {
-    [TKey in SVGOnlyElementKeys]?: ElementAttributes<SVGElementTagNameMap[TKey], SVGAttributes> & HTMLComponentProps;
+    [TKey in SVGOnlyElementKeys]?: SVGElementAttributes<TKey> & HTMLComponentProps;
 };

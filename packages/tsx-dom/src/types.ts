@@ -1,4 +1,10 @@
-import type { EventAttributes, StyleAttributes, SVGAttributes, HTMLAttributes, ElementAttributes } from "tsx-dom-types";
+import type {
+    EventAttributes,
+    StyleAttributes,
+    HTMLAttributes,
+    HTMLElementAttributes,
+    SVGElementAttributes,
+} from "tsx-dom-types";
 
 export type ComponentChild = ComponentChild[] | JSX.Element | string | number | boolean | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChild[];
@@ -29,12 +35,12 @@ export type CustomElementProps<TBase, TName extends keyof HTMLElementTagNameMap 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
 export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
-    [TKey in keyof HTMLElementTagNameMap]?: ElementAttributes<HTMLElementTagNameMap[TKey], HTMLAttributes> &
+    [TKey in keyof HTMLElementTagNameMap]?: HTMLElementAttributes<TKey> &
         HTMLComponentProps<HTMLElementTagNameMap[TKey]> &
         EventAttributes<HTMLElementTagNameMap[TKey]>;
 };
 export type IntrinsicElementsSVG = {
-    [TKey in SVGOnlyElementKeys]?: ElementAttributes<SVGElementTagNameMap[TKey], SVGAttributes> &
+    [TKey in SVGOnlyElementKeys]?: SVGElementAttributes<TKey> &
         HTMLComponentProps<SVGElementTagNameMap[TKey]> &
         EventAttributes<SVGElementTagNameMap[TKey]>;
 };
