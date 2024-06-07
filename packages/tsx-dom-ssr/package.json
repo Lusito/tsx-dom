@@ -37,6 +37,6 @@
     "build": "rimraf dist && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "tsx-dom-types": "^2.0.0"
+    "tsx-dom-types": "2.0.0"
   }
 }
