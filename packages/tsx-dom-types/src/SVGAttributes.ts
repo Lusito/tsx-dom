@@ -16,6 +16,7 @@ export interface SVGAttributes extends HTMLAttributes {
     cursor?: number | string;
     cx?: number | string;
     cy?: number | string;
+    d?: string;
     dur?: number | string;
     dx?: number | string;
     dy?: number | string;
