@@ -42,6 +42,7 @@ export interface HTMLAttributes {
     async?: boolean;
     autocapitalize?: string;
     autocomplete?: string;
+    autocorrect?: string;
     autofocus?: boolean;
     autoplay?: boolean;
     capture?: boolean | string;
