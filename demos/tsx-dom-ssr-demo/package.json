@@ -21,7 +21,7 @@
     "esbuild": "0.21.4",
     "esbuild-register": "3.5.0",
     "fastify": "4.27.0",
-    "happy-dom": "14.12.0",
+    "happy-dom": "15.10.1",
     "node-cache": "5.1.2",
     "pirates": "4.0.6",
     "scatman": "0.10.0",
