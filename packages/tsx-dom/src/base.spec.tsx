@@ -19,10 +19,10 @@ describe("Basic tests", () => {
             expect(t.attributes).toEqual({ contentEditable: "contentEditable", colSpan: "1337", title: "foo bar" });
     });
 
-    it("should not set falsy attributes, except 0", () => {
-        const t = (<td contentEditable={false} colSpan={0} title={undefined}></td>) as any as FakeNode;
+    it("should not set falsy attributes except 0 or the empty string", () => {
+        const t = (<td contentEditable={false} colSpan={0} title={undefined} data-empty-string={""}></td>) as any as FakeNode;
         expect(t.element).toBe(true);
-        t.element && expect(t.attributes).toEqual({ colSpan: "0" });
+        t.element && expect(t.attributes).toEqual({ colSpan: "0", "data-empty-string": "" });
     });
 
     it("should attach event listeners", () => {
