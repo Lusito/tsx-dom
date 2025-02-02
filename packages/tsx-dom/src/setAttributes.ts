@@ -33,6 +33,6 @@ export function setAttributes(element: JSX.Element, attrs: ComponentAttributes) 
             transferKnownProperties(value, element.style);
         } else if (name === "dangerouslySetInnerHTML") element.innerHTML = value as string;
         else if (value === true) element.setAttribute(name, name);
-        else if (value || value === 0) element.setAttribute(name, value.toString());
+        else if (value || value === 0 || value === "") element.setAttribute(name, value.toString());
     }
 }
