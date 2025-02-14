@@ -1,9 +1,9 @@
-@import "../../style/colors";
-@import "../../style/spacings";
+@use "../../style/colors";
+@use "../../style/spacings";
 
 .episode {
-    background: $panel-color;
-    border-radius: $space-sm;
-    padding: $space-md;
-    margin-bottom: $space-md;
+    background: colors.$panel-color;
+    border-radius: spacings.$space-sm;
+    padding: spacings.$space-md;
+    margin-bottom: spacings.$space-md;
 }

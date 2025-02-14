@@ -36,6 +36,7 @@ export type ComponentAttributes = {
 export type ComponentChild = VNode | string | number | false | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChildren[] | Promise<ComponentChild | ComponentChildren[]>;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CustomElementsHTML {}
 
 export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;

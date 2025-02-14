@@ -47,6 +47,7 @@ export type IntrinsicElementsSVG = {
 
 export type IntrinsicElementsHTMLAndSVG = IntrinsicElementsHTML & IntrinsicElementsSVG;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CustomElementsHTML {}
 
 export type RefType<T> = { current: T | null };

@@ -1,25 +1,25 @@
-@import "../../style/colors";
-@import "../../style/spacings";
+@use "../../style/colors";
+@use "../../style/spacings";
 
 .character {
     display: flex;
     flex-direction: row;
-    background: $panel-color;
-    border-radius: $space-sm;
+    background: colors.$panel-color;
+    border-radius: spacings.$space-sm;
 }
 
 .character-image-wrapper {
     width: 128px;
-    border-radius: $space-sm;
+    border-radius: spacings.$space-sm;
 }
 
 .character-image {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: $space-sm 0 0 $space-sm;
+    border-radius: spacings.$space-sm 0 0 spacings.$space-sm;
 }
 
 .character-content {
-    padding: $space-md;
+    padding: spacings.$space-md;
 }

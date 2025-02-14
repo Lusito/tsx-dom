@@ -1,23 +1,23 @@
-@import "../../style/colors";
-@import "../../style/spacings";
-@import "../../style/breakpoints";
+@use "../../style/colors";
+@use "../../style/spacings";
+@use "../../style/breakpoints";
 
 .header {
     display: flex;
     flex-direction: column;
 
     > a {
-        padding: $space-md;
-        margin: $space-md 0 $space-md 0;
-        background: $panel-color;
-        border-radius: $space-sm;
+        padding: spacings.$space-md;
+        margin: spacings.$space-md 0 spacings.$space-md 0;
+        background: colors.$panel-color;
+        border-radius: spacings.$space-sm;
     }
 
-    @include from("small") {
+    @include breakpoints.from("small") {
         flex-direction: row;
 
         > a {
-            margin-right: $space-md;
+            margin-right: spacings.$space-md;
         }
     }
 }
@@ -27,6 +27,6 @@
     align-items: center;
     font-weight: bold;
     font-size: larger;
-    margin-right: $space-lg;
+    margin-right: spacings.$space-lg;
     flex-grow: 1;
 }

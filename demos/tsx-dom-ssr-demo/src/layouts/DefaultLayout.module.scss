@@ -1,9 +1,9 @@
-@import "../style/colors";
-@import "../style/spacings";
+@use "../style/colors";
+@use "../style/spacings";
 
 .body {
-    background: $background-color;
-    color: $font-color;
+    background: colors.$background-color;
+    color: colors.$font-color;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: $space-lg;
+    margin: spacings.$space-lg;
 }

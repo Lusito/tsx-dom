@@ -1,7 +1,7 @@
-@import "../style/colors";
+@use "../style/colors";
 
 a {
-    color: $font-color;
+    color: colors.$font-color;
 }
 
 .transition-fade {

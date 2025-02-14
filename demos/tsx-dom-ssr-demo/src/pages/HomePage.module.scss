@@ -1,10 +1,9 @@
 @use "sass:math";
-@import "../style/spacings";
-@import "../style/breakpoints";
+@use "../style/spacings";
 
 .home-page-list {
     > * {
-        margin: $space-md 0;
+        margin: spacings.$space-md 0;
         width: 100%;
     }
 }

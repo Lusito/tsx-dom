@@ -34,23 +34,23 @@
     ]
   },
   "dependencies": {
-    "@lusito/eslint-config": "3.1.3",
-    "@lusito/mono": "0.19.2",
-    "@lusito/mono-docs": "0.18.4",
-    "@lusito/prettier-config": "3.1.0",
-    "@lusito/stylelint-config": "3.0.0",
+    "@lusito/eslint-config": "4.0.0",
+    "@lusito/mono": "0.20.0",
+    "@lusito/mono-docs": "0.20.0",
+    "@lusito/prettier-config": "3.2.0",
+    "@lusito/stylelint-config": "4.0.0",
     "@lusito/tsconfig": "1.0.5",
-    "@types/jest": "29.5.12",
-    "@types/node": "20.14.1",
+    "@types/jest": "29.5.14",
+    "@types/node": "22.13.4",
     "@types/prompts": "2.4.9",
     "jest": "29.7.0",
-    "nodemon": "3.1.3",
-    "sort-package-json": "2.10.0",
-    "ts-jest": "29.1.4",
-    "typescript": "5.4.5"
+    "nodemon": "3.1.9",
+    "sort-package-json": "2.14.0",
+    "ts-jest": "29.2.5",
+    "typescript": "5.7.3"
   },
   "volta": {
-    "node": "20.14.0"
+    "node": "23.8.0"
   },
   "monoLint": {
     "lintMarkdownLinks": {

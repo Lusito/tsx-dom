@@ -1,10 +1,10 @@
-@import "../../style/colors";
-@import "../../style/spacings";
+@use "../../style/colors";
+@use "../../style/spacings";
 
 .footer {
-    padding: $space-md;
-    margin: $space-md 0 $space-md 0;
-    background: $panel-color;
-    border-radius: $space-sm;
+    padding: spacings.$space-md;
+    margin: spacings.$space-md 0 spacings.$space-md 0;
+    background: colors.$panel-color;
+    border-radius: spacings.$space-sm;
     text-align: center;
 }
