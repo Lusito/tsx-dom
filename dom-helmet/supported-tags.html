@@ -41,7 +41,7 @@
 <li>If a matching <code>helmet-destination</code> element is not found, the children will stay at their original location.</li>
 <li>Both <code>&lt;helmet-portal&gt;</code> and <code>&lt;helmet-destination&gt;</code> elements will disappear in the result, leaving only their children behind.</li>
 </ul>
-<h3>Usage with tsx-dom(-ssr)</h3>
+<h3>Usage with <code>tsx-dom(-ssr)</code></h3>
 <p>If you want to use <code>&lt;helmet-portal&gt;</code> and <code>&lt;helmet-destination&gt;</code> with tsx-dom or tsx-dom-ssr, you'll need to tell typescript that these tags exist and what properties they accept.</p>
 <p>For tsx-dom this looks like this:</p>
 <pre><code class="hljs"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">CustomElementProps</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"tsx-dom"</span>;
