@@ -67,7 +67,7 @@ export interface HTMLAttributes {
     disableRemotePlayback?: boolean;
     download?: string;
     decoding?: "sync" | "async" | "auto";
-    draggable?: boolean;
+    draggable?: "true" | "false";
     enctype?: string;
     enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send";
     form?: string;
