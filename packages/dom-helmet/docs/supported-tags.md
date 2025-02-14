@@ -26,7 +26,28 @@ Since it's all about transferring items from one place to another, here's a litt
 
 - All elements matching `html > body helmet-portal` will be moved to a respective `html > body helmet-destination`.
 - For example, the `<helmet-portal to="my-target">` element will transfer its children to a respective `<helmet-destination id="my-target">` element.
-- Duplicates will be removed if not within the same `helmet-destination` element:
+- Duplicates will be removed if not within the same `helmet-portal` element:
   - Any tag with a matching id attribute
 - If a matching `helmet-destination` element is not found, the children will stay at their original location.
 - Both `<helmet-portal>` and `<helmet-destination>` elements will disappear in the result, leaving only their children behind.
+
+
+### Usage with tsx-dom(-ssr)
+
+If you want to use `<helmet-portal>` and `<helmet-destination>` with tsx-dom or tsx-dom-ssr, you'll need to tell typescript that these tags exist and what properties they accept.
+
+For tsx-dom this looks like this:
+
+```ts
+import { CustomElementProps } from "tsx-dom";
+import { HelmetPortalProps, HelmetDestinationProps } from "dom-helmet";
+
+declare module "tsx-dom" {
+  interface CustomElementsHTML {
+    "helmet-portal": CustomElementProps<HelmetPortalProps, null>;
+    "helmet-destination": CustomElementProps<HelmetDestinationProps, null>;
+  }
+}
+```
+
+Replace `tsx-dom` with `tsx-dom-ssr` if you use that it instead.

@@ -8,7 +8,7 @@ describe("replaceWithChildren", () => {
             <html>
                 <body>
                     <div>before</div>
-                    <helmet-portal>
+                    <helmet-portal to="my-target">
                         <div>a</div>
                         <div>b</div>
                         <div>c</div>

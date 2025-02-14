@@ -4,19 +4,13 @@ import { Window } from "happy-dom";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { CustomElementProps } from "tsx-dom";
 
+import { HelmetDestinationProps, HelmetPortalProps } from "./src/props";
+
 const window = new Window();
 const document = window.document as unknown as Document;
 
 globalThis.document = document;
 globalThis.Element = window.Element as any;
-
-type HelmetPortalProps = {
-    to?: string;
-};
-
-type HelmetDestinationProps = {
-    id?: string;
-};
 
 declare module "tsx-dom" {
     interface CustomElementsHTML {

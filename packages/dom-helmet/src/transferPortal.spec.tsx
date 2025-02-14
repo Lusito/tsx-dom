@@ -8,19 +8,19 @@ describe("replaceWithChildren", () => {
             <html>
                 <body>
                     <div>before</div>
-                    <helmet-destination>
+                    <helmet-destination id="my-target">
                         <div id="x">x</div>
                         <div>existing</div>
                     </helmet-destination>
                     <div>after</div>
-                    <helmet-portal>
+                    <helmet-portal to="my-target">
                         <div>a</div>
                         <div>b</div>
                         <div>c</div>
                         <div id="x">new-x</div>
                     </helmet-portal>
                 </body>
-            </html>
+            </html>,
         );
 
         const body = el.querySelector("body");
@@ -36,7 +36,7 @@ describe("replaceWithChildren", () => {
         expect(portal).toBeTruthy();
         const destination = body.querySelector("helmet-destination")!;
         expect(destination).toBeTruthy();
-        transferPortal(portal, destination);
+        transferPortal(portal, body);
 
         const ordered = Array.from(body.querySelectorAll("div")).map((e) => e.textContent);
         expect(ordered).toEqual(["before", "existing", "a", "b", "c", "new-x", "after"]);
