@@ -24,7 +24,7 @@ export function setAttributes(element: HTMLElement | SVGElement, attrs: Componen
         } else if (name === "dangerouslySetInnerHTML") element.innerHTML = value as string;
         else if (value === true) {
             element.setAttribute(name, name);
-        } else if (value || value === 0) {
+        } else if (value || value === 0 || value === "") {
             element.setAttribute(name, value.toString());
         }
     }
