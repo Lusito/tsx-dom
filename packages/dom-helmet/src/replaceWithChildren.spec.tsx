@@ -15,7 +15,7 @@ describe("replaceWithChildren", () => {
                     </helmet-portal>
                     <div>after</div>
                 </body>
-            </html>
+            </html>,
         );
 
         const body = el.querySelector("body");

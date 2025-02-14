@@ -17,7 +17,7 @@ describe("transferChildren", () => {
                         <div>c</div>
                     </head>
                 </body>
-            </html>
+            </html>,
         );
 
         const head = el.querySelector("head");

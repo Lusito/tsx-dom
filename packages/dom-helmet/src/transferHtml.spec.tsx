@@ -9,7 +9,7 @@ describe("transferHtml", () => {
                 <body>
                     <html data-a="1" data-b="2" data-c="3"></html>
                 </body>
-            </html>
+            </html>,
         );
 
         const html = el.querySelector("html");
@@ -52,7 +52,7 @@ describe("transferHtml", () => {
                         ?
                     </html>
                 </body>
-            </html>
+            </html>,
         );
 
         const html = el.querySelector("html") as HTMLHtmlElement;

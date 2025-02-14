@@ -16,7 +16,7 @@ describe("transferBody", () => {
                         <span>3</span>
                     </body>
                 </body>
-            </html>
+            </html>,
         );
 
         const body = el.querySelector("body");

@@ -18,7 +18,7 @@ describe("removeDuplicatesBySelector", () => {
                         <title>Overwrite</title>
                     </head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -37,7 +37,7 @@ describe("removeDuplicatesBySelector", () => {
                 <body>
                     <head></head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -59,7 +59,7 @@ describe("removeDuplicatesBySelectorAndAttribute", () => {
                         <meta name="description" content="Override" />
                     </head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -78,7 +78,7 @@ describe("removeDuplicatesBySelectorAndAttribute", () => {
                 <body>
                     <head></head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -98,7 +98,7 @@ describe("removeDuplicatesBySelectorAndAttribute", () => {
                         <meta name="keywords" content="Override" />
                     </head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -120,7 +120,7 @@ describe("removeDuplicatesBySelectorAndTextContent", () => {
                         <style>initial</style>
                     </head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -139,7 +139,7 @@ describe("removeDuplicatesBySelectorAndTextContent", () => {
                 <body>
                     <head></head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;
@@ -159,7 +159,7 @@ describe("removeDuplicatesBySelectorAndTextContent", () => {
                         <style>additional</style>
                     </head>
                 </body>
-            </html>
+            </html>,
         );
         const head = el.querySelector("html > head")!;
         const falseHead = el.querySelector("body > head")!;

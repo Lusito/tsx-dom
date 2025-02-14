@@ -28,7 +28,7 @@ describe("transferHead", () => {
                         <meta charset="utf-16" />${duplicateItems}${newItems}
                     </head>
                 </body>
-            </html>
+            </html>,
         );
 
         const head = el.querySelector("head");

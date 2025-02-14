@@ -31,8 +31,7 @@ Since it's all about transferring items from one place to another, here's a litt
 - If a matching `helmet-destination` element is not found, the children will stay at their original location.
 - Both `<helmet-portal>` and `<helmet-destination>` elements will disappear in the result, leaving only their children behind.
 
-
-### Usage with tsx-dom(-ssr)
+### Usage with `tsx-dom(-ssr)`
 
 If you want to use `<helmet-portal>` and `<helmet-destination>` with tsx-dom or tsx-dom-ssr, you'll need to tell typescript that these tags exist and what properties they accept.
 
