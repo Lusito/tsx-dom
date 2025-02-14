@@ -77,4 +77,6 @@ export class FakeDocument {
 
 export const fakeDoc = new FakeDocument();
 
+export const asFakeNode = (v: JSX.Element) => v as unknown as FakeNode;
+
 globalThis.document = fakeDoc as any;

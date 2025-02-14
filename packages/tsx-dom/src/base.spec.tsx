@@ -1,26 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fakeDoc, FakeNode } from "../testUtils";
+import { fakeDoc, asFakeNode } from "../testUtils";
 import ".";
 
 describe("Basic tests", () => {
     beforeEach(() => fakeDoc.reset());
 
     it("should return the element from document.createElement", () => {
-        const t = (<div></div>) as any as FakeNode;
+        const t = asFakeNode(<div></div>);
         expect(t).toEqual(fakeDoc.nodes[0]);
         expect(t.element).toBe(true);
         t.element && expect(t.tag).toBe("div");
     });
 
     it("should set all attributes correctly", () => {
-        const t = (<td contentEditable={true} colSpan={1337} title="foo bar"></td>) as any as FakeNode;
+        const t = asFakeNode(<td contentEditable={true} colSpan={1337} title="foo bar"></td>);
         expect(t.element).toBe(true);
         t.element &&
             expect(t.attributes).toEqual({ contentEditable: "contentEditable", colSpan: "1337", title: "foo bar" });
     });
 
     it("should not set falsy attributes except 0 or the empty string", () => {
-        const t = (<td contentEditable={false} colSpan={0} title={undefined} data-empty-string={""}></td>) as any as FakeNode;
+        const t = asFakeNode(<td contentEditable={false} colSpan={0} title={undefined} data-empty-string=""></td>);
         expect(t.element).toBe(true);
         t.element && expect(t.attributes).toEqual({ colSpan: "0", "data-empty-string": "" });
     });
@@ -28,7 +28,7 @@ describe("Basic tests", () => {
     it("should attach event listeners", () => {
         const onClick = () => 0;
         const onBlur = () => 0;
-        const t = (<div onClick={onClick} onBlur={onBlur}></div>) as any as FakeNode;
+        const t = asFakeNode(<div onClick={onClick} onBlur={onBlur}></div>);
         expect(t.element).toBe(true);
         t.element &&
             expect(t.eventListeners).toEqual([
@@ -40,7 +40,7 @@ describe("Basic tests", () => {
     it("should attach event listeners with useCapture", () => {
         const onClick = () => 0;
         const onBlur = () => 0;
-        const t = (<div onClickCapture={onClick} onBlurCapture={onBlur}></div>) as any as FakeNode;
+        const t = asFakeNode(<div onClickCapture={onClick} onBlurCapture={onBlur}></div>);
         expect(t.element).toBe(true);
         t.element &&
             expect(t.eventListeners).toEqual([
@@ -57,7 +57,7 @@ describe("Basic tests", () => {
         const e = <div></div>;
         const list = [c, d, e];
         const value = 1234;
-        const t = (
+        const t = asFakeNode(
             <div>
                 {false}
                 {a}
@@ -69,8 +69,8 @@ describe("Basic tests", () => {
                 {0}
                 {value}
                 {list}
-            </div>
-        ) as any as FakeNode;
+            </div>,
+        );
         expect(t.element).toBe(true);
         t.element &&
             expect(t.children).toEqual([
@@ -93,7 +93,7 @@ describe("Basic tests", () => {
                 warns.push(args);
             };
             const type = {} as any;
-            const t = (<div>{type}</div>) as any as FakeNode;
+            const t = asFakeNode(<div>{type}</div>);
             expect(t.element).toBe(true);
             t.element && expect(t.children).toHaveLength(0);
             expect(warns).toEqual([["Unknown type to append: ", type]]);
@@ -110,14 +110,14 @@ describe("Basic tests", () => {
         const e = <div></div>;
         const value = 1234;
         const list = [d, e, value];
-        const t = (
+        const t = asFakeNode(
             <div>
                 {a}
                 {b}
                 {c}
                 {list}
-            </div>
-        ) as any as FakeNode;
+            </div>,
+        );
         expect(t.element).toBe(true);
         t.element &&
             expect(t.children).toEqual([
@@ -142,7 +142,7 @@ describe("Basic tests", () => {
                 background: "3",
                 color: "4",
             };
-            const t = (<div style={style}></div>) as any as FakeNode;
+            const t = asFakeNode(<div style={style}></div>);
             expect(t.element).toBe(true);
             t.element && expect(t.style).toEqual({ border: "1", height: "2", background: "3" });
         });
@@ -150,7 +150,7 @@ describe("Basic tests", () => {
 
     describe("with style passed as string", () => {
         it("should leave the style attribute untouched", () => {
-            const t = (<div style="border: 1px solid black;"></div>) as any as FakeNode;
+            const t = asFakeNode(<div style="border: 1px solid black;"></div>);
             expect(t.element).toBe(true);
             t.element && expect(t.style).toEqual({ border: "", height: "", background: "" });
         });

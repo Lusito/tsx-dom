@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fakeDoc, FakeNode } from "../testUtils";
+import { asFakeNode, fakeDoc } from "../testUtils";
 import { BaseProps } from ".";
 
 interface FooProps extends BaseProps {
@@ -38,26 +38,26 @@ describe("Functional component tests", () => {
 
     it("should pass all children as given", () => {
         const value = 12;
-        const t = (
+        const t = asFakeNode(
             <Bar>
                 <div></div>
                 <b></b>
                 text
                 {value}
-            </Bar>
-        ) as any as BaseProps;
+            </Bar>,
+        );
         expect(t).toEqual({
             children: [fakeDoc.nodes[0], fakeDoc.nodes[1], "text", value],
         });
     });
 
     it("should allow appending multiple divs and props.children", () => {
-        const t = (
+        const t = asFakeNode(
             <FooBar>
                 <div></div>
                 <b></b>
-            </FooBar>
-        ) as any as FakeNode;
+            </FooBar>,
+        );
         expect(t.element).toBe(true);
     });
 });
