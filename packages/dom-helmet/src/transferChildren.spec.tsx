@@ -4,21 +4,21 @@ import { transferChildren } from "./transferChildren";
 
 describe("transferChildren", () => {
     function createDom() {
-        const el = prepareDom(`
-        <html>
-            <head>
-                <title>Initial</title>
-                <base href="https://initial.com/">
-            </head>
-            <body>
+        const el = prepareDom(
+            <html>
                 <head>
-                    <div>a</div>
-                    <div>b</div>
-                    <div>c</div>
+                    <title>Initial</title>
+                    <base href="https://initial.com/" />
                 </head>
-            </body>
-        </html>
-        `);
+                <body>
+                    <head>
+                        <div>a</div>
+                        <div>b</div>
+                        <div>c</div>
+                    </head>
+                </body>
+            </html>
+        );
 
         const head = el.querySelector("head");
         const falseHead = el.querySelector("body > head");

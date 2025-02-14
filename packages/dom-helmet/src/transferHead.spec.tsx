@@ -14,29 +14,22 @@ describe("transferHead", () => {
         `;
         const duplicateItems = uniqueItems.replace(/unique/g, "duplicate");
         const newItems = uniqueItems.replace(/unique/g, "new");
-        const el = prepareDom(`
-        <html>
-            <head>
-                <title>Initial</title>
-                <base href="https://initial.com/">
-
-                <meta charset="utf-8">
-                
-                ${uniqueItems}
-                ${duplicateItems}
-            </head>
-            <body>
+        const el = prepareDom(
+            <html>
                 <head>
-                    <title>Override</title>
-                    <base href="https://override.com/">
-
-                    <meta charset="utf-16">
-                    ${duplicateItems}
-                    ${newItems}
+                    <title>Initial</title>
+                    <base href="https://initial.com/" />
+                    <meta charset="utf-8" />${uniqueItems}${duplicateItems}
                 </head>
-            </body>
-        </html>
-        `);
+                <body>
+                    <head>
+                        <title>Override</title>
+                        <base href="https://override.com/" />
+                        <meta charset="utf-16" />${duplicateItems}${newItems}
+                    </head>
+                </body>
+            </html>
+        );
 
         const head = el.querySelector("head");
         const falseHead = el.querySelector("body > head");

@@ -4,24 +4,24 @@ import { transferPortal } from "./transferPortal";
 
 describe("replaceWithChildren", () => {
     function createDom() {
-        const el = prepareDom(`
-        <html>
-            <body>
-                <div>before</div>
-                <helmet-destination>
-                    <div id="x">x</div>
-                    <div>existing</div>
-                </helmet-destination>
-                <div>after</div>
-                <helmet-portal>
-                    <div>a</div>
-                    <div>b</div>
-                    <div>c</div>
-                    <div id="x">new-x</div>
-                </helmet-portal>
-            </body>
-        </html>
-        `);
+        const el = prepareDom(
+            <html>
+                <body>
+                    <div>before</div>
+                    <helmet-destination>
+                        <div id="x">x</div>
+                        <div>existing</div>
+                    </helmet-destination>
+                    <div>after</div>
+                    <helmet-portal>
+                        <div>a</div>
+                        <div>b</div>
+                        <div>c</div>
+                        <div id="x">new-x</div>
+                    </helmet-portal>
+                </body>
+            </html>
+        );
 
         const body = el.querySelector("body");
         expect(body).toBeTruthy();

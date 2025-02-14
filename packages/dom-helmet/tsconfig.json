@@ -1,10 +1,9 @@
 {
-  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/es2021"],
+  "extends": ["@lusito/tsconfig/base", "@lusito/tsconfig/tsx-dom", "@lusito/tsconfig/es2021"],
   "compilerOptions": {
     "outDir": "./dist",
     "lib": ["ES2021", "DOM"],
     "module": "CommonJS",
-    "skipLibCheck": true,
-    "jsxImportSource": "."
+    "skipLibCheck": true
   }
 }

@@ -4,19 +4,19 @@ import { replaceWithChildren } from "./replaceWithChildren";
 
 describe("replaceWithChildren", () => {
     function createDom() {
-        const el = prepareDom(`
-        <html>
-            <body>
-                <div>before</div>
-                <helmet-portal>
-                    <div>a</div>
-                    <div>b</div>
-                    <div>c</div>
-                </helmet-portal>
-                <div>after</div>
-            </body>
-        </html>
-        `);
+        const el = prepareDom(
+            <html>
+                <body>
+                    <div>before</div>
+                    <helmet-portal>
+                        <div>a</div>
+                        <div>b</div>
+                        <div>c</div>
+                    </helmet-portal>
+                    <div>after</div>
+                </body>
+            </html>
+        );
 
         const body = el.querySelector("body");
         expect(body).toBeTruthy();

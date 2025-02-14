@@ -4,20 +4,20 @@ import { transferBody } from "./transferBody";
 
 describe("transferBody", () => {
     function createDom() {
-        const el = prepareDom(`
-        <html>
-            <body>
-                <div>a</div>
-                <div>b</div>
-                <div>c</div>
+        const el = prepareDom(
+            <html>
                 <body>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
+                    <div>a</div>
+                    <div>b</div>
+                    <div>c</div>
+                    <body>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                    </body>
                 </body>
-            </body>
-        </html>
-        `);
+            </html>
+        );
 
         const body = el.querySelector("body");
         const falseBody = el.querySelector("body > body");

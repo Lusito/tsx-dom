@@ -4,13 +4,13 @@ import { transferHtml } from "./transferHtml";
 
 describe("transferHtml", () => {
     function createDom() {
-        const el = prepareDom(`
-        <html c="old" d="keep">
-            <body>
-                <html a="1" b="2" c="3"></html>
-            </body>
-        </html>
-        `);
+        const el = prepareDom(
+            <html data-c="old" data-d="keep">
+                <body>
+                    <html data-a="1" data-b="2" data-c="3"></html>
+                </body>
+            </html>
+        );
 
         const html = el.querySelector("html");
         const falseHtml = el.querySelector("body > html");
@@ -29,11 +29,11 @@ describe("transferHtml", () => {
 
         transferHtml(falseHtml, html);
 
-        expect(html.getAttributeNames().sort()).toEqual(["a", "b", "c", "d"]);
-        expect(html.getAttribute("a")).toBe("1");
-        expect(html.getAttribute("b")).toBe("2");
-        expect(html.getAttribute("c")).toBe("3");
-        expect(html.getAttribute("d")).toBe("keep");
+        expect(Object.keys(html.dataset).sort()).toEqual(["a", "b", "c", "d"]);
+        expect(html.dataset.a).toBe("1");
+        expect(html.dataset.b).toBe("2");
+        expect(html.dataset.c).toBe("3");
+        expect(html.dataset.d).toBe("keep");
     });
 
     it("removes false html tag after completion", () => {
@@ -45,13 +45,15 @@ describe("transferHtml", () => {
     });
 
     it("throws an exception if the false html tag contains children", () => {
-        const el = prepareDom(`
-        <html c="old" d="keep">
-            <body>
-                <html a="1" b="2" c="3">?</html>
-            </body>
-        </html>
-        `);
+        const el = prepareDom(
+            <html data-c="old" data-d="keep">
+                <body>
+                    <html data-a="1" data-b="2" data-c="3">
+                        ?
+                    </html>
+                </body>
+            </html>
+        );
 
         const html = el.querySelector("html") as HTMLHtmlElement;
         const falseHtml = el.querySelector("body > html") as HTMLHtmlElement;
