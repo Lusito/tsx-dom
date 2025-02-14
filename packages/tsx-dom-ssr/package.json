@@ -1,6 +1,6 @@
 {
   "name": "tsx-dom-ssr",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simple way to use tsx syntax to do async server-side-rendering.",
   "keywords": [
     "TypeScript",
@@ -37,6 +37,6 @@
     "build": "rimraf dist && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "tsx-dom-types": "2.0.1"
+    "tsx-dom-types": "2.1.0"
   }
 }
