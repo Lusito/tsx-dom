@@ -87,6 +87,7 @@ export interface EventAttributesBase<T extends EventTarget> {
     onSelect?: EventHandler<T, Event>;
     onSelectionChange?: EventHandler<T, Event>;
     onSelectStart?: EventHandler<T, Event>;
+    onBeforeToggle?: EventHandler<T, Event>;
 
     // Sensor Events
     onDeviceMotion?: EventHandler<T, DeviceMotionEvent>;
@@ -118,6 +119,7 @@ export interface EventAttributesBase<T extends EventTarget> {
 
     // UI Events
     onScroll?: EventHandler<T, Event>;
+    onScrollEnd?: EventHandler<T, Event>;
     onResize?: EventHandler<T, UIEvent>;
     onOrientationChange?: EventHandler<T, Event>;
     onFullscreenChange?: EventHandler<T, Event>;
@@ -156,6 +158,7 @@ export interface EventAttributesBase<T extends EventTarget> {
     onBeforeUnload?: EventHandler<T, BeforeUnloadEvent>;
 
     // Dialog Events
+    onCancel?: EventHandler<T, Event>;
     onClose?: EventHandler<T, Event>;
 
     // Slot Events
