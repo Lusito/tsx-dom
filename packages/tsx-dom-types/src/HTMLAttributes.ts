@@ -1,3 +1,5 @@
+import { ClassType } from "./classnames";
+
 /** CSSStyleDeclaration contains methods, readonly properties and an index signature, which we all need to filter out. */
 export type CSSProperties = Partial<
     Pick<
@@ -11,11 +13,6 @@ export type CSSProperties = Partial<
         }[keyof CSSStyleDeclaration]
     >
 >;
-
-// For convenience, so that no classnames utility function needs to be used.
-export type ClassRecord = Record<string, null | undefined | boolean>;
-export type ClassEntry = string | null | undefined | false | ClassRecord;
-export type ClassType = ClassEntry | ClassEntry[];
 
 /**
  * Some tags properties can't be inferred correctly.

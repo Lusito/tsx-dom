@@ -1,7 +1,4 @@
-export type EventHandler<TTarget extends EventTarget, TEvent extends Event> = (
-    this: TTarget,
-    ev: Omit<TEvent, "currentTarget"> & { readonly currentTarget: TTarget },
-) => void;
+import { WithCapture, EventHandler } from "./HelperTypes";
 
 export interface EventAttributesBase<T extends EventTarget> {
     // Image Events
@@ -184,7 +181,4 @@ export interface EventAttributesBase<T extends EventTarget> {
     onStorage?: EventHandler<T, StorageEvent>;
 }
 
-export type EventAttributes<T extends EventTarget> = EventAttributesBase<T> & {
-    // Add an additional <name>Capture method.
-    [TKey in keyof EventAttributesBase<T> as `${TKey}Capture`]: EventAttributesBase<T>[TKey];
-};
+export type EventAttributes<T extends EventTarget> = WithCapture<EventAttributesBase<T>>;

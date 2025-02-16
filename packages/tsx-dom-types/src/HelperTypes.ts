@@ -24,3 +24,17 @@ export type SVGElementAttributes<TName extends keyof SVGElementTagNameMap> = Ele
     SVGElementTagNameMap[TName],
     SVGAttributes
 >;
+
+export type Simplify<T> = { [KeyType in keyof T]: T[KeyType] } & {};
+
+export type EventHandler<TTarget extends EventTarget, TEvent extends Event> = (
+    this: TTarget,
+    ev: Omit<TEvent, "currentTarget"> & { readonly currentTarget: TTarget },
+) => void;
+
+export type WithCapture<T extends Record<string, any>> = Simplify<
+    T & {
+        // Add an additional <name>Capture property with the same type.
+        [TKey in Extract<keyof T, string> as `${TKey}Capture`]?: T[TKey];
+    }
+>;

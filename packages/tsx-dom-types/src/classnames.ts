@@ -1,4 +1,6 @@
-import { ClassType, ClassRecord } from "./HTMLAttributes";
+export type ClassRecord = Record<string, null | undefined | boolean>;
+export type ClassEntry = string | null | undefined | false | ClassRecord;
+export type ClassType = ClassEntry | ClassEntry[];
 
 const classListFromObject = (record: ClassRecord) => Object.entries(record).map(([key, value]) => value && key);
 
