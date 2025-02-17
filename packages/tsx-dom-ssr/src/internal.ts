@@ -1,4 +1,4 @@
-import { setAttributes } from "./setAttributes";
+import { setElementAttributes } from "./setElementAttributes";
 import { toDom } from "./domUtils";
 import type { BaseProps, FC, ComponentAttributes, ComponentChildren, VNode } from "./types";
 
@@ -29,7 +29,7 @@ export function createHtmlElementNode(tag: string, { children, ...attrs }: BaseP
             }
         }
         const el = createDomElement(document, finalTag, finalAttrs);
-        setAttributes(el, finalAttrs);
+        setElementAttributes(el, finalAttrs);
 
         if (el.innerHTML) {
             if (hasChildrenSet(children)) {

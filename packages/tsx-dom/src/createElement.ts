@@ -1,4 +1,4 @@
-import { setAttributes } from "./setAttributes";
+import { setElementAttributes } from "./setElementAttributes";
 import type { ComponentAttributes, ComponentChild, FC, RefType } from "./types";
 import { applyChildren, applyTsxTag, createDomElement } from "./utils";
 
@@ -12,7 +12,7 @@ export function createElement(
     const { finalTag, finalAttrs } = applyTsxTag(tag, attrs);
     const element = createDomElement(finalTag, finalAttrs);
 
-    if (finalAttrs) setAttributes(element, finalAttrs);
+    if (finalAttrs) setElementAttributes(element, finalAttrs);
 
     applyChildren(element, children);
     return element;

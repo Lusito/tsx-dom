@@ -1,4 +1,4 @@
-import { setAttributes } from "./setAttributes";
+import { setElementAttributes } from "./setElementAttributes";
 import type { BaseProps, FC } from "./types";
 import { applyChildren, createDomElement, applyTsxTag } from "./utils";
 
@@ -9,7 +9,7 @@ export function jsx(tag: string | FC, props: BaseProps): JSX.Element {
     const { finalTag, finalAttrs } = applyTsxTag(tag, attrs);
     const element = createDomElement(finalTag, finalAttrs);
 
-    setAttributes(element, finalAttrs);
+    setElementAttributes(element, finalAttrs);
 
     applyChildren(element, [children]);
     return element;

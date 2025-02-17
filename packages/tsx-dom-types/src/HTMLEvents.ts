@@ -1,6 +1,59 @@
-import { WithCapture, EventHandler } from "./HelperTypes";
+import { EventHandler } from "./types";
 
-export interface EventAttributesBase<T extends EventTarget> {
+export type HTMLBodyEventAttributes = {
+    // Print Events
+    onAfterPrint?: EventHandler<HTMLBodyElement, Event>;
+    onBeforePrint?: EventHandler<HTMLBodyElement, Event>;
+
+    // Sensor Events
+    onDeviceMotion?: EventHandler<HTMLBodyElement, DeviceMotionEvent>;
+    onDeviceOrientation?: EventHandler<HTMLBodyElement, DeviceOrientationEvent>;
+
+    // Gamepad Events
+    onGamepadConnected?: EventHandler<HTMLBodyElement, GamepadEvent>;
+    onGamepadDisconnected?: EventHandler<HTMLBodyElement, GamepadEvent>;
+
+    // History Events
+    onHashChange?: EventHandler<HTMLBodyElement, HashChangeEvent>;
+    onPopState?: EventHandler<HTMLBodyElement, PopStateEvent>;
+    onPageHide?: EventHandler<HTMLBodyElement, PageTransitionEvent>;
+    onPageShow?: EventHandler<HTMLBodyElement, PageTransitionEvent>;
+
+    // Language Events
+    onLanguageChange?: EventHandler<HTMLBodyElement, Event>;
+
+    // Message Events
+    onMessage?: EventHandler<HTMLBodyElement, MessageEvent>;
+    onMessageError?: EventHandler<HTMLBodyElement, MessageEvent>;
+
+    // Network Access Events
+    onOffline?: EventHandler<HTMLBodyElement, Event>;
+    onOnline?: EventHandler<HTMLBodyElement, Event>;
+
+    // Error Events
+    onRejectionHandled?: EventHandler<HTMLBodyElement, PromiseRejectionEvent>;
+    onUnhandledRejection?: EventHandler<HTMLBodyElement, PromiseRejectionEvent>;
+
+    // Storage Events
+    onStorage?: EventHandler<HTMLBodyElement, StorageEvent>;
+
+    // State Events
+    onBeforeUnload?: EventHandler<HTMLBodyElement, BeforeUnloadEvent>;
+    onUnload?: EventHandler<HTMLBodyElement, Event>;
+};
+
+export type HTMLNonBodyEventNames = "blur" | "error" | "focus" | "load" | "resize" | "scroll";
+
+export type HTMLMediaEventAttributes = {
+    onEncrypted?: EventHandler<HTMLMediaElement, Event>;
+};
+
+export type HTMLCanvasEventAttributes = {
+    onContextLost?: EventHandler<HTMLCanvasElement, Event>;
+    onContextRestored?: EventHandler<HTMLCanvasElement, Event>;
+};
+
+export type HTMLCommonEventAttributes<T extends EventTarget> = {
     // Image Events
     onLoad?: EventHandler<T, Event>;
     onError?: EventHandler<T, ErrorEvent>;
@@ -32,7 +85,7 @@ export interface EventAttributesBase<T extends EventTarget> {
     onSubmit?: EventHandler<T, SubmitEvent>;
     onInvalid?: EventHandler<T, Event>;
     onReset?: EventHandler<T, Event>;
-    onFormData?: EventHandler<T, FormDataEvent>;
+    onFormdata?: EventHandler<T, FormDataEvent>;
 
     // Keyboard Events
     onKeyDown?: EventHandler<T, KeyboardEvent>;
@@ -45,7 +98,6 @@ export interface EventAttributesBase<T extends EventTarget> {
     onCanPlayThrough?: EventHandler<T, Event>;
     onDurationChange?: EventHandler<T, Event>;
     onEmptied?: EventHandler<T, Event>;
-    onEncrypted?: EventHandler<T, Event>;
     onEnded?: EventHandler<T, Event>;
     onLoadedData?: EventHandler<T, Event>;
     onLoadedMetadata?: EventHandler<T, Event>;
@@ -85,17 +137,9 @@ export interface EventAttributesBase<T extends EventTarget> {
 
     // Selection Events
     onSelect?: EventHandler<T, Event>;
-    onSelectionChange?: EventHandler<T, Event>;
+    onSelectionchange?: EventHandler<T, Event>;
     onSelectStart?: EventHandler<T, Event>;
     onBeforeToggle?: EventHandler<T, Event>;
-
-    // Sensor Events
-    onDeviceMotion?: EventHandler<T, DeviceMotionEvent>;
-    onDeviceOrientation?: EventHandler<T, DeviceOrientationEvent>;
-
-    // Gamepad Events
-    onGamepadConnected?: EventHandler<T, GamepadEvent>;
-    onGamepadDisconnected?: EventHandler<T, GamepadEvent>;
 
     // Touch Events
     onTouchCancel?: EventHandler<T, TouchEvent>;
@@ -114,17 +158,13 @@ export interface EventAttributesBase<T extends EventTarget> {
     onPointerLeave?: EventHandler<T, PointerEvent>;
     onGotPointerCapture?: EventHandler<T, PointerEvent>;
     onLostPointerCapture?: EventHandler<T, PointerEvent>;
-    onPointerLockChange?: EventHandler<T, Event>;
-    onPointerLockError?: EventHandler<T, Event>;
 
     // UI Events
     onScroll?: EventHandler<T, Event>;
     onScrollEnd?: EventHandler<T, Event>;
     onResize?: EventHandler<T, UIEvent>;
-    onOrientationChange?: EventHandler<T, Event>;
     onFullscreenChange?: EventHandler<T, Event>;
     onFullscreenError?: EventHandler<T, Event>;
-    onVisibilityChange?: EventHandler<T, Event>;
     onCueChange?: EventHandler<T, Event>;
 
     // Wheel Events
@@ -142,21 +182,6 @@ export interface EventAttributesBase<T extends EventTarget> {
     onTransitionRun?: EventHandler<T, TransitionEvent>;
     onTransitionStart?: EventHandler<T, TransitionEvent>;
 
-    // Print Events
-    onAfterPrint?: EventHandler<T, Event>;
-    onBeforePrint?: EventHandler<T, Event>;
-
-    // History Events
-    onHashChange?: EventHandler<T, HashChangeEvent>;
-    onPopState?: EventHandler<T, PopStateEvent>;
-    onPageHide?: EventHandler<T, PageTransitionEvent>;
-    onPageShow?: EventHandler<T, PageTransitionEvent>;
-
-    // State Events
-    onReadyStateChange?: EventHandler<T, Event>;
-    onUnload?: EventHandler<T, Event>;
-    onBeforeUnload?: EventHandler<T, BeforeUnloadEvent>;
-
     // Dialog Events
     onCancel?: EventHandler<T, Event>;
     onClose?: EventHandler<T, Event>;
@@ -164,24 +189,16 @@ export interface EventAttributesBase<T extends EventTarget> {
     // Slot Events
     onSlotChange?: EventHandler<T, Event>;
 
-    // Language Events
-    onLanguageChange?: EventHandler<T, Event>;
-
-    // Message Events
-    onMessage?: EventHandler<T, MessageEvent>;
-    onMessageError?: EventHandler<T, MessageEvent>;
-
-    // Network Access Events
-    onOffline?: EventHandler<T, Event>;
-    onOnline?: EventHandler<T, Event>;
-
     // Error Events
-    onRejectionHandled?: EventHandler<T, PromiseRejectionEvent>;
-    onUnhandledRejection?: EventHandler<T, PromiseRejectionEvent>;
     onSecurityPolicyViolation?: EventHandler<T, SecurityPolicyViolationEvent>;
+};
 
-    // Storage Events
-    onStorage?: EventHandler<T, StorageEvent>;
-}
+type HTMLSpecialEventAttributesMap = {
+    body: Omit<HTMLCommonEventAttributes<HTMLBodyElement>, HTMLNonBodyEventNames> & HTMLBodyEventAttributes;
+    media: HTMLCommonEventAttributes<HTMLMediaElement> & HTMLMediaEventAttributes;
+    canvas: HTMLCommonEventAttributes<HTMLCanvasElement> & HTMLCanvasEventAttributes;
+};
 
-export type EventAttributes<T extends EventTarget> = WithCapture<EventAttributesBase<T>>;
+export type HTMLEventAttributes<T extends keyof HTMLElementTagNameMap> = T extends keyof HTMLSpecialEventAttributesMap
+    ? HTMLSpecialEventAttributesMap[T]
+    : HTMLCommonEventAttributes<HTMLElementTagNameMap[T]>;

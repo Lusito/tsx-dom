@@ -4,7 +4,7 @@
 export interface FakeEventListener {
     name: string;
     value: (...args: unknown[]) => unknown;
-    useCapture: boolean;
+    options: unknown;
 }
 
 export class FakeTextNode {
@@ -42,8 +42,8 @@ export class FakeElementNode {
         this.attributes[key] = value;
     }
 
-    public addEventListener(name: string, value: (...args: unknown[]) => unknown, useCapture: boolean) {
-        this.eventListeners.push({ name, value, useCapture });
+    public addEventListener(name: string, value: (...args: unknown[]) => unknown, options: unknown) {
+        this.eventListeners.push({ name, value, options });
     }
 
     public appendChild(child: FakeNode) {

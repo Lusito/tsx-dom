@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { EventHandler } from "tsx-dom-types";
+
 import { fakeDoc, asFakeNode } from "../testUtils";
 import ".";
 
@@ -13,16 +15,15 @@ describe("Basic tests", () => {
     });
 
     it("should set all attributes correctly", () => {
-        const t = asFakeNode(<td contentEditable={true} colSpan={1337} title="foo bar"></td>);
+        const t = asFakeNode(<input checked={true} minLength={1337} title="foo bar" />);
         expect(t.element).toBe(true);
-        t.element &&
-            expect(t.attributes).toEqual({ contentEditable: "contentEditable", colSpan: "1337", title: "foo bar" });
+        t.element && expect(t.attributes).toEqual({ checked: "checked", minLength: "1337", title: "foo bar" });
     });
 
     it("should not set falsy attributes except 0 or the empty string", () => {
-        const t = asFakeNode(<td contentEditable={false} colSpan={0} title={undefined} data-empty-string=""></td>);
+        const t = asFakeNode(<input checked={false} minLength={0} title={undefined} data-empty-string="" />);
         expect(t.element).toBe(true);
-        t.element && expect(t.attributes).toEqual({ colSpan: "0", "data-empty-string": "" });
+        t.element && expect(t.attributes).toEqual({ minLength: "0", "data-empty-string": "" });
     });
 
     it("should attach event listeners", () => {
@@ -32,20 +33,25 @@ describe("Basic tests", () => {
         expect(t.element).toBe(true);
         t.element &&
             expect(t.eventListeners).toEqual([
-                { name: "click", value: onClick, useCapture: false },
-                { name: "blur", value: onBlur, useCapture: false },
+                { name: "click", value: onClick, options: { capture: false, once: false, passive: false } },
+                { name: "blur", value: onBlur, options: { capture: false, once: false, passive: false } },
             ]);
     });
 
-    it("should attach event listeners with useCapture", () => {
-        const onClick = () => 0;
-        const onBlur = () => 0;
-        const t = asFakeNode(<div onClickCapture={onClick} onBlurCapture={onBlur}></div>);
+    it.each(["capture", "once", "passive"] as const)("should attach event listeners with %s", (modifier) => {
+        const onClick: EventHandler<HTMLDivElement, MouseEvent> = () => 0;
+        onClick[modifier] = true;
+        const onBlur: EventHandler<HTMLDivElement, FocusEvent> = () => 0;
+        onBlur[modifier] = true;
+
+        const t = asFakeNode(<div onClick={onClick} onBlur={onBlur}></div>);
         expect(t.element).toBe(true);
+
+        const expectedOptions = { capture: false, once: false, passive: false, [modifier]: true };
         t.element &&
             expect(t.eventListeners).toEqual([
-                { name: "click", value: onClick, useCapture: true },
-                { name: "blur", value: onBlur, useCapture: true },
+                { name: "click", value: onClick, options: expectedOptions },
+                { name: "blur", value: onBlur, options: expectedOptions },
             ]);
     });
 

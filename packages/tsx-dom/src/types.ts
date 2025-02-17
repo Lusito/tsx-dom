@@ -1,9 +1,11 @@
 import type {
-    EventAttributes,
-    StyleAttributes,
-    HTMLAttributes,
-    HTMLElementAttributes,
+    HTMLEventAttributes,
+    PropsForElement,
+    SVGEventAttributes,
     SVGElementAttributes,
+    HTMLElementAttributes,
+    EventHandler,
+    ElementAttributeValue,
 } from "tsx-dom-types";
 
 export type ComponentChild = ComponentChild[] | JSX.Element | string | number | boolean | undefined | null;
@@ -13,7 +15,7 @@ export interface BaseProps {
 }
 export type FC<T = BaseProps> = (props: T) => JSX.Element;
 export type ComponentAttributes = {
-    [s: string]: string | number | boolean | undefined | null | StyleAttributes | EventListenerOrEventListenerObject;
+    [s: string]: ElementAttributeValue | EventHandler<Element, Event>;
 };
 
 export interface HTMLComponentProps<T extends Element> extends BaseProps {
@@ -30,22 +32,18 @@ export interface HTMLComponentProps<T extends Element> extends BaseProps {
 export type CustomElementProps<TBase, TName extends keyof HTMLElementTagNameMap | null> = TBase &
     (TName extends keyof HTMLElementTagNameMap
         ? JSX.IntrinsicElements[TName]
-        : HTMLAttributes & HTMLComponentProps<Element>);
+        : PropsForElement<HTMLElement> & HTMLComponentProps<Element>);
 
-export type SVGAndHTMLElementKeys = keyof SVGElementTagNameMap & keyof HTMLElementTagNameMap;
-export type SVGOnlyElementKeys = Exclude<keyof SVGElementTagNameMap, SVGAndHTMLElementKeys>;
 export type IntrinsicElementsHTML = {
     [TKey in keyof HTMLElementTagNameMap]?: HTMLElementAttributes<TKey> &
         HTMLComponentProps<HTMLElementTagNameMap[TKey]> &
-        EventAttributes<HTMLElementTagNameMap[TKey]>;
+        HTMLEventAttributes<TKey>;
 };
 export type IntrinsicElementsSVG = {
-    [TKey in SVGOnlyElementKeys]?: SVGElementAttributes<TKey> &
+    [TKey in keyof SVGElementTagNameMap]?: SVGElementAttributes<TKey> &
         HTMLComponentProps<SVGElementTagNameMap[TKey]> &
-        EventAttributes<SVGElementTagNameMap[TKey]>;
+        SVGEventAttributes<TKey>;
 };
-
-export type IntrinsicElementsHTMLAndSVG = IntrinsicElementsHTML & IntrinsicElementsSVG;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CustomElementsHTML {}

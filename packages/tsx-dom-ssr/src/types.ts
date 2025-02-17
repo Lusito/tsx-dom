@@ -1,4 +1,9 @@
-import type { HTMLAttributes, HTMLElementAttributes, SVGElementAttributes, StyleAttributes } from "tsx-dom-types";
+import type {
+    PropsForElement,
+    HTMLElementAttributes,
+    SVGElementAttributes,
+    ElementAttributeValue,
+} from "tsx-dom-types";
 
 export type VNode = (
     document: Document,
@@ -20,7 +25,9 @@ export interface HTMLComponentProps extends BaseProps {
 }
 
 export type CustomElementProps<TBase, TName extends keyof HTMLElementTagNameMap | null> = TBase &
-    (TName extends keyof HTMLElementTagNameMap ? JSX.IntrinsicElements[TName] : HTMLAttributes & HTMLComponentProps);
+    (TName extends keyof HTMLElementTagNameMap
+        ? JSX.IntrinsicElements[TName]
+        : PropsForElement<HTMLElement> & HTMLComponentProps);
 
 export interface ComponentThis {
     abortSignal: AbortSignal;
@@ -29,9 +36,7 @@ export interface ComponentThis {
 }
 
 export type FC<T = BaseProps> = (this: ComponentThis, props: T) => ComponentChildren;
-export type ComponentAttributes = {
-    [s: string]: string | number | boolean | StyleAttributes;
-};
+export type ComponentAttributes = Record<string, ElementAttributeValue>;
 
 export type ComponentChild = VNode | string | number | false | undefined | null;
 export type ComponentChildren = ComponentChild | ComponentChildren[] | Promise<ComponentChild | ComponentChildren[]>;
