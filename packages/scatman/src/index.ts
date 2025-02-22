@@ -4,6 +4,7 @@ export * from "./plugins/body/ScatBodyClassPlugin";
 export * from "./plugins/css/ScatCssPlugin";
 export * from "./plugins/head/ScatHeadPlugin";
 export * from "./plugins/preload/ScatPreloadPlugin";
+export * from "./plugins/preserve-scroll/ScatPreserveScrollPlugin";
 export * from "./plugins/progress/ScatProgressPlugin";
 export * from "./plugins/scroll/ScatScrollPlugin";
 export * from "./ScatPlugin";

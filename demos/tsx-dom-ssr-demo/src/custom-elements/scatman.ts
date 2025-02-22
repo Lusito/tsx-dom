@@ -7,6 +7,7 @@ import {
     ScatPreloadPlugin,
     ScatProgressPlugin,
     ScatScrollPlugin,
+    ScatPreserveScrollPlugin,
 } from "scatman";
 
 export const scatman = new Scatman();
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         new ScatHeadPlugin(scatman),
         new ScatBodyClassPlugin(scatman),
         new ScatScrollPlugin(scatman),
+        new ScatPreserveScrollPlugin(scatman),
         new ScatProgressPlugin(scatman),
         new ScatPreloadPlugin(scatman),
         new ScatA11yPlugin(scatman),
