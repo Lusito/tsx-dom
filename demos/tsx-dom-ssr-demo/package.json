@@ -24,7 +24,7 @@
     "happy-dom": "17.1.0",
     "node-cache": "5.1.2",
     "pirates": "4.0.6",
-    "scatman": "0.10.0",
+    "scatman": "0.11.0",
     "tsx-dom-ssr": "1.1.0"
   }
 }

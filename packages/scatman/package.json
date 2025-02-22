@@ -1,6 +1,6 @@
 {
   "name": "scatman",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Lightning fast navigation on pages that are mostly static.",
   "keywords": [
     "TypeScript",
