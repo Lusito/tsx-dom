@@ -33,7 +33,7 @@ Note, that you can not use this with arrow functions, as they override `this`!
 
 ## `createContext`
 
-`createContext` is similar to react context in that it allows you to specify providers locally and even override them for some children.
+`createContext` is similar to context in React in that it allows you to specify providers locally and even override them for some children.
 
 First, define your context like this:
 
