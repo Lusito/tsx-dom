@@ -12,5 +12,6 @@ sidebar:
   - "html-tags"
   - "components"
   - "custom-elements"
+  - "passing-props-deeply"
   - "configuration"
   - "external-problems"
