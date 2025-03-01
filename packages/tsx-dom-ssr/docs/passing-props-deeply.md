@@ -40,7 +40,10 @@ First, define your context like this:
 ```ts
 import { createContext } from "tsx-dom-ssr";
 
-export const SomeNumber = createContext({ fallback: 10, description: "Some Number Context" });
+export const SomeNumber = createContext({
+  fallback: 10,
+  description: "Some Number Context",
+});
 ```
 
 Then, add a provider wherever you need it:
