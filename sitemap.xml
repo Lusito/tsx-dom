@@ -6,15 +6,15 @@
     <url><loc>https://lusito.github.io/tsx-dom/all.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/dom-helmet/</loc></url>
-    <url><loc>https://lusito.github.io/tsx-dom/dom-helmet/supported-tags.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/dom-helmet/setup.html</loc></url>
+    <url><loc>https://lusito.github.io/tsx-dom/dom-helmet/supported-tags.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/dom-helmet/usage.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/scatman/</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/scatman/setup.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/components.html</loc></url>
-    <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/custom-elements.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/configuration.html</loc></url>
+    <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/custom-elements.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/html-tags.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/referencing-elements.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom/setup.html</loc></url>
@@ -22,8 +22,8 @@
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/components.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/configuration.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/custom-elements.html</loc></url>
-    <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/external-problems.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/html-tags.html</loc></url>
+    <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/external-problems.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/passing-props-deeply.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-ssr/setup.html</loc></url>
     <url><loc>https://lusito.github.io/tsx-dom/tsx-dom-types/</loc></url>

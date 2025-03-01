@@ -30,10 +30,16 @@
 <p>First, define your context like this:</p>
 <pre><code class="hljs"><span class="hljs-keyword">import</span> { createContext } <span class="hljs-keyword">from</span> <span class="hljs-string">"tsx-dom-ssr"</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">SomeNumber</span> = <span class="hljs-title function_">createContext</span>({ <span class="hljs-attr">fallback</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">"Some Number Context"</span> });
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">SomeNumber</span> = <span class="hljs-title function_">createContext</span>({
+  <span class="hljs-attr">fallback</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">description</span>: <span class="hljs-string">"Some Number Context"</span>,
+});
 </code><code-copy-button role="button" code="import { createContext } from &quot;tsx-dom-ssr&quot;;
 
-export const SomeNumber = createContext({ fallback: 10, description: &quot;Some Number Context&quot; });" title="Copy the code snippet to the clipboard" aria-label="Copy the code snippet to the clipboard" enhancedclass="enhanced-copy-button_2oCqSa"></code-copy-button></pre>
+export const SomeNumber = createContext({
+  fallback: 10,
+  description: &quot;Some Number Context&quot;,
+});" title="Copy the code snippet to the clipboard" aria-label="Copy the code snippet to the clipboard" enhancedclass="enhanced-copy-button_2oCqSa"></code-copy-button></pre>
 <p>Then, add a provider wherever you need it:</p>
 <pre><code class="hljs"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">SomeNumber</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">"../contexts/SomeNumber"</span>;
 
