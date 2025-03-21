@@ -8,7 +8,7 @@ import { CrossOrigin, CSSProperties } from "./HTMLElementAttributes";
 
 type CSSUnit = "cm" | "mm" | "in" | "px" | "pt" | "pc" | "em" | "ex" | "ch" | "rem" | "vw" | "vh" | "vmin" | "vmax";
 type Percentage = `${number}%`;
-type SVGLength = `${number}${CSSUnit}`;
+type SVGLength = `${number}${CSSUnit}` | number;
 type LengthPercentage = SVGLength | Percentage;
 type SVGAngle = `${number}${"deg" | "rad" | "grad" | ""}` | number;
 
@@ -417,6 +417,8 @@ export type SVGElementAttributeNamesMap = {
             viewBox: string;
             xmlns: string;
             zoomAndPan: "disable" | "magnify";
+            width: LengthPercentage;
+            height: LengthPercentage;
         };
     switch: SVGElementCommonAttributes &
         SVGElementAriaAttributes & {
@@ -727,7 +729,7 @@ export type SVGElementAttributeNamesMap = {
         type: string;
     };
     stop: SVGElementCommonAttributes & {
-        offset: number;
+        offset: number | Percentage;
     };
     // fixme: clash with html
     style: SVGElementCommonAttributes & {
