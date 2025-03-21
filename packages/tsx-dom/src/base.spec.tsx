@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { EventHandler } from "tsx-dom-types";
 
-import { fakeDoc, asFakeNode } from "../testUtils";
+import { fakeDoc, asFakeNode, setupFakeDoc } from "../testUtils";
 import ".";
 
 describe("Basic tests", () => {
-    beforeEach(() => fakeDoc.reset());
+    beforeEach(setupFakeDoc);
 
     it("should return the element from document.createElement", () => {
         const t = asFakeNode(<div></div>);

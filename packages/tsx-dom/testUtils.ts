@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-classes-per-file */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Window } from "happy-dom";
 
 export interface FakeEventListener {
     name: string;
@@ -53,8 +55,6 @@ export class FakeElementNode {
 
 export type FakeNode = FakeElementNode | FakeTextNode;
 
-globalThis.Element = FakeElementNode as any;
-
 export class FakeDocument {
     public nodes: FakeNode[] = [];
 
@@ -79,4 +79,24 @@ export const fakeDoc = new FakeDocument();
 
 export const asFakeNode = (v: JSX.Element) => v as unknown as FakeNode;
 
-globalThis.document = fakeDoc as any;
+export function setupFakeDoc() {
+    fakeDoc.reset();
+    globalThis.document = fakeDoc as any;
+    globalThis.Element = FakeElementNode as any;
+}
+
+export function setupHappyDom() {
+    const window = new Window();
+    const document = window.document as any;
+    globalThis.document = document;
+    globalThis.Element = window.Element as any;
+}
+
+export function html(strings: TemplateStringsArray, ...values: string[]) {
+    return strings
+        .map((s, i) => (i === strings.length - 1 ? s : `${s}${values[i]}`))
+        .join("")
+        .replace(/\s*\n\s*/g, " ")
+        .replace(/\s*>\s*/g, ">")
+        .trim();
+}

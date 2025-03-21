@@ -1,3 +1,4 @@
+import { getCurrentNamespace } from "./namespace";
 import { ComponentAttributes, ComponentChild } from "./types";
 
 function applyChild(element: JSX.Element, child: ComponentChild) {
@@ -19,7 +20,8 @@ export function applyChildren(element: JSX.Element, children: ComponentChild[]) 
 export function createDomElement(tag: string, attrs: ComponentAttributes | null) {
     const options = attrs?.is ? { is: attrs.is as string } : undefined;
 
-    if (attrs?.xmlns) return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
+    const ns = attrs?.xmlns ?? getCurrentNamespace();
+    if (ns) return document.createElementNS(ns as string, tag, options) as SVGElement;
 
     return document.createElement(tag, options);
 }

@@ -13,7 +13,10 @@ export type ComponentChildren = ComponentChild | ComponentChild[];
 export interface BaseProps {
     children?: ComponentChildren;
 }
+/** Function Component */
 export type FC<T = BaseProps> = (props: T) => JSX.Element;
+/** Function Component with No Props */
+export type NPFC = () => JSX.Element;
 export type ComponentAttributes = {
     [s: string]: ElementAttributeValue | EventHandler<Element, Event>;
 };

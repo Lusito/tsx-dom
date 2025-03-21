@@ -3,6 +3,7 @@ import { CustomElementsHTML, IntrinsicElementsHTML, IntrinsicElementsSVG } from 
 export * from "./createElement";
 export * from "./defineCustomElement";
 export * from "./jsx-runtime";
+export * from "./namespace";
 export * from "./types";
 
 export interface TsxConfig {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { asFakeNode, fakeDoc } from "../testUtils";
+import { asFakeNode, fakeDoc, setupFakeDoc } from "../testUtils";
 import { BaseProps } from ".";
 
 interface FooProps extends BaseProps {
@@ -29,7 +29,7 @@ function FooBar(props: BaseProps) {
 }
 
 describe("Functional component tests", () => {
-    beforeEach(() => fakeDoc.reset());
+    beforeEach(setupFakeDoc);
 
     it("should pass all attributes as given", () => {
         const t = (<Foo text="one" num={2} bool={true} none={undefined} zero={null} />) as any as FooProps;
