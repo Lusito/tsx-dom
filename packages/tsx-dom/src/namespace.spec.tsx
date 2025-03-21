@@ -60,7 +60,7 @@ const badSvg = html`
     </svg>
 `;
 
-describe("Basic tests", () => {
+describe("Namespace tests", () => {
     beforeEach(setupHappyDom);
     afterEach(() => {
         setDefaultNamespace(undefined);
