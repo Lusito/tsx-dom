@@ -20,8 +20,8 @@ export function applyChildren(element: JSX.Element, children: ComponentChild[]) 
 export function createDomElement(tag: string, attrs: ComponentAttributes | null) {
     const options = attrs?.is ? { is: attrs.is as string } : undefined;
 
-    const ns = attrs?.xmlns ?? getCurrentNamespace();
-    if (ns) return document.createElementNS(ns as string, tag, options) as SVGElement;
+    const ns = (attrs?.xmlns as string | undefined) ?? getCurrentNamespace();
+    if (ns) return document.createElementNS(ns, tag, options) as SVGElement;
 
     return document.createElement(tag, options);
 }

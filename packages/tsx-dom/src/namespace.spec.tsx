@@ -67,18 +67,18 @@ describe("Namespace tests", () => {
         clearNamespaceStack();
     });
 
-    test("should create svg element correctly if default namespace is set", () => {
+    it("should create svg element correctly if default namespace is set", () => {
         setDefaultNamespace("http://www.w3.org/2000/svg");
         const element = <TestSvg />;
         expect(element.outerHTML).toBe(goodSvg);
     });
 
-    test("should create svg element correctly if using XmlNs Component", () => {
+    it("should create svg element correctly if using XmlNs Component", () => {
         const element = <XmlNs namespace="http://www.w3.org/2000/svg" render={() => <TestSvg />} />;
         expect(element.outerHTML).toBe(goodSvg);
     });
 
-    test("should create svg element correctly only when namespace has been specified somehow", () => {
+    it("should create svg element correctly only when namespace has been specified somehow", () => {
         const element = (
             <div>
                 <XmlNs namespace="http://www.w3.org/2000/svg" render={() => <TestSvg />} />
