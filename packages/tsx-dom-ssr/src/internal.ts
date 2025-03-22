@@ -1,6 +1,6 @@
 import { setElementAttributes } from "./setElementAttributes";
 import { toDom } from "./domUtils";
-import type { BaseProps, FC, ComponentAttributes, ComponentChildren, VNode } from "./types";
+import type { BaseProps, FC, ComponentAttributes, ComponentChildren, VNode, ComponentThis } from "./types";
 
 function hasChildrenSet(children: ComponentChildren) {
     if (Array.isArray(children)) {
@@ -10,12 +10,17 @@ function hasChildrenSet(children: ComponentChildren) {
     return children !== undefined;
 }
 
-function createDomElement(document: Document, tag: string, attrs: ComponentAttributes) {
+function createDomElement(document: Document, ns: string | undefined, tag: string, attrs: ComponentAttributes) {
     const options = attrs.is ? { is: attrs.is as string } : undefined;
 
-    if (attrs.xmlns) return document.createElementNS(attrs.xmlns as string, tag, options) as SVGElement;
+    if (ns) return document.createElementNS(ns, tag, options) as SVGElement;
 
     return document.createElement(tag, options);
+}
+
+const parentNamespace = Symbol("Parent Namespace");
+function getNamespace(tag: string, thisArg: ComponentThis) {
+    return tag === "svg" ? "http://www.w3.org/2000/svg" : (thisArg[parentNamespace] as string | undefined);
 }
 
 export function createHtmlElementNode(tag: string, { children, ...attrs }: BaseProps): VNode {
@@ -28,7 +33,9 @@ export function createHtmlElementNode(tag: string, { children, ...attrs }: BaseP
                 finalAttrs = { ...finalAttrs, is: tag };
             }
         }
-        const el = createDomElement(document, finalTag, finalAttrs);
+
+        const ns = (finalAttrs.xmlns as string | undefined) ?? getNamespace(finalTag, thisArg);
+        const el = createDomElement(document, ns, finalTag, finalAttrs);
         setElementAttributes(el, finalAttrs);
 
         if (el.innerHTML) {
@@ -36,7 +43,8 @@ export function createHtmlElementNode(tag: string, { children, ...attrs }: BaseP
                 console.error("Received both dangerouslySetInnerHTML and children. Children will be ignored!");
             }
         } else {
-            const fragment = await toDom(document, children, thisArg);
+            const thisArgExtended = ns ? { ...thisArg, [parentNamespace]: ns } : thisArg;
+            const fragment = await toDom(document, children, thisArgExtended);
             el.appendChild(fragment);
         }
 
