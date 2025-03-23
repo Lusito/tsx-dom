@@ -1,6 +1,5 @@
 import type { ComponentChildren, ComponentThis } from "./types";
 import { internalComponent } from "./internal";
-import { toDom } from "./domUtils";
 
 export type ErrorBoundaryProps = {
     render: () => ComponentChildren;
@@ -9,7 +8,7 @@ export type ErrorBoundaryProps = {
     accept?: (error: unknown) => boolean;
 };
 
-export const ErrorBoundary = internalComponent((props: ErrorBoundaryProps) => async (document, thisArg) => {
+export const ErrorBoundary = internalComponent<ErrorBoundaryProps>(async (props, thisArg, next) => {
     const abortController = new AbortController();
     // Connect to parent AbortSignal
     const abort = () => {
@@ -20,7 +19,7 @@ export const ErrorBoundary = internalComponent((props: ErrorBoundaryProps) => as
     try {
         const children = await props.render();
 
-        return toDom(document, children, addAbortSignal(thisArg, abortController));
+        return await next(children, addAbortSignal(thisArg, abortController));
     } catch (error) {
         abort();
 
@@ -30,7 +29,7 @@ export const ErrorBoundary = internalComponent((props: ErrorBoundaryProps) => as
 
         const children = await props.fallback({ error });
 
-        return toDom(document, children, thisArg);
+        return next(children, thisArg);
     }
 });
 

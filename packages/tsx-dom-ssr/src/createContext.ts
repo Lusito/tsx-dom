@@ -1,9 +1,8 @@
-import type { ComponentThis, BaseProps } from "./types";
-import { internalComponent, InternalComponent } from "./internal";
-import { toDom } from "./domUtils";
+import type { ComponentThis, BaseProps, FC } from "./types";
+import { internalComponent } from "./internal";
 
 export type ContextProviderProps<T = unknown> = BaseProps & { value: T };
-export type ContextProvider<T = unknown> = InternalComponent<ContextProviderProps<T>>;
+export type ContextProvider<T = unknown> = FC<ContextProviderProps<T>>;
 export type Context<T = unknown> = {
     Provider: ContextProvider<T>;
     for(componentThis: ComponentThis): T;
@@ -18,12 +17,11 @@ export function createContext<T>(options: CreateContextOptions<T>): Context<T> {
     const type = Symbol(options.description);
 
     return {
-        Provider: internalComponent(
-            (props: ContextProviderProps<T>) => (document, thisArg) =>
-                toDom(document, props.children, {
-                    ...thisArg,
-                    [type]: props.value,
-                }),
+        Provider: internalComponent<ContextProviderProps<T>>((props, thisArg, next) =>
+            next(props.children, {
+                ...thisArg,
+                [type]: props.value,
+            }),
         ),
         for(componentThis) {
             if (type in componentThis) {

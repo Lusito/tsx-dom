@@ -1,4 +1,4 @@
-import { html, renderHTML } from "../testUtils";
+import { html, renderHTMLViaDom, renderHTMLViaString } from "../testUtils";
 
 const TestSvg = () => (
     <svg preserveAspectRatio="xMidYMid" viewBox="0 0 250 250" width="100%" height="100%">
@@ -39,8 +39,13 @@ const goodSvg = html`
 `;
 
 describe("SVG tests", () => {
-    it("should create svg element correctly", async () => {
-        const result = await renderHTML(<TestSvg />);
+    it("should create svg element correctly via dom", async () => {
+        const result = await renderHTMLViaDom(<TestSvg />);
+        expect(result).toBe(goodSvg);
+    });
+
+    it("should create svg element correctly via string", async () => {
+        const result = await renderHTMLViaString(<TestSvg />);
         expect(result).toBe(goodSvg);
     });
 });

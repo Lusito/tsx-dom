@@ -8,7 +8,7 @@ function transferKnownProperties(source: any, target: any) {
 }
 
 /** Some attributes need a different Name when using setAttribute */
-function getAdjustedAttributeName(tagName: string, attributeName: string) {
+export function getAdjustedAttributeName(tagName: string, attributeName: string) {
     if (tagName === "FORM" && attributeName === "acceptCharset") return "accept-charset";
     if (tagName === "META" && attributeName === "httpEquiv") return "http-equiv";
     return attributeName;

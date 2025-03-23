@@ -2,17 +2,17 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Window } from "happy-dom";
 
-import { addAbortSignal, ComponentChildren, toDom } from ".";
+import { addAbortSignal, ComponentChildren, renderToDom, renderToString } from ".";
 
 const window = new Window();
 const document = window.document as unknown as Document;
 
-export async function renderHTML(children: ComponentChildren) {
+export async function renderHTMLViaDom(children: ComponentChildren) {
     const abortController = new AbortController();
 
     let dom: DocumentFragment;
     try {
-        dom = await toDom(document, children, addAbortSignal({}, abortController));
+        dom = await renderToDom(document, children, addAbortSignal({}, abortController));
     } catch (e) {
         if (!abortController.signal.aborted) abortController.abort();
         throw e;
@@ -23,6 +23,17 @@ export async function renderHTML(children: ComponentChildren) {
     wrapper.appendChild(dom);
 
     return wrapper.innerHTML;
+}
+
+export async function renderHTMLViaString(children: ComponentChildren) {
+    const abortController = new AbortController();
+
+    try {
+        return await renderToString(children, addAbortSignal({}, abortController));
+    } catch (e) {
+        if (!abortController.signal.aborted) abortController.abort();
+        throw e;
+    }
 }
 
 export function html(strings: TemplateStringsArray, ...values: string[]) {

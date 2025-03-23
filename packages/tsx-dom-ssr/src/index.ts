@@ -2,9 +2,10 @@ import type { ComponentChildren, CustomElementsHTML, IntrinsicElementsHTML, Intr
 
 export * from "./createContext";
 export * from "./createElement";
-export * from "./domUtils";
 export * from "./jsx-runtime";
 export * from "./ErrorBoundary";
+export * from "./renderToDom";
+export * from "./renderToString";
 export * from "./types";
 
 export interface TsxConfig {

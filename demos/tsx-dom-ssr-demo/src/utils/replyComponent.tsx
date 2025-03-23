@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { addAbortSignal, ComponentChildren, toDom } from "tsx-dom-ssr";
+import { addAbortSignal, ComponentChildren, renderToDom } from "tsx-dom-ssr";
 import { domHelmet } from "dom-helmet";
 import { Window } from "happy-dom";
 import { CssModule } from "@lusito/require-libs";
@@ -17,7 +17,7 @@ export async function renderHTML(children: ComponentChildren) {
 
     let dom: DocumentFragment;
     try {
-        dom = await toDom(document, children, addAbortSignal({ cssModules }, abortController));
+        dom = await renderToDom(document, children, addAbortSignal({ cssModules }, abortController));
     } catch (e) {
         if (!abortController.signal.aborted) abortController.abort();
         throw e;

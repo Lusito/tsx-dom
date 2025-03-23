@@ -5,10 +5,12 @@ import type {
     ElementAttributeValue,
 } from "tsx-dom-types";
 
-export type VNode = (
-    document: Document,
-    thisArg: ComponentThis,
-) => Promise<HTMLElement | SVGElement | DocumentFragment | Text>;
+import { InternalComponent } from "./internal";
+
+export type VNode = {
+    tag: string | FC | InternalComponent;
+    props: BaseProps;
+};
 
 export interface BaseProps {
     children?: ComponentChildren;
